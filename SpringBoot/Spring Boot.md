@@ -44,11 +44,11 @@
 
 单体应用
 
-![Traditional web application architecture  Browser  Apache  Simple to  WAR  StoreFrontLJl  Accounting  Service  InventoryService  Shipping  Service  Tomcat ](images/24B0644F-B5EA-DB4B-9603-FC04BC0BD9F0.png)
+![Traditional web application architecture  Browser  Apache  Simple to  WAR  StoreFrontLJl  Accounting  Service  InventoryService  Shipping  Service  Tomcat ](.images/24B0644F-B5EA-DB4B-9603-FC04BC0BD9F0.png)
 
 微服务
 
-![一 个 单 亻 本 应 用 程 序 把 它 所 有 的 功 能 放  一 个 服 务 架 构 把 每 个 功 能 元 考  在 一 个 单 一 进 程 中 ．  一 个 独 立 的 服 务 中 ，  一 并 且 通 过 跨 服 务 器 分 发 这  一 # 且 通 过 在 多 个 服 务 器 上 复 制  展 ， 只 在 需 要 时 才 复 制 ．  这 个 单 体 进 行 扩 展 ](images/7087A5F3-E621-D34D-B624-DCBD3850DE8E.png)
+![一 个 单 亻 本 应 用 程 序 把 它 所 有 的 功 能 放  一 个 服 务 架 构 把 每 个 功 能 元 考  在 一 个 单 一 进 程 中 ．  一 个 独 立 的 服 务 中 ，  一 并 且 通 过 跨 服 务 器 分 发 这  一 # 且 通 过 在 多 个 服 务 器 上 复 制  展 ， 只 在 需 要 时 才 复 制 ．  这 个 单 体 进 行 扩 展 ](.images/7087A5F3-E621-D34D-B624-DCBD3850DE8E.png)
 
 
 
@@ -91,11 +91,11 @@
 
 整合maven进来；
 
-![idea设置](images/搜狗截图20180129151045.png)
+![idea设置](.images/搜狗截图20180129151045.png)
 
 
 
-![images/](images/搜狗截图20180129151112.png)
+![images/](.images/搜狗截图20180129151112.png)
 
 ## 4、Spring Boot HelloWorld
 
@@ -107,13 +107,13 @@
 
 ### 1、创建一个maven工程；（jar）
 
-![image-20191021193639873](images/image-20191021193639873.png)
+![image-20191021193639873](.images/image-20191021193639873.png)
 
 
 
-![image-20191021193726070](images/image-20191021193726070.png)
+![image-20191021193726070](.images/image-20191021193726070.png)
 
-![image-20191021193906472](images/image-20191021193906472.png)
+![image-20191021193906472](.images/image-20191021193906472.png)
 
 ### 2、导入spring boot相关的依赖
 
@@ -165,7 +165,7 @@ public class HelloController {
 
 ### 5、运行主程序测试
 
-![C @ localhost:8080 ](images/1A3D3D63-F318-0E4C-A24D-ECA5EC850B2F.png)
+![C @ localhost:8080 ](.images/1A3D3D63-F318-0E4C-A24D-ECA5EC850B2F.png)
 
 ### 6、简化部署
 
@@ -185,11 +185,11 @@ public class HelloController {
 
 | ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![image-20191021194936161](images/image-20191021194936161.png) |      |
+| ![image-20191021194936161](.images/image-20191021194936161.png) |      |
 
 直接使用java -jar的命令进行执行；
 
-![image-20191021195035095](images/image-20191021195035095.png)
+![image-20191021195035095](.images/image-20191021195035095.png)
 
 ## 5、Hello World探究
 
@@ -329,17 +329,17 @@ J2EE的整体整合解决方案和自动配置都在 spring-boot-autoconfigure-1
 
 IDE都支持使用Spring的项目创建向导快速创建一个Spring Boot项目；
 
-![image-20191021201929132](images/image-20191021201929132.png)
+![image-20191021201929132](.images/image-20191021201929132.png)
 
-![image-20191021201953760](images/image-20191021201953760.png)
+![image-20191021201953760](.images/image-20191021201953760.png)
 
 选择我们需要的模块；
 
-![image-20191021202047442](images/image-20191021202047442.png)
+![image-20191021202047442](.images/image-20191021202047442.png)
 
 向导会联网创建Spring Boot项目；
 
-![image-20191021202238801](images/image-20191021202238801.png)
+![image-20191021202238801](.images/image-20191021202238801.png)
 
 Maven没有选择自动导入的话，可以点击刷新重新导入
 
@@ -351,17 +351,17 @@ Maven没有选择自动导入的话，可以点击刷新重新导入
   - templates：保存所有的模板页面；（Spring Boot默认jar包使用嵌入式的Tomcat，默认不支持JSP页面）；可以使用模板引擎（freemarker、thymeleaf）；
   - application.properties：Spring Boot应用的配置文件；可以修改一些默认设置；
 
-![image-20191021202535419](images/image-20191021202535419.png)
+![image-20191021202535419](.images/image-20191021202535419.png)
 
-![image-20191021202632179](images/image-20191021202632179.png)
+![image-20191021202632179](.images/image-20191021202632179.png)
 
 ### 2、STS使用 Spring Starter Project快速创建项目
 
-![image-20191021203017101](images/image-20191021203017101.png)
+![image-20191021203017101](.images/image-20191021203017101.png)
 
-![image-20191021203100169](images/image-20191021203100169.png)
+![image-20191021203100169](.images/image-20191021203100169.png)
 
-![image-20191021203141633](images/image-20191021203141633.png)
+![image-20191021203141633](.images/image-20191021203141633.png)
 
 # 二、配置文件
 
@@ -545,17 +545,17 @@ public class Person {
 
 运行测试
 
-![image-20191021205134021](images/image-20191021205134021.png)
+![image-20191021205134021](.images/image-20191021205134021.png)
 
 #### 2、properties配置文件
 
 在idea中配置文件默认ascii可能会乱码
 
-![image-20191021205621064](images/image-20191021205621064.png)
+![image-20191021205621064](.images/image-20191021205621064.png)
 
 调整
 
-![idea配置乱码](images/搜狗截图20180130161620.png)
+![idea配置乱码](.images/搜狗截图20180130161620.png)
 
 ### 2、@Value获取值
 
@@ -580,7 +580,7 @@ public class Person {
 
 运行结果，可以正确获取值
 
-![image-20191021211407643](images/image-20191021211407643.png)
+![image-20191021211407643](.images/image-20191021211407643.png)
 
 ### 3、@Value和@ConfigurationProperties对比
 
@@ -607,11 +607,11 @@ public class Person {
 
 #### 2、@ConfigurationProperties支持JSR303数据校验
 
-![@Component  @Confi urationProperties(images/777F28AC-8744-3C4E-A2E6-627B40334851.png "person")  @Va1 i dated  public class Person {  • ebean  eproperty  @EmaiI  private String lastName;  private Integer age; ](file:////Users/dulinlong/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/777F28AC-8744-3C4E-A2E6-627B40334851.png)
+![906C6AB9-EF45-44FA-9143-26728668653C](.images/906C6AB9-EF45-44FA-9143-26728668653C.png)
 
 运行结果，无法正确获取值
 
-![Binding to target Person{lastName—' zhangs«  Property: person  Value: zhangsan ](images/7C52EF06-D973-E24D-ACE9-B69D497F3E31.png)
+![Binding to target Person{lastName—' zhangs«  Property: person  Value: zhangsan ](.images/7C52EF06-D973-E24D-ACE9-B69D497F3E31.png)
 
 ### 4、加载配置文件
 
@@ -654,7 +654,7 @@ public class Person {
 
 对应的person.properties
 
-![1 person. last-nane—ghqr  per son. age—18  2  . birth-2Ø17/12/  3  person  person. boss—fal se  4  person. maps. k I—vl  s  per son. maps. k2—14  6  7 person. lists—a.b.c ](images/0AFA4B11-BE61-1745-8961-AA1EC6FDFD24.png)
+![BEB7A190-FB53-4FCD-BC7F-EFB917FF889B](.images/BEB7A190-FB53-4FCD-BC7F-EFB917FF889B.png)
 
 #### 2、@ImportResource
 
@@ -759,7 +759,7 @@ public class Day925SpringBoot2ConfigApplicationTest {
 
 运行结果
 
-![置 类 ean 鮯 容 器 中 添 加 岨 件 了 …  2218-29-26 : 13 : 49.983  INFO 184  231g -29 一 26 : 13 : 50.22g  INFO 1g4  ~ 918 一 29 一 : 13 : 50 33  1 0 18433  2218-29-26 : 13 : 5 2  INFO 184  231g -29 一 26 : 13 : 50.2  INFO 1g4  2218 一 29 一 : 13 : 50358  IN 「 0 18433 ](images/316F7BFA-2382-AF45-B272-729FFECE1176.png)
+![407BB7D7-BB1B-4C24-8045-759496E4909C](.images/407BB7D7-BB1B-4C24-8045-759496E4909C.png)
 
 
 
@@ -799,7 +799,7 @@ person.dog.age=15
 
 默认使用 application.properties 的配置；
 
-![sounosoOu:eu/0JS ](images/988FD58A-C8BF-A046-8AAC-7BE5EF907938.png)
+![sounosoOu:eu/0JS ](.images/988FD58A-C8BF-A046-8AAC-7BE5EF907938.png)
 
 application.properties
 
@@ -823,7 +823,7 @@ server.port=8083
 
 运行主程序，控制台可看到启动了开发环境
 
-![image-20191021220815819](images/image-20191021220815819.png)
+![image-20191021220815819](.images/image-20191021220815819.png)
 
 ### 2、yml支持多文档块方式
 
@@ -866,7 +866,7 @@ spring:
 
 ​		IDEA 中：
 
-![Run/Debug Configurations  JUnit  Spring Boot  SpringB00t02ConfigApplication  Defaults  Name: SpringBoot02ConfigApplice  Configuratio Code Coverage  Main class:  VM options: ](images/45F48923-BE71-C24D-9F9B-26FC45C2B2E0.png)
+![9E048744-1A98-458E-B6A0-85739AB98961](.images/9E048744-1A98-458E-B6A0-85739AB98961.png)
 
 ​	3、虚拟机参数；
 
@@ -874,7 +874,7 @@ spring:
 
 ​		IDEA 中：
 
-![şıooq6upds•n6!  :ssep  5601 a6exaA0D apoD uopun6yu  :aLUPN  uop 23!lddv61Jü0Y040086u  5ü!Jdş  suopeun6yu0D 6nqaffluny ](images/0912FE38-FB16-A446-8900-4B3DE69F4EBF.png)
+![A2BE4785-4997-4C6F-8C88-694108CB73D8](.images/A2BE4785-4997-4C6F-8C88-694108CB73D8.png)
 
 
 
@@ -896,7 +896,7 @@ spring:
 
 SpringBoot会从这四个位置全部加载主配置文件；**互补配置**；
 
-![9F18194B-015D-4A20-B013-C38AAA07612E](images/9F18194B-015D-4A20-B013-C38AAA07612E.png)
+![9F18194B-015D-4A20-B013-C38AAA07612E](.images/9F18194B-015D-4A20-B013-C38AAA07612E.png)
 
 配置文件中，根据优先级低到高配置启动端口从server.port=8081变化到 8084，只有一个classpath:/下的配置时候，启动程序可以看到tomcat 的启动端口是 8081 ，当file:./config/下的配置的时候，启动程序可以看到tomcat 的启动端口是 8084
 
@@ -920,7 +920,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 多个配置用空格分开； --配置项=值
 
-![C O locaIhost:8087/dul ](file:////Users/dulinlong/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/B7C00114-B093-4B4C-900C-97A122D25BC8.png)
+![D74427DC-7427-4114-A09E-C0FA22F87A82](.images/D74427DC-7427-4114-A09E-C0FA22F87A82.png)
 
 
 
@@ -1135,7 +1135,7 @@ public class HttpEncodingAutoConfiguration {
 
 一但这个配置类生效；这个配置类就会给容器中添加各种组件；这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的；
 
-![image-20191021230801803](images/image-20191021230801803.png)
+![image-20191021230801803](.images/image-20191021230801803.png)
 
 5、所有在配置文件中能配置的属性都是在xxxxProperties类中封装着；配置文件能配置什么就可以参照某个功能对应的这个属性类
 
@@ -1166,7 +1166,7 @@ xxxxAutoConfigurartion：自动配置类；
 
 xxxxProperties:封装配置文件中相关属性；
 
-![image-20191021231912804](images/image-20191021231912804.png)
+![image-20191021231912804](.images/image-20191021231912804.png)
 
 
 
@@ -1296,7 +1296,7 @@ public class HelloWorld {
 
 | ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![click to enlarge](images/concrete-bindings-1673306.png)    |      |
+| ![click to enlarge](.images/concrete-bindings-1673306.png)   |      |
 
 每一个日志的实现框架都有自己的配置文件。使用slf4j以后，**配置文件还是做成日志实现框架自己本身的配置文件；**
 
@@ -1308,7 +1308,7 @@ a系统（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logg
 
 | ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![click to enlarge](images/legacy-1673644.png)               |      |
+| ![click to enlarge](.images/legacy-1673644.png)              |      |
 
 **如何让系统中所有的日志都统一到slf4j；**
 
@@ -1342,7 +1342,7 @@ SpringBoot使用它来做日志功能；
 
 底层依赖关系
 
-![](images/搜狗截图20180131220946.png)
+![](.images/搜狗截图20180131220946.png)
 
 总结：
 
@@ -1352,9 +1352,9 @@ SpringBoot使用它来做日志功能；
 
 ​	3、中间替换包？
 
-![](images/搜狗截图20180131221411.png)
+![](.images/搜狗截图20180131221411.png)
 
-![log4j-over-slf4j-1.7.2S.jar - 'Users/dulinlong/mvnrepository_e•  Org.apache.log4j  •B Appender.class  AppenderSkeleton.class  BasicConfigurator.class  Category,class  ConsoleAppender.class  FileAppender.class  Layout,class  40  41  43  44  45  46  47  48  • eauthor S&eacute; bastien Pennec  • eauthor Ceki G&uuml ; lc&uuml;  public class Category {  private static final String CATEG  private String name; ](images/62803C62-8335-BC47-91C2-6256A14F97BD.png)
+![C2FE5C76-A15E-4FFF-B83D-49DCD9F8379E](.images/C2FE5C76-A15E-4FFF-B83D-49DCD9F8379E.png)
 
 ​	4、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？
 
@@ -1401,17 +1401,17 @@ SpringBoot默认帮我们配置好了日志；
 	}
 ```
 
-![image-20191022002126396](images/image-20191022002126396.png)
+![image-20191022002126396](.images/image-20191022002126396.png)
 
 SpringBoot的级别默认是root级别，对应info级别，所以值输出了三个日志；
 
 更改日志的默认输出级别
 
-![image-20191022002222950](images/image-20191022002222950.png)
+![image-20191022002222950](.images/image-20191022002222950.png)
 
 测试结果：日志就输出了所有级别的
 
-![image-20191022002305055](images/image-20191022002305055.png)
+![image-20191022002305055](.images/image-20191022002305055.png)
 
 
 
@@ -1666,7 +1666,7 @@ public static class FaviconConfiguration {
 
 http://www.webjars.org/
 
-![Popular WebJars  a V%bJar  O NPM O Bower GitHub  Search  Name  npm  Versions  5.0.0-2  Build Tool: SBT / Play 2 Maven Ivy  <dependencp  roupld>org.webj a rs</g roupld:  rs ion>  </dependencp ](images/262B7FE9-40EF-5D45-AFD7-55998144FFCE.png)
+![AFEF31A6-C299-4264-8FD3-895C7B6A3DCC](.images/AFEF31A6-C299-4264-8FD3-895C7B6A3DCC.png)
 
 在pom.xml 中加入 jquery 的依赖配置
 
@@ -1681,25 +1681,25 @@ http://www.webjars.org/
 
 
 
-![](images/搜狗截图20180203181751.png)
+![](.images/搜狗截图20180203181751.png)
 
 运行程序，以下链接可以访问资源：localhost:8080/webjars/jquery/3.3.1/jquery.js
 
-![C @ localhost:8080/webjars/jquer  jQuery JavaScript Library v3.3.1  https://jquery.con/ ](images/97853660-CE5A-5D4F-827B-3C88CC281653.png)
+![BEF53C13-4F9A-42C4-A0AB-6A79C5EB1C9A](.images/BEF53C13-4F9A-42C4-A0AB-6A79C5EB1C9A.png)
 
 
 
 ==2、"/**" 访问当前项目的任何资源，都去（静态资源的文件夹）找映射==
 
-![String staticPathPattern this.mvcProperfties.getStaticPaH  if (!registry. {  regi stry. addResourceHandler(stati cPathPatter•n:  . addResourceLocations(  this. resourceProperties ](images/9CC94342-14C4-B746-B511-9D695FEC94CB.png)
+![06117F04-D29B-46B5-9B1B-7A9255503CFA](.images/06117F04-D29B-46B5-9B1B-7A9255503CFA.png)
 
-![public StringÜ getStaticLoca  return this. staticLocaEio ](images/3482705C-F84D-0D42-A05E-1BD932506104.png)
+![D109CF3A-D974-4E81-8610-0A3E87F969DB](.images/D109CF3A-D974-4E81-8610-0A3E87F969DB.png)
 
-![image-20191022222945831](images/image-20191022222945831.png)
+![image-20191022222945831](.images/image-20191022222945831.png)
 
-![1B316DF7-B78A-4745-96BC-A9BD3A7982EC](images/1B316DF7-B78A-4745-96BC-A9BD3A7982EC.png)
+![1B316DF7-B78A-4745-96BC-A9BD3A7982EC](.images/1B316DF7-B78A-4745-96BC-A9BD3A7982EC.png)
 
-![private static final Stringo  private static final Stringo ](images/33FF7622-60D1-2E4B-A8B1-60DDE8237C88.png)
+![F4E5C86F-2AB4-403C-982F-DE995C2B2681](.images/F4E5C86F-2AB4-403C-982F-DE995C2B2681.png)
 
 ```
 "classpath:/META-INF/resources/", 
@@ -1711,9 +1711,9 @@ http://www.webjars.org/
 
 localhost:8080/abc ===  去静态资源文件夹里面找abc
 
-![C04C5FF3-AE3E-49A3-B671-EEA207312D72](images/C04C5FF3-AE3E-49A3-B671-EEA207312D72.png)
+![C04C5FF3-AE3E-49A3-B671-EEA207312D72](.images/C04C5FF3-AE3E-49A3-B671-EEA207312D72.png)
 
-![C O localhost:8080/css/style.css  body { EonE : 12px/19px Arial, Helvetica, sans—ser:  form div { margin:5px O ; } ](images/8A609F19-9778-3947-BEBA-A6E2E6B7EF6F.png)
+![BB2F1B7D-9CA4-4F17-98F4-2749C2930F93](.images/BB2F1B7D-9CA4-4F17-98F4-2749C2930F93.png)
 
 ==3、欢迎页； 静态资源文件夹下的所有index.html页面；被"/**"映射；==
 
@@ -1721,21 +1721,21 @@ localhost:8080/abc ===  去静态资源文件夹里面找abc
 
 将 index.html 放在 public 等 静态资源文件夹
 
-![image-20191022223338166](images/image-20191022223338166.png)
+![image-20191022223338166](.images/image-20191022223338166.png)
 
-![6A199517-258E-4245-AC18-DE6A8E1A9498](images/6A199517-258E-4245-AC18-DE6A8E1A9498.png)
+![6A199517-258E-4245-AC18-DE6A8E1A9498](.images/6A199517-258E-4245-AC18-DE6A8E1A9498.png)
 
-![91B3DEA4-EBF8-47DB-B75D-452DC1B6FACB](images/91B3DEA4-EBF8-47DB-B75D-452DC1B6FACB.png)
+![91B3DEA4-EBF8-47DB-B75D-452DC1B6FACB](.images/91B3DEA4-EBF8-47DB-B75D-452DC1B6FACB.png)
 
 看到index.html 的路径拼接 又是 静态资源文件夹下
 
 ==4、所有的 **/favicon.ico  都是在静态资源文件下找；==
 
-![O nsert title here  C O localhost:80 ](images/FD8F82FF-4DFA-2947-A2FC-8CA14CDA4B15.png)
+![O nsert title here  C O localhost:80 ](.images/FD8F82FF-4DFA-2947-A2FC-8CA14CDA4B15.png)
 
-![2E7CB9BB-B5F4-44EF-8BF7-C3FABC09B94B](images/2E7CB9BB-B5F4-44EF-8BF7-C3FABC09B94B.png)
+![2E7CB9BB-B5F4-44EF-8BF7-C3FABC09B94B](.images/2E7CB9BB-B5F4-44EF-8BF7-C3FABC09B94B.png)
 
-![DFC9723C-7056-4388-BFE7-98877FF9FB18](images/DFC9723C-7056-4388-BFE7-98877FF9FB18.png)
+![DFC9723C-7056-4388-BFE7-98877FF9FB18](.images/DFC9723C-7056-4388-BFE7-98877FF9FB18.png)
 
 
 
@@ -1743,17 +1743,17 @@ localhost:8080/abc ===  去静态资源文件夹里面找abc
 
 默认我们用的是 spring.resources 下的 staticLocations
 
-![A7733CB5-7362-4442-9E66-681D865798AB](images/A7733CB5-7362-4442-9E66-681D865798AB.png)
+![A7733CB5-7362-4442-9E66-681D865798AB](.images/A7733CB5-7362-4442-9E66-681D865798AB.png)
 
 我们可以在配置文件中配置自定义的静态文件夹
 
-![AA53DF51-38A6-4E59-8F7F-09CF29A3F5C6](images/AA53DF51-38A6-4E59-8F7F-09CF29A3F5C6.png)
+![AA53DF51-38A6-4E59-8F7F-09CF29A3F5C6](.images/AA53DF51-38A6-4E59-8F7F-09CF29A3F5C6.png)
 
 之前的静态文件夹下的资源就不能访问了
 
 在自定义的静态文件夹下加入资源
 
-![14759459-E06C-4CDC-A4CE-46D2474A286B](images/14759459-E06C-4CDC-A4CE-46D2474A286B.png)
+![14759459-E06C-4CDC-A4CE-46D2474A286B](.images/14759459-E06C-4CDC-A4CE-46D2474A286B.png)
 
 
 
@@ -1763,7 +1763,7 @@ localhost:8080/abc ===  去静态资源文件夹里面找abc
 
 JSP、Velocity、Freemarker、Thymeleaf
 
-![](images/template-engine.png)
+![](.images/template-engine.png)
 
 
 
@@ -1795,13 +1795,13 @@ thymeleaf-layout-dialect2.0 才开始支持 thymeleaf3.0
 
 可以在 github 上搜索 thymeleaf-layout-dialect查看 release 版本2.0.0
 
-![A97B00EC-34F6-4FE2-BEB6-0F84F59A0514](images/A97B00EC-34F6-4FE2-BEB6-0F84F59A0514.png)
+![A97B00EC-34F6-4FE2-BEB6-0F84F59A0514](.images/A97B00EC-34F6-4FE2-BEB6-0F84F59A0514.png)
 
 ### 2、Thymeleaf使用
 
 spring-boot-autoconfigure-1.5.9.RELEASE.jar--> 
 
-![D89D2B14-CB6B-4EED-B85D-49482FEA99B5](images/D89D2B14-CB6B-4EED-B85D-49482FEA99B5.png)
+![D89D2B14-CB6B-4EED-B85D-49482FEA99B5](.images/D89D2B14-CB6B-4EED-B85D-49482FEA99B5.png)
 
 默认规则都在 ThymeleafProperties 里面
 
@@ -1823,11 +1823,11 @@ public class ThymeleafProperties {
 
 [thymeleaf官网文档](https://www.thymeleaf.org/documentation.html)
 
-![EB43E94D-C47C-45A6-A553-426B152B1A63](images/EB43E94D-C47C-45A6-A553-426B152B1A63.png)
+![EB43E94D-C47C-45A6-A553-426B152B1A63](.images/EB43E94D-C47C-45A6-A553-426B152B1A63.png)
 
 ### 3、入门案例
 
-![2BD84546-3C7A-42E0-8C20-AB4193B74D5E](images/2BD84546-3C7A-42E0-8C20-AB4193B74D5E.png)
+![2BD84546-3C7A-42E0-8C20-AB4193B74D5E](.images/2BD84546-3C7A-42E0-8C20-AB4193B74D5E.png)
 
 
 
@@ -1934,23 +1934,23 @@ public class HelloController {
 
 直接访问 success.html
 
-![5A997931-8D76-4E4D-A3E2-B514222B5B98](images/5A997931-8D76-4E4D-A3E2-B514222B5B98.png)
+![5A997931-8D76-4E4D-A3E2-B514222B5B98](.images/5A997931-8D76-4E4D-A3E2-B514222B5B98.png)
 
 运行 SpringBootApplication928.java测试
 
-![97C80318-7C50-46D9-B1B2-E6E77DF8AFF9](images/97C80318-7C50-46D9-B1B2-E6E77DF8AFF9.png)
+![97C80318-7C50-46D9-B1B2-E6E77DF8AFF9](.images/97C80318-7C50-46D9-B1B2-E6E77DF8AFF9.png)
 
 两种显示的不一样，前后端分工合作起来就更清晰了
 
 ### 4、语法规则
 
-参考上面的pdf：![image-20191022224547265](images/image-20191022224547265.png)
+参考上面的pdf：![image-20191022224547265](.images/image-20191022224547265.png)
 
 1、th:text；改变当前元素里面的文本内容；
 
 ​	th：任意html属性；来替换原生属性的值
 
-![](images/2018-02-04_123955.png)
+![](.images/2018-02-04_123955.png)
 
 
 
@@ -2075,7 +2075,7 @@ public String success2(Map<String, Object> map) {
 
 5、运行程序
 
-![5E5B76BE-E460-46ED-8100-40FC4FB975C9](images/5E5B76BE-E460-46ED-8100-40FC4FB975C9.png)
+![5E5B76BE-E460-46ED-8100-40FC4FB975C9](.images/5E5B76BE-E460-46ED-8100-40FC4FB975C9.png)
 
 
 
@@ -2083,29 +2083,121 @@ public String success2(Map<String, Object> map) {
 
 https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications
 
-### 1. Spring MVC auto-configuration
+原文
+
+The auto-configuration adds the following features on top of Spring’s defaults:
+
+- Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
+- Support for serving static resources, including support for WebJars (see below).
+- Automatic registration of `Converter`, `GenericConverter`, `Formatter` beans.
+- Support for `HttpMessageConverters` (see below).
+- Automatic registration of `MessageCodesResolver` (see below).
+- Static `index.html` support.
+- Custom `Favicon` support (see below).
+- Automatic use of a `ConfigurableWebBindingInitializer` bean (see below).
+
+If you want to keep Spring Boot MVC features, and you just want to add additional [MVC configuration](https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle#mvc) (interceptors, formatters, view controllers etc.) you can add your own `@Configuration` class of type `WebMvcConfigurerAdapter`, but **without** `@EnableWebMvc`. If you wish to provide custom instances of `RequestMappingHandlerMapping`, `RequestMappingHandlerAdapter` or `ExceptionHandlerExceptionResolver` you can declare a `WebMvcRegistrationsAdapter` instance providing such components.
+
+
+
+### 1、 Spring MVC auto-configuration
 
 Spring Boot 自动配置好了SpringMVC
 
 以下是SpringBoot对SpringMVC的默认配置:**==（WebMvcAutoConfiguration）==**
 
-- Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
-  - 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何渲染（转发？重定向？））
-  - ContentNegotiatingViewResolver：组合所有的视图解析器的；
-  - ==如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；==
+1、Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
 
-- Support for serving static resources, including support for WebJars (see below).静态资源文件夹路径,webjars
+自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何渲染（转发？重定向？））
 
-- Static `index.html` support. 静态首页访问
+org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.class
 
-- Custom `Favicon` support (see below).  favicon.ico
+![4D6D2A96-FB91-4642-AA0F-A9BD24A00D9E](.images/4D6D2A96-FB91-4642-AA0F-A9BD24A00D9E.png)
 
-  
+![CA723410-ACF3-4C9B-9332-CB1E4C3B743B](.images/CA723410-ACF3-4C9B-9332-CB1E4C3B743B.png)
 
-- 自动注册了 of `Converter`, `GenericConverter`, `Formatter` beans.
+![BEB9ED9F-39F7-41F5-99F4-81C6213B73C9](.images/BEB9ED9F-39F7-41F5-99F4-81C6213B73C9.png)
 
-  - Converter：转换器；  public String hello(User user)：类型转换使用Converter
-  - `Formatter`  格式化器；  2017.12.17===Date；
+
+
+
+
+ContentNegotiatingViewResolver：组合所有的视图解析器的；
+
+![image-20191023191852157](images/.image-20191023191852157.png)
+
+这个所有的视图解析器是指哪些？
+
+![5C6653C3-A5C4-469A-9BAC-0624DA528ECD](.images/5C6653C3-A5C4-469A-9BAC-0624DA528ECD.png)
+
+
+
+==如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；==
+
+```java
+	package day928.springboot;
+	
+	import java.util.Locale;
+	
+	import org.springframework.boot.SpringApplication;
+	import org.springframework.boot.autoconfigure.SpringBootApplication;
+	import org.springframework.context.annotation.Bean;
+	import org.springframework.web.servlet.View;
+	import org.springframework.web.servlet.ViewResolver;
+	
+	@SpringBootApplication
+	public class SpringBootApplication928 {
+	
+	    public static void main(String[] args) {
+	        // Spring应用启动起来
+	        SpringApplication.run(SpringBootApplication928.class, args);
+	    }
+	
+	    //模拟自己增加一个视图解析器
+	    @Bean
+	    public ViewResolver myViewReolver() {
+	        return new MyViewResolver();
+	    }
+	
+	    public static class MyViewResolver implements ViewResolver {
+	
+	        @Override
+	        public View resolveViewName(String viewName, Locale locale) throws Exception {
+	            return null;
+	        }
+	    }
+	}
+	
+```
+
+在org.springframework.web.servlet.DispatchServlet.class
+
+![E0AADFD9-8C6C-496D-AAA7-615FCC83C337](.images/E0AADFD9-8C6C-496D-AAA7-615FCC83C337.png)
+
+doDispatch 方法打个断点
+
+![D17037AB-D0DB-4BCC-99FB-26E40C35CA43](.images/D17037AB-D0DB-4BCC-99FB-26E40C35CA43.png)
+
+Debug下测试访问访问任意一个请求http://localhost:8080/success
+
+![1AB924A1-2A39-4462-ABD2-C4E95A21F54D](.images/1AB924A1-2A39-4462-ABD2-C4E95A21F54D.png)
+
+
+
+2、Support for serving static resources, including support for WebJars (see below).静态资源文件夹路径,webjars
+
+3、Static `index.html` support. 静态首页访问
+
+4、Custom `Favicon` support (see below).  favicon.ico
+
+
+
+5、自动注册了 of `Converter`, `GenericConverter`, `Formatter` beans.
+
+- Converter：转换器；  public String hello(User user)：类型转换使用Converter
+- `Formatter`  格式化器；  2017.12.17===Date；
+
+WebMvcAutoConfig.java中
 
 ```java
 		@Bean
@@ -2115,28 +2207,45 @@ Spring Boot 自动配置好了SpringMVC
 		}
 ```
 
-​	==自己添加的格式化器转换器，我们只需要放在容器中即可==
+​	![5FADA29C-88CF-457F-B2FC-0300B0A2D17D](images/5FADA29C-88CF-457F-B2FC-0300B0A2D17D.png)
 
-- Support for `HttpMessageConverters` (see below).
+==自己添加的格式化器转换器，我们只需要放在容器中即可==
 
-  - HttpMessageConverter：SpringMVC用来转换Http请求和响应的；User---Json；
+6、Support for `HttpMessageConverters` (see below).
 
-  - `HttpMessageConverters` 是从容器中确定；获取所有的HttpMessageConverter；
+- HttpMessageConverter：SpringMVC用来转换Http请求和响应的；User对象--->Json；
 
-    ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）==
+- `HttpMessageConverters` 是从容器中确定；获取所有的HttpMessageConverter；
 
-    
+  ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）==
 
-- Automatic registration of `MessageCodesResolver` (see below).定义错误代码生成规则
+  ![EEBA4EAD-ED45-44F3-BC1C-A6960F76321C](images/EEBA4EAD-ED45-44F3-BC1C-A6960F76321C.png)
 
-- Automatic use of a `ConfigurableWebBindingInitializer` bean (see below).
+7、Automatic registration of `MessageCodesResolver` (see below).
 
-  ==我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）==
+![2A26FD07-398E-44B3-9F7A-EEDA95052FE2](.images/2A26FD07-398E-44B3-9F7A-EEDA95052FE2.png)
 
-  ```
-  初始化WebDataBinder；
-  请求数据=====JavaBean；
-  ```
+![1A9290BD-E741-4132-9159-A28AD40D0058](.images/1A9290BD-E741-4132-9159-A28AD40D0058.png)
+
+![5116C13C-F577-4785-9A16-5783D181B912](.images/5116C13C-F577-4785-9A16-5783D181B912.png)
+
+![604ACFCC-4170-4040-8D0B-836A9BC21479](.images/604ACFCC-4170-4040-8D0B-836A9BC21479.png)
+
+定义错误代码生成规则
+
+8、Automatic use of a `ConfigurableWebBindingInitializer` bean (see below).
+
+==我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）==
+
+![9DB724EC-BB90-48E4-9B4F-60C60597AA6E](.images/9DB724EC-BB90-48E4-9B4F-60C60597AA6E.png)
+
+ConfigurableWebBindingInitializer
+
+![43EF5217-DDCA-4691-89BF-EA949B03BEE3](.images/43EF5217-DDCA-4691-89BF-EA949B03BEE3.png)
+
+初始化WebDataBinder 数据绑定器：请求数据绑定到JavaBean；
+
+
 
 **org.springframework.boot.autoconfigure.web：web的所有自动场景；**
 
@@ -2168,11 +2277,15 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
        // super.addViewControllers(registry);
-        //浏览器发送 /atguigu 请求来到 success
-        registry.addViewController("/atguigu").setViewName("success");
+        //浏览器发送 /dulinlong 请求来到 success
+        registry.addViewController("/dulinlong").setViewName("success");
     }
 }
 ```
+
+![05E727F6-F2BE-43CE-B1A5-E9AE3BC444AC](.images/05E727F6-F2BE-43CE-B1A5-E9AE3BC444AC.png)
+
+
 
 原理：
 
@@ -2180,30 +2293,27 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
 ​	2）、在做其他自动配置时会导入；@Import(**EnableWebMvcConfiguration**.class)
 
-```java
-    @Configuration
-	public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration {
-      private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+![F927DE3E-BF6D-4FE4-9C99-BAFE1870C933](.images/F927DE3E-BF6D-4FE4-9C99-BAFE1870C933.png)
 
-	 //从容器中获取所有的WebMvcConfigurer
-      @Autowired(required = false)
-      public void setConfigurers(List<WebMvcConfigurer> configurers) {
-          if (!CollectionUtils.isEmpty(configurers)) {
-              this.configurers.addWebMvcConfigurers(configurers);
-            	//一个参考实现；将所有的WebMvcConfigurer相关配置都来一起调用；  
-            	@Override
-             // public void addViewControllers(ViewControllerRegistry registry) {
-              //    for (WebMvcConfigurer delegate : this.delegates) {
-               //       delegate.addViewControllers(registry);
-               //   }
-              }
-          }
-	}
-```
+![EDEA971D-7299-4343-B07B-03657968D675](.images/EDEA971D-7299-4343-B07B-03657968D675.png)
+
+DelegatingWebMvcConfiguration类
+
+![8614EEE4-155D-4D28-AD5D-F45703073294](.images/8614EEE4-155D-4D28-AD5D-F45703073294.png)
+
+![1FAE2190-E2EC-4C40-B834-FD8F7A34CDD9](.images/1FAE2190-E2EC-4C40-B834-FD8F7A34CDD9.png)
+
+WebMvcConfigurerComposite类中一个参考实现
+
+![87882987-FE9C-432F-8185-338B14F87BA0](.images/87882987-FE9C-432F-8185-338B14F87BA0.png)
+
+将所有的 WebMvcConfigurer 都调用一遍 addViewController
 
 ​	3）、容器中所有的WebMvcConfigurer都会一起起作用；
 
 ​	4）、我们的配置类也会被调用；
+
+
 
 ​	效果：SpringMVC的自动配置和我们的扩展配置都会起作用；
 
@@ -2222,31 +2332,33 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
        // super.addViewControllers(registry);
-        //浏览器发送 /atguigu 请求来到 success
-        registry.addViewController("/atguigu").setViewName("success");
+        //浏览器发送 /dulinlong 请求来到 success
+        registry.addViewController("/dulinlong").setViewName("success");
     }
 }
 ```
 
-原理：
+原理分析：
 
 为什么@EnableWebMvc自动配置就失效了；
 
-1）@EnableWebMvc的核心
+1、@EnableWebMvc的核心
 
 ```java
 @Import(DelegatingWebMvcConfiguration.class)
 public @interface EnableWebMvc {
 ```
 
-2）、
+2、
 
 ```java
 @Configuration
 public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 ```
 
-3）、
+DelegationWebMvcConfiguration 这个类为什么就把自动配置弄失效了？
+
+3、
 
 ```java
 @Configuration
@@ -2261,9 +2373,11 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 public class WebMvcAutoConfiguration {
 ```
 
-4）、@EnableWebMvc将WebMvcConfigurationSupport组件导入进来；
+可以看出 DelegationWebMvcConfiguration 就是继承的  WebMvcConfigurationSupport 这个类，所以当我们加上注解 @EnableWebMvc时，就有了这个类，所以自动配置就不生效了
 
-5）、导入的WebMvcConfigurationSupport只是SpringMVC最基本的功能；
+4、@EnableWebMvc将 WebMvcConfigurationSupport 组件导入进来；
+
+5、导入的 WebMvcConfigurationSupport 只是 SpringMVC 最基本的功能；
 
 
 
@@ -2271,15 +2385,19 @@ public class WebMvcAutoConfiguration {
 
 模式：
 
-​	1）、SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户配置的和自己默认的组合起来；
+1、SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户配置的和自己默认的组合起来；
 
-​	2）、在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置
+2、在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置
 
-​	3）、在SpringBoot中会有很多的xxxCustomizer帮助我们进行定制配置
+3、在SpringBoot中会有很多的xxxCustomizer帮助我们进行定制配置
 
 ## 6、RestfulCRUD
 
-### 1）、默认访问首页
+![11B8A84D-3F4E-4934-9664-156907D810E0](.images/11B8A84D-3F4E-4934-9664-156907D810E0.png)
+
+### 1、默认访问登录首页
+
+1、扩展配置，将"/"、"index.html" 访问指向模板的"login"界面
 
 ```java
 
@@ -2311,64 +2429,96 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
 ```
 
-### 2）、国际化
+2、登录界面
 
-**1）、编写国际化配置文件；**
+```html
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Signin Template for Bootstrap</title>
+      <!-- Bootstrap core CSS -->
+      <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.
+      css}" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+   </head>
+   <body class="text-center">
+      <form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post">
+         <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-
+         solid.svg" alt="" width="72" height="72">
+         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+         <label class="sr-only" >Username</label>
+         <input type="text"  name="username" class="form-control" placeholder="Username"  
+         required="" autofocus="">
+         <label class="sr-only" >Password</label>
+         <input type="password" name="password" class="form-control" placeholder="Password"  
+         required="">
+         <div class="checkbox mb-3">
+            <label>
+                  <input type="checkbox" value="remember-me"/>Remember me
+            </label>
+         </div>
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+         <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+         <a class="btn btn-sm" >中文</a>
+         <a class="btn btn-sm" >English</a>
+      </form>
+   </body>
 
-2）、使用ResourceBundleMessageSource管理国际化资源文件
+</html> 
+```
 
-3）、在页面使用fmt:message取出国际化内容
+注意静态资源的引用 /asserts/.....
+
+3、在配置文件中设置一个访问路径（可以不设置）
+
+```properties
+server.context-path=/crud 
+```
+
+4、测试访问
+
+![1719628D-31E7-47C4-A021-D08C26986C8E](.images/1719628D-31E7-47C4-A021-D08C26986C8E.png)
+
+### 2、国际化
+
+**1、编写国际化配置文件；**
+
+2、使用ResourceBundleMessageSource管理国际化资源文件
+
+3、在页面使用fmt:message取出国际化内容
 
 
 
 步骤：
 
-1）、编写国际化配置文件，抽取页面需要显示的国际化消息
+1、编写国际化配置文件，抽取页面需要显示的国际化消息
 
-![](images/搜狗截图20180211130721.png)
-
-
-
-2）、SpringBoot自动配置好了管理国际化资源文件的组件；
-
-```java
-@ConfigurationProperties(prefix = "spring.messages")
-public class MessageSourceAutoConfiguration {
-    
-    /**
-	 * Comma-separated list of basenames (essentially a fully-qualified classpath
-	 * location), each following the ResourceBundle convention with relaxed support for
-	 * slash based locations. If it doesn't contain a package qualifier (such as
-	 * "org.mypackage"), it will be resolved from the classpath root.
-	 */
-	private String basename = "messages";  
-    //我们的配置文件可以直接放在类路径下叫messages.properties；
-    
-    @Bean
-	public MessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		if (StringUtils.hasText(this.basename)) {
-            //设置国际化资源文件的基础名（去掉语言国家代码的）
-			messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(
-					StringUtils.trimAllWhitespace(this.basename)));
-		}
-		if (this.encoding != null) {
-			messageSource.setDefaultEncoding(this.encoding.name());
-		}
-		messageSource.setFallbackToSystemLocale(this.fallbackToSystemLocale);
-		messageSource.setCacheSeconds(this.cacheSeconds);
-		messageSource.setAlwaysUseMessageFormat(this.alwaysUseMessageFormat);
-		return messageSource;
-	}
-```
+![](.images/搜狗截图20180211130721.png)
 
 
 
-3）、去页面获取国际化的值；
+2、SpringBoot自动配置好了管理国际化资源文件的组件；
 
-![](images/搜狗截图20180211134506.png)
+![0162F7A1-967A-4051-B468-7D6B71E947C7](.images/0162F7A1-967A-4051-B468-7D6B71E947C7.png)
+
+![C1202410-51AB-4355-92CC-66EC4C4A8E70](.images/C1202410-51AB-4355-92CC-66EC4C4A8E70.png)
+
+![7051EB59-4200-448F-8F64-EBED46E98D90](.images/7051EB59-4200-448F-8F64-EBED46E98D90.png)
 
 
+
+
+
+3、去页面获取国际化的值；
+
+![image-20191023205635664](.images/image-20191023205635664.png)
+
+![image-20191023205745264](.images/image-20191023205745264.png)
 
 ```html
 <!DOCTYPE html>
@@ -2411,29 +2561,56 @@ public class MessageSourceAutoConfiguration {
 
 效果：根据浏览器语言设置的信息切换了国际化；
 
+4、配置国际化配置
+
+```properties
+spring.messages.basename=i18n/login
+#设定Message bundles的编码，默认: UTF-8
+spring.messages.encoding=UTF-8 
+```
+
+5、访问测试  ---  根据浏览器语言设置的信息切换了国际化
+
+设置chrome英语在前
+
+![A61B34C0-0589-4C72-8C93-FA4086E03566](.images/A61B34C0-0589-4C72-8C93-FA4086E03566.png)
+
+访问界面
+
+![E4BA5094-B534-405A-9C5C-0BF3F2DA9AA3](.images/E4BA5094-B534-405A-9C5C-0BF3F2DA9AA3.png)
+
+请求头中可看到en
+
+![8E8B01D2-4D87-492D-98FE-9AC21FFDF9A7](.images/8E8B01D2-4D87-492D-98FE-9AC21FFDF9A7.png)
+
 
 
 原理：
 
 ​	国际化Locale（区域信息对象）；LocaleResolver（获取区域信息对象）；
 
-```java
-		@Bean
-		@ConditionalOnMissingBean
-		@ConditionalOnProperty(prefix = "spring.mvc", name = "locale")
-		public LocaleResolver localeResolver() {
-			if (this.mvcProperties
-					.getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) {
-				return new FixedLocaleResolver(this.mvcProperties.getLocale());
-			}
-			AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
-			localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
-			return localeResolver;
-		}
-默认的就是根据请求头带来的区域信息获取Locale进行国际化
+WebMvcAutoConfiguration类中
+
+![16B9B35B-61ED-4BF4-98ED-8DF2A6B5E5B1](.images/16B9B35B-61ED-4BF4-98ED-8DF2A6B5E5B1.png)
+
+AcceptHeaderLocaleResolver类中
+
+![8ECFD428-1432-4AB5-A940-4956ED244227](.images/8ECFD428-1432-4AB5-A940-4956ED244227.png)
+
+可以看出默认是从请求头中获取国际化信息
+
+
+
+6、点击链接切换国际化
+
+login.html中
+
+```html
+ <a class="btn btn-sm" th:href="@{/index.html(l='zh_CN')}">中文</a>
+<a class="btn btn-sm" th:href="@{/index.html(l='en_US')}">English</a> 
 ```
 
-4）、点击链接切换国际化
+新建处理国际化访问请求的组件
 
 ```java
 /**
@@ -2457,41 +2634,124 @@ public class MyLocaleResolver implements LocaleResolver {
 
     }
 }
-
-
- @Bean
-    public LocaleResolver localeResolver(){
-        return new MyLocaleResolver();
-    }
-}
-
-
 ```
 
-### 3）、登陆
+将上面的组件注册到配置容器中
+
+config/MyMvcConfig.java
+
+```java
+//注册国际化的 添加到 配置容器中
+@Bean
+public LocaleResolver localeResolver() {
+    return new MyLocaleResolver();
+} 
+```
+
+运行测试
+
+访问http://localhost:8080/crud后点击切换按钮，可切换中英文
+
+![1252FE92-B9EE-4FB6-A88F-52D03E7DD82C](.images/1252FE92-B9EE-4FB6-A88F-52D03E7DD82C.png)
+
+### 3、登陆流程
+
+1、login.html
+
+```html
+  <form class="form-signin" action="dashboard.html" th:action="@{/user/login}" 
+   method="post"> 
+    
+    
+			<label class="sr-only" th:text="#{login.username}">Username</label>
+			<input type="text" name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
+			<label class="sr-only" th:text="#{login.password}">Password</label>
+			<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="">
+```
+
+```html
+<!--判断 如果有提示错误信息，显示出来-->
+<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p> 
+```
+
+
 
 开发期间模板引擎页面修改以后，要实时生效
 
-1）、禁用模板引擎的缓存
+​	1、禁用模板引擎的缓存
 
 ```
 # 禁用缓存
 spring.thymeleaf.cache=false 
 ```
 
-2）、页面修改完成以后ctrl+f9：重新编译；
+​	2、页面修改完成以后ctrl+f9：重新编译；
 
+2、controller
 
+```java
+@Controller
+public class LoginController {
 
-登陆错误消息的显示
+    // @DeleteMapping
+    // @PutMapping
+    // @GetMapping
+    @PostMapping(value = "/user/login")  // SpringBoot对下面的写法做了封装
+    // @RequestMapping(value="/user/login",method=RequestMethod.POST) //SpringMVC的写法
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password,Map<String, Object> map) {
 
-```html
-<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        // 简单的判断
+        if (!StringUtils.isEmpty(username) && "123456".equals(password)) {
+            // 登陆成功，防止表单重复提交，可以重定向到主页
+            return "redirect:/main.html";
+//        return "dashboard";
+        } else {// 登录失败
+            map.put("msg", "用户名或密码错误");
+            return "login";
+        }
+    }
+}
+
 ```
 
+3、配置映射
+
+config/MyMvcConfig.java
+
+```java
+// 所有的WebMvcConfigurerAdapter组件都会一起起作用
+@Bean // 将组件注册在容器
+public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
+    WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
+
+        @Override
+        public void addViewControllers(ViewControllerRegistry registry) {
+            registry.addViewController("/").setViewName("login");
+            registry.addViewController("/index.html").setViewName("login");
+          registry.addViewController("/main.html").setViewName("dashboard.html");
+        }
+    };
+    return adapter;
+} 
+```
+
+4、测试
+
+模拟错误登录
+
+![2ACC84F0-867F-4C6A-98A6-5BE8D0A4878B](.images/2ACC84F0-867F-4C6A-98A6-5BE8D0A4878B.png)
+
+成功登录
+
+用户名：admin  密码：123456
+
+重定向跳转到
+
+![81C348B7-58B8-4A25-A24B-4A3670CF698E](.images/81C348B7-58B8-4A25-A24B-4A3670CF698E.png)
 
 
-### 4）、拦截器进行登陆检查
+
+### 4、拦截器进行登陆检查
 
 拦截器
 
@@ -2532,7 +2792,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 
 
 
-注册拦截器
+注册拦截器 config/MyMvcConfig.java
 
 ```java
   //所有的WebMvcConfigurerAdapter组件都会一起起作用
@@ -2560,11 +2820,19 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     }
 ```
 
-### 5）、CRUD-员工列表
+测试
+
+这个时候我们不登录直接访问http://localhost:8080/crud/main.html将跳转到登录界面
+
+
+
+### 5、CRUD-员工列表
 
 实验要求：
 
-1）、RestfulCRUD：CRUD满足Rest风格；
+![78990EE0-55F3-4E82-A935-8B4FA745DD88](.images/78990EE0-55F3-4E82-A935-8B4FA745DD88.png)
+
+1、RestfulCRUD：CRUD满足Rest风格；
 
 URI：  /资源名称/资源标识       HTTP请求方式区分对资源CRUD操作
 
@@ -2575,7 +2843,7 @@ URI：  /资源名称/资源标识       HTTP请求方式区分对资源CRUD操�
 | 修改 | updateEmp?id=xxx&xxx=xx   | emp/{id}---PUT    |
 | 删除 | deleteEmp?id=1            | emp/{id}---DELETE |
 
-2）、实验的请求架构;
+2、实验的请求架构;
 
 | 实验功能                             | 请求URI | 请求方式 |
 | ------------------------------------ | ------- | -------- |
@@ -2587,132 +2855,376 @@ URI：  /资源名称/资源标识       HTTP请求方式区分对资源CRUD操�
 | 修改员工                             | emp     | PUT      |
 | 删除员工                             | emp/1   | DELETE   |
 
-3）、员工列表：
+3、员工列表：
 
-#### thymeleaf公共页面元素抽取
+usingthymeleaf.pdf
 
-```html
-1、抽取公共片段
+![A0FB9792-2636-4454-BA5B-0ECF711FE581](.images/A0FB9792-2636-4454-BA5B-0ECF711FE581.png)
+
+1)、抽取公共片段
+
+```xml
 <div th:fragment="copy">
-&copy; 2011 The Good Thymes Virtual Grocery
-</div>
-
-2、引入公共片段
-<div th:insert="~{footer :: copy}"></div>
-~{templatename::selector}：模板名::选择器
-~{templatename::fragmentname}:模板名::片段名
-
-3、默认效果：
-insert的公共片段在div标签中
-如果使用th:insert等属性进行引入，可以不用写~{}：
-行内写法可以加上：[[~{}]];[(~{})]；
+ &copy; 2011 The Good Thymes Virtual Grocery
+</div> 
 ```
 
+2)、引入公共片段
 
+```xml
+<div th:insert="~{footer :: copy}"></div> 
+```
 
-三种引入公共片段的th属性：
+~{templatename::selector}   --  模板名::选择器     （jquery中的选择器）
 
-**th:insert**：将公共片段整个插入到声明引入的元素中
+~{templatename::fragmentname}   --  模板名::片段名 
 
-**th:replace**：将声明引入的元素替换为公共片段
+3)、三种引入公共片段的th属性:
 
-**th:include**：将被引入的片段的内容包含进这个标签中
+th:insert：将公共片段整个插入到声明引入的元素中
 
+th:replace：将声明引入的元素替换为公共片段
 
+th:include：将被引入的片段的内容包含进这个标签中
 
-```html
+```xml
 <footer th:fragment="copy">
-&copy; 2011 The Good Thymes Virtual Grocery
-</footer>
+	&copy; 2011 The Good Thymes Virtual Grocery
+</footer> 
+```
 
-引入方式
-<div th:insert="footer :: copy"></div>
-<div th:replace="footer :: copy"></div>
-<div th:include="footer :: copy"></div>
+三种引入
 
-效果
+```xml
+<div th:insert="footer :: copy"></div> 
+<div th:replace="footer :: copy"></div> 
+<div th:include="footer :: copy"></div> 
+```
+
+三种引入结果
+
+```xml
 <div>
-    <footer>
-    &copy; 2011 The Good Thymes Virtual Grocery
-    </footer>
+        <footer>
+                &copy; 2011 The Good Thymes Virtual Grocery 
+        </footer>
 </div>
 
 <footer>
-&copy; 2011 The Good Thymes Virtual Grocery
+        &copy; 2011 The Good Thymes Virtual Grocery
 </footer>
 
 <div>
-&copy; 2011 The Good Thymes Virtual Grocery
-</div>
+        &copy; 2011 The Good Thymes Virtual Grocery
+</div> 
 ```
 
+3)、实际抽取代码
+
+声明
+
+![C0CD6580-B92C-4FA6-ACFF-84BCD7CFDD5D](.images/C0CD6580-B92C-4FA6-ACFF-84BCD7CFDD5D.png)
+
+![19  d-none d-md-block bg-light sidet ](.images/E739A47E-DEB2-E94B-8EB2-BC0F41D69568.png)
 
 
-引入片段的时候传入参数： 
 
-```html
+使用 
 
-<nav class="col-md-2 d-none d-md-block bg-light sidebar" id="sidebar">
-    <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active"
-                   th:class="${activeUri=='main.html'?'nav-link active':'nav-link'}"
-                   href="#" th:href="@{/main.html}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
+templates/dashboard.html
 
-<!--引入侧边栏;传入参数-->
-<div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+![2786816F-E521-4B6F-BCEB-40207535DB3E](.images/2786816F-E521-4B6F-BCEB-40207535DB3E.png)
+
+引入sidebar的时候传入参
+
+参考usingthymeleaf.pdf--->8.2 Parameterizable fragment signatures 
+
+可以定义fragment时候定义传入参数
+
+```xml
+<div th:fragment="frag (onevar,twovar)">
+<p th:text="${onevar} + ' - ' + ${twovar}">...</p>
+</div> 
 ```
 
-### 6）、CRUD-员工添加
+使用
+
+```xml
+<div th:replace="::frag (${value1},${value2})">...</div>
+<div th:replace="::frag (onevar=${value1},twovar=${value2})">...</div> 
+```
+
+也可以不定义
+
+```xml
+<div th:fragment="frag"> ...
+</div> 
+```
+
+直接使用
+
+```xml
+ <div th:replace="::frag (onevar=${value1},twovar=${value2})"> 
+```
+
+4、跳转到列表界面
+
+templates/commons/bar.html
+
+![328049EE-55EF-43ED-BBE0-0D66D0838194](.images/328049EE-55EF-43ED-BBE0-0D66D0838194.png)
+
+
+
+5、controller层
+
+```java
+@Controller
+public class EmployeeController {
+
+    @Autowired
+    EmployeeDao employeeDao;
+
+    //查询所有员工返回列表页面
+    @GetMapping("/emps")
+    public String list(Model model) {
+        Collection<Employee> employees = employeeDao.getAll();
+
+        //放在请求域中
+        model.addAttribute("emps",employees);
+        // thymeleaf默认就会拼串
+        // classpath:/templates/xxxx.html
+        return "emp/list";
+    } 
+```
+
+原理：  return "emp/list"会被 thymeleaf 自动拼接访问路径
+
+![1FA461BA-A196-4E15-BE21-2A2A2440A407](.images/1FA461BA-A196-4E15-BE21-2A2A2440A407.png)
+
+
+
+### 6、CRUD-员工添加
+
+进入添加界面按钮
+
+![90148D52-44BA-437A-8E87-7F7E857D61E6](.images/90148D52-44BA-437A-8E87-7F7E857D61E6.png)
 
 添加页面
 
-```html
-<form>
-    <div class="form-group">
-        <label>LastName</label>
-        <input type="text" class="form-control" placeholder="zhangsan">
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" placeholder="zhangsan@atguigu.com">
-    </div>
-    <div class="form-group">
-        <label>Gender</label><br/>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender"  value="1">
-            <label class="form-check-label">男</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender"  value="0">
-            <label class="form-check-label">女</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>department</label>
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Birth</label>
-        <input type="text" class="form-control" placeholder="zhangsan">
-    </div>
-    <button type="submit" class="btn btn-primary">添加</button>
-</form>
+![B41680F3-F9F6-49A3-9329-91838403594B](.images/B41680F3-F9F6-49A3-9329-91838403594B.png)
+
+添加成功返回列表界面
+
+![DAEA19AF-6BF8-4FB7-B5F9-03A0E520ECEC](.images/DAEA19AF-6BF8-4FB7-B5F9-03A0E520ECEC.png)
+
+添加界面可以参考
+
+http://getbootstrap.com/docs/4.1/components/forms/
+
+1、跳转添加界面按钮
+
+templates/emp/list.html
+
+![A9209DD3-D32F-47D5-8534-F53CF7A662D6](.images/A9209DD3-D32F-47D5-8534-F53CF7A662D6.png)
+
+2、controller - 跳转到添加界面
+
+```java
+@Autowired
+DepartmentDao departmentDao;
+
+//来到员工添加页面
+@GetMapping("/emp")
+public String toAddPage(Model model) {
+    //来到添加页面,查出所有的部门，在页面显示
+    Collection<Department> departments = departmentDao.getDepartments();
+    model.addAttribute("depts",departments);
+    return "emp/add";
+}
 ```
+
+3、添加界面
+
+templates/emp/add.html
+
+```HTML
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-
+      fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <title>Dashboard Template for Bootstrap</title>
+      <!-- Bootstrap core CSS -->
+      <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.
+      3/css/bootstrap.css}" rel="stylesheet">
+
+      <!-- Custom styles for this template -->
+      <link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" 
+      rel="stylesheet">
+      <style type="text/css">
+         /* Chart.js */
+         
+         @-webkit-keyframes chartjs-render-animation {
+            from {
+               opacity: 0.99
+            }
+            to {
+               opacity: 1
+            }
+         }
+         
+         @keyframes chartjs-render-animation {
+            from {
+               opacity: 0.99
+            }
+            to {
+               opacity: 1
+            }
+         }
+         
+         .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+         }
+      </style>
+   </head>
+
+   <body>
+      <!--引入抽取的topbar-->
+      <!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+      <div th:replace="commons/bar::topbar"></div>
+
+      <div class="container-fluid">
+         <div class="row">
+            <!--引入侧边栏-->
+            <div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+               <!--需要区分是员工修改还是添加；-->
+               <form th:action="@{/emp}" method="post">
+                  <!--发送put请求修改员工数据-->
+                  <!--
+                  1、SpringMVC中配置HiddenHttpMethodFilter;
+                  （SpringBoot自动配置好的）
+                  2、页面创建一个post表单
+                  3、创建一个input项，name="_method";
+                  值就是我们指定的请求方式
+                  -->
+                  <input type="hidden" name="_method" value="put" th:if="${emp!=null}
+                  "/>
+                  <input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.
+                  id}">
+                  <div class="form-group">
+                     <label>LastName</label>
+                     <input name="lastName" type="text" class="form-control" 
+                     placeholder="zhangsan" th:value="${emp!=null}?${emp.lastName}">
+                  </div>
+                  <div class="form-group">
+                     <label>Email</label>
+                     <input name="email" type="email" class="form-control" 
+                     placeholder="zhangsan@atguigu.com" th:value="${emp!=null}?${emp.
+                     email}">
+                  </div>
+                  <div class="form-group">
+                     <label>Gender</label><br/>
+                     <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" 
+                        value="1" th:checked="${emp!=null}?${emp.gender==1}">
+                        <label class="form-check-label">男</label>
+                     </div>
+                     <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" 
+                        value="0" th:checked="${emp!=null}?${emp.gender==0}">
+                        <label class="form-check-label">女</label>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label>department</label>
+                     <!--提交的是部门的id-->
+                     <select class="form-control" name="department.id">
+                        <option th:selected="${emp!=null}?${dept.id == emp.department.
+                        id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${
+                        dept.departmentName}">1</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Birth</label>
+                     <input name="birth" type="text" class="form-control" 
+                     placeholder="zhangsan" th:value="${emp!=null}?${#dates.format(emp.
+                     birth, 'yyyy-MM-dd HH:mm')}">
+                  </div>
+                  <button type="submit" class="btn btn-primary" th:text="${emp!=null}
+                  ?'修改':'添加'">添加</button>
+               </form>
+            </main>
+         </div>
+      </div>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:
+      src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+      <script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{
+      /webjars/popper.js/1.11.1/dist/popper.js}"></script>
+      <script type="text/javascript" src="asserts/js/bootstrap.min.js" th:src="@{
+      /webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+      <!-- Icons -->
+      <script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{
+      /asserts/js/feather.min.js}"></script>
+      <script>
+         feather.replace()
+</script>
+   </body>
+
+</html> 
+```
+
+4、controller -- 添加员工
+
+```java
+//员工添加
+//SpringMVC自动将请求参数和入参对象的属性进行一一绑定；要求请参数的名字和javaBean入参的对象里面的属性名是一样的
+@PostMapping("/emp")
+public String addEmp(Employee employee) {
+    //来到员工列表页面
+
+    System.out.println("保存的员工信息："+employee);
+    //保存员工
+    employeeDao.save(employee);
+    // redirect: 表示重定向到一个地址  /代表当前项目路径
+    // forward: 表示转发到一个地址
+    return "redirect:/emps";
+} 
+
+```
+
+原理
+
+![7C41640C-0EC0-49B9-AB9B-4D892DEC0E31](.images/7C41640C-0EC0-49B9-AB9B-4D892DEC0E31.png)
+
+![6AD86914-99B8-47FF-8154-3474251165D5](.images/6AD86914-99B8-47FF-8154-3474251165D5.png)
+
+
+
+![32DB5627-82AA-4C32-945F-C89303A99C9B](.images/32DB5627-82AA-4C32-945F-C89303A99C9B.png)
+
+![489DBCD6-FD41-4C0A-A8E0-872F03412F67](.images/489DBCD6-FD41-4C0A-A8E0-872F03412F67.png)
+
+![BAAE437C-4AD0-425A-BE67-6D7E89F00E9C](.images/BAAE437C-4AD0-425A-BE67-6D7E89F00E9C.png)
+
+5、测试添加
+
+测试成功之后跳转到列表界面
+
+6、日期格式
 
 提交的数据格式不对：生日：日期；
 
@@ -2722,9 +3234,30 @@ insert的公共片段在div标签中
 
 2017-12-12---Date； 类型转换，格式化;
 
-默认日期是按照/的方式；
+WebMvcAutoConfiguration类中
 
-### 7）、CRUD-员工修改
+![954CAA69-6FD7-45DA-9EBB-2BD28EC541E5](.images/954CAA69-6FD7-45DA-9EBB-2BD28EC541E5.png)
+
+![8EB818C3-38C4-4E6D-97E4-17495B688236](.images/8EB818C3-38C4-4E6D-97E4-17495B688236.png)
+
+可以看出默认使用 "/" 分割日期
+
+我们自定义日期格式化
+
+```properties
+#设置日期格式化
+spring.mvc.date-format=yyyy-MM-dd 
+```
+
+这个时候我们添加日期的时候就按这种格式
+
+![14BAD85F-9B92-4DA6-A6B6-08F4FFCA4702](.images/14BAD85F-9B92-4DA6-A6B6-08F4FFCA4702.png)
+
+
+
+
+
+### 7、CRUD-员工修改
 
 修改添加二合一表单
 
@@ -2803,218 +3336,263 @@ insert的公共片段在div标签中
 
 ## 7、错误处理机制
 
-### 1）、SpringBoot默认的错误处理机制
+### 1、SpringBoot默认的错误处理机制
 
-默认效果：
+#### 1、默认效果
 
-​		1）、浏览器，返回一个默认的错误页面
+1、浏览器，返回一个默认的错误页面
 
-![](images/搜狗截图20180226173408.png)
+![5C4935CA-BA77-4D6C-A83A-CA9BD7678169](.images/5C4935CA-BA77-4D6C-A83A-CA9BD7678169.png)
 
   浏览器发送请求的请求头：
 
-![](images/搜狗截图20180226180347.png)
+![](.images/搜狗截图20180226180347.png)
 
-​		2）、如果是其他客户端，默认响应一个json数据
+​	2、如果是其他客户端，默认响应一个json数据
 
-![](images/搜狗截图20180226173527.png)
+![](.images/搜狗截图20180226173527.png)
 
-​		![](images/搜狗截图20180226180504.png)
+​		![](.images/搜狗截图20180226180504.png)
 
-原理：
+备注：Postman --> View --> Show PostMan Console 可查看详细访问信息
 
-​	可以参照ErrorMvcAutoConfiguration；错误处理的自动配置；
+
+
+#### 2、原理
+
+​	可以参照 ErrorMvcAutoConfiguration；错误处理的自动配置；
 
   	给容器中添加了以下组件
 
-​	1、DefaultErrorAttributes：
+1、DefaultErrorAttributes： 默认的错误信息
 
-```java
-帮我们在页面共享信息；
-@Override
-	public Map<String, Object> getErrorAttributes(RequestAttributes requestAttributes,
-			boolean includeStackTrace) {
-		Map<String, Object> errorAttributes = new LinkedHashMap<String, Object>();
-		errorAttributes.put("timestamp", new Date());
-		addStatus(errorAttributes, requestAttributes);
-		addErrorDetails(errorAttributes, requestAttributes, includeStackTrace);
-		addPath(errorAttributes, requestAttributes);
-		return errorAttributes;
-	}
-```
+![DCD1E7A7-A529-4A76-A3B8-D4514892CB21](.images/DCD1E7A7-A529-4A76-A3B8-D4514892CB21.png)
 
 
 
-​	2、BasicErrorController：处理默认/error请求
+2、BasicErrorController：处理默认/error请求
 
-```java
-@Controller
-@RequestMapping("${server.error.path:${error.path:/error}}")
-public class BasicErrorController extends AbstractErrorController {
-    
-    @RequestMapping(produces = "text/html")//产生html类型的数据；浏览器发送的请求来到这个方法处理
-	public ModelAndView errorHtml(HttpServletRequest request,
-			HttpServletResponse response) {
-		HttpStatus status = getStatus(request);
-		Map<String, Object> model = Collections.unmodifiableMap(getErrorAttributes(
-				request, isIncludeStackTrace(request, MediaType.TEXT_HTML)));
-		response.setStatus(status.value());
-        
-        //去哪个页面作为错误页面；包含页面地址和页面内容
-		ModelAndView modelAndView = resolveErrorView(request, response, status, model);
-		return (modelAndView == null ? new ModelAndView("error", model) : modelAndView);
-	}
+![311037FE-28D2-45F1-BAF2-DFBFF18D4552](.images/311037FE-28D2-45F1-BAF2-DFBFF18D4552.png)
 
-	@RequestMapping
-	@ResponseBody    //产生json数据，其他客户端来到这个方法处理；
-	public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
-		Map<String, Object> body = getErrorAttributes(request,
-				isIncludeStackTrace(request, MediaType.ALL));
-		HttpStatus status = getStatus(request);
-		return new ResponseEntity<Map<String, Object>>(body, status);
-	}
-```
+![](images/732CDE03-A9A8-4056-84B7-4551DF601B33.png)
 
+​	![5D635FB7-198F-4289-8168-C9B4AB14D067](.images/5D635FB7-198F-4289-8168-C9B4AB14D067-1839964.png)
 
+3、ErrorPageCustomizer：默认/error 下错误页面注册
 
-​	3、ErrorPageCustomizer：
+![7BD05D6A-E8D8-4C04-98D9-2DDF6B9B2782](.images/7BD05D6A-E8D8-4C04-98D9-2DDF6B9B2782.png)
 
-```java
-	@Value("${error.path:/error}")
-	private String path = "/error";  系统出现错误以后来到error请求进行处理；（web.xml注册的错误页面规则）
-```
+![AB6DF38D-8850-4C7B-8BCF-8F4D97CB53FE](.images/AB6DF38D-8850-4C7B-8BCF-8F4D97CB53FE.png)
 
+系统出现错误以后来到error请求进行处理，(web.xml注册的错误页面规则) 
 
+4、DefaultErrorViewResolver：默认的错误页面位置查找
 
-​	4、DefaultErrorViewResolver：
+![159F175C-00A7-49E4-A2D7-B185D74BAFB4](.images/159F175C-00A7-49E4-A2D7-B185D74BAFB4.png)
 
-```java
-@Override
-	public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status,
-			Map<String, Object> model) {
-		ModelAndView modelAndView = resolve(String.valueOf(status), model);
-		if (modelAndView == null && SERIES_VIEWS.containsKey(status.series())) {
-			modelAndView = resolve(SERIES_VIEWS.get(status.series()), model);
-		}
-		return modelAndView;
-	}
+![594C2F11-48F3-4147-AB70-5E5F99962B82](.images/594C2F11-48F3-4147-AB70-5E5F99962B82.png)
 
-	private ModelAndView resolve(String viewName, Map<String, Object> model) {
-        //默认SpringBoot可以去找到一个页面？  error/404
-		String errorViewName = "error/" + viewName;
-        
-        //模板引擎可以解析这个页面地址就用模板引擎解析
-		TemplateAvailabilityProvider provider = this.templateAvailabilityProviders
-				.getProvider(errorViewName, this.applicationContext);
-		if (provider != null) {
-            //模板引擎可用的情况下返回到errorViewName指定的视图地址
-			return new ModelAndView(errorViewName, model);
-		}
-        //模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面   error/404.html
-		return resolveResource(errorViewName, model);
-	}
-```
-
-
-
-​	步骤：
+步骤：
 
 ​		一但系统出现4xx或者5xx之类的错误；ErrorPageCustomizer就会生效（定制错误的响应规则）；就会来到/error请求；就会被**BasicErrorController**处理；
 
-​		1）响应页面；去哪个页面是由**DefaultErrorViewResolver**解析得到的；
+​		响应页面；去哪个页面是由**DefaultErrorViewResolver**解析得到的；
+
+
+
+### 2、如果定制错误响应
+
+#### 	1、如何定制错误的页面
+
+1、有模板引擎的情况下；error/状态码;** 【将错误页面命名为  错误状态码.html 放在模板引擎文件夹里面的 error文件夹下】，发生此状态码的错误就会来到  对应的页面；
+
+我们可以使用4xx和5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；		
+
+​	页面能获取的信息；
+
+​	timestamp：时间戳
+
+​	status：状态码
+
+​	error：错误提示
+
+​	exception：异常对象
+
+​	message：异常消息
+
+​	errors：JSR303数据校验的错误都在这里
+
+![E2C24D56-772A-4BA4-81C3-DA672C54C539](.images/E2C24D56-772A-4BA4-81C3-DA672C54C539.png)
+
+templates/error/404.html
+
+```html
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<h1>status:[[${status}]]</h1>
+	<h2>timestamp:[[${timestamp}]]</h2>
+</main> 
+```
+
+2、没有模板引擎（模板引擎找不到这个错误页面），静态资源文件夹下找；
+
+![F94F345A-DFEA-49B3-8CA1-E182357F735E](.images/F94F345A-DFEA-49B3-8CA1-E182357F735E.png)
+
+
+
+3、以上都没有错误页面，就是默认来到SpringBoot默认的错误提示页面；
+
+默认返回的error 的界面
+
+![9796EE69-9DEB-4969-B469-B52A1B79D619](.images/9796EE69-9DEB-4969-B469-B52A1B79D619.png)
+
+
+
+#### 	2、如何定制错误的json数据
+
+##### 1、自定义一个运行时异常用于测试
+
+1、自定义异常类
 
 ```java
-protected ModelAndView resolveErrorView(HttpServletRequest request,
-      HttpServletResponse response, HttpStatus status, Map<String, Object> model) {
-    //所有的ErrorViewResolver得到ModelAndView
-   for (ErrorViewResolver resolver : this.errorViewResolvers) {
-      ModelAndView modelAndView = resolver.resolveErrorView(request, status, model);
-      if (modelAndView != null) {
-         return modelAndView;
-      }
-   }
-   return null;
+public class UserNotExistException extends RuntimeException {
+
+    public UserNotExistException() {
+        super("用户不存在");
+    }
 }
 ```
 
-### 2）、如果定制错误响应：
+2、访问异常controller
 
-#### 	**1）、如何定制错误的页面；**
+```java
+@Controller
+public class HelloController {
 
-​			**1）、有模板引擎的情况下；error/状态码;** 【将错误页面命名为  错误状态码.html 放在模板引擎文件夹里面的 error文件夹下】，发生此状态码的错误就会来到  对应的页面；
+    //模拟运行时异常
+    @ResponseBody
+    @RequestMapping("/hello")
+    public String hello(@RequestParam("user") String user) {
+        if(user.equals("aaa")) {
+            throw new UserNotExistException();//自定义异常
+        }
+        return "Hello World";
+    } 
+```
 
-​			我们可以使用4xx和5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；		
+3、异常界面
 
-​			页面能获取的信息；
+resources/templates/error/5xx.html
 
-​				timestamp：时间戳
+```html
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+               <h1>status:[[${status}]]</h1>
+               <h2>timestamp:[[${timestamp}]]</h2>
+               <h2>exception:[[${exception}]]</h2>
+               <h2>message:[[${message}]]</h2>
+               <h2>ext.code:[[${ext.code}]]</h2>
+               <h2>ext.message:[[${ext.message}]]</h2>
+            </main> 
+```
 
-​				status：状态码
+4、测试访问
 
-​				error：错误提示
+浏览器
 
-​				exception：异常对象
+![40623D6E-833C-4E03-98AD-8FE995810704](.images/40623D6E-833C-4E03-98AD-8FE995810704.png)
 
-​				message：异常消息
+Postman模拟其他端访问
 
-​				errors：JSR303数据校验的错误都在这里
+![1266F20C-9090-4AFB-8CF1-166F4A45546F](.images/1266F20C-9090-4AFB-8CF1-166F4A45546F.png)
 
-​			2）、没有模板引擎（模板引擎找不到这个错误页面），静态资源文件夹下找；
-
-​			3）、以上都没有错误页面，就是默认来到SpringBoot默认的错误提示页面；
-
-
-
-#### 	2）、如何定制错误的json数据；
-
-​		1）、自定义异常处理&返回定制json数据；
+##### 2、自定义异常处理&返回定制json数据
 
 ```java
 @ControllerAdvice
 public class MyExceptionHandler {
 
+    //1、浏览器客户端返回的都是json
     @ResponseBody
     @ExceptionHandler(UserNotExistException.class)
-    public Map<String,Object> handleException(Exception e){
+    public Map<String,Object> handleException(Exception e) {
         Map<String,Object> map = new HashMap<>();
         map.put("code","user.notexist");
         map.put("message",e.getMessage());
         return map;
-    }
-}
-//没有自适应效果...
+    } 
 ```
 
+此种方式没有自适应，前端和其他端都是返回的json数据
+
+![A3A3E5B1-D2ED-4A1E-B7F2-FA67B01A3161](.images/A3A3E5B1-D2ED-4A1E-B7F2-FA67B01A3161.png)
 
 
-​		2）、转发到/error进行自适应响应效果处理
+
+##### 3、转发到/error进行自适应响应效果处理
+
+可以根据默认的逻辑，前端访问返回界面，其他端访问访问json数据
 
 ```java
- @ExceptionHandler(UserNotExistException.class)
-    public String handleException(Exception e, HttpServletRequest request){
-        Map<String,Object> map = new HashMap<>();
-        //传入我们自己的错误状态码  4xx 5xx，否则就不会进入定制错误页面的解析流程
-        /**
-         * Integer statusCode = (Integer) request
-         .getAttribute("javax.servlet.error.status_code");
-         */
-        request.setAttribute("javax.servlet.error.status_code",500);
-        map.put("code","user.notexist");
-        map.put("message",e.getMessage());
-        //转发到/error
-        return "forward:/error";
-    }
+@ExceptionHandler(UserNotExistException.class)
+public String handleException(Exception e, HttpServletRequest request) {
+    Map<String,Object> map = new HashMap<>();
+    //传入我们自己的错误状态码  4xx 5xx
+    /**
+     * Integer statusCode = (Integer) request
+     .getAttribute("javax.servlet.error.status_code");
+     */
+    request.setAttribute("javax.servlet.error.status_code",500);
+    map.put("code","user.notexist");
+    map.put("message","用户出错啦");
+
+    request.setAttribute("ext",map);
+    //转发到/error
+    return "forward:/error";
+} 
 ```
 
-#### 	3）、将我们的定制数据携带出去；
+测试访问
+
+![C8680A54-2617-4812-819B-0A49C9461D3A](.images/C8680A54-2617-4812-819B-0A49C9461D3A.png)
+
+Json中不包含我们自定义的异常信息
+
+![98319AA4-7085-4D7F-9EA9-72E315582031](.images/98319AA4-7085-4D7F-9EA9-72E315582031.png)
+
+自适应原理：
+
+BasicErrorController是默认处理 /error 请求的
+
+![600B4ECF-D908-4E46-8896-9C11CAB8B024](.images/600B4ECF-D908-4E46-8896-9C11CAB8B024.png)
+
+![71466087-7DBD-4A3D-B00D-3F4B45FFEDDB](.images/71466087-7DBD-4A3D-B00D-3F4B45FFEDDB.png)
+
+
+
+#### 	3、将我们的定制数据携带出去
 
 出现错误以后，会来到/error请求，会被BasicErrorController处理，响应出去可以获取的数据是由getErrorAttributes得到的（是AbstractErrorController（ErrorController）规定的方法）；
 
-​	1、完全来编写一个ErrorController的实现类【或者是编写AbstractErrorController的子类】，放在容器中；
+![8BC27271-372D-4858-9240-18A90523A1DB](.images/8BC27271-372D-4858-9240-18A90523A1DB.png)
 
-​	2、页面上能用的数据，或者是json返回能用的数据都是通过errorAttributes.getErrorAttributes得到；
+![DD09F2F2-527C-40B7-A744-D229984DE6A0](.images/DD09F2F2-527C-40B7-A744-D229984DE6A0.png)
 
-​			容器中DefaultErrorAttributes.getErrorAttributes()；默认进行数据处理的；
+1、完全来编写一个ErrorController的实现类【或者是编写AbstractErrorController的子类】，放在容器中；
+
+2、页面上能用的数据，或者是json返回能用的数据都是通过errorAttributes.getErrorAttributes得到；
+
+![1B4BDCCD-B083-4724-8643-CD6ECFE37C8A](.images/1B4BDCCD-B083-4724-8643-CD6ECFE37C8A.png)
+
+![37A2272B-1C34-46B6-A7DB-B51884FC5AB8](.images/37A2272B-1C34-46B6-A7DB-B51884FC5AB8.png)
+
+容器中DefaultErrorAttributes.getErrorAttributes()；默认进行数据处理的；
+
+![FD7783C8-B455-4750-8867-52CD7EA7D64A](.images/FD7783C8-B455-4750-8867-52CD7EA7D64A.png)
+
+如果没有ErrorAttributes 类，自动创建一个，所以我们可以定义一个ErrorAttributes 类
+
+![853B9F85-11C8-4B20-9F16-637E47DC5245](.images/853B9F85-11C8-4B20-9F16-637E47DC5245.png)
+
+
 
 自定义ErrorAttributes
 
@@ -3023,18 +3601,29 @@ public class MyExceptionHandler {
 @Component
 public class MyErrorAttributes extends DefaultErrorAttributes {
 
+    // 返回值的map就是页面和json能获取的所有字段
     @Override
-    public Map<String, Object> getErrorAttributes(RequestAttributes requestAttributes, boolean includeStackTrace) {
+    public Map<String, Object> getErrorAttributes(RequestAttributes requestAttributes, boolean 
+    includeStackTrace) {
         Map<String, Object> map = super.getErrorAttributes(requestAttributes, includeStackTrace);
-        map.put("company","atguigu");
+        map.put("company", "百度");
+
+        // 我们的异常处理器携带的数据
+        Map<String, Object> ext = (Map<String, Object>) requestAttributes.getAttribute("ext", 0);
+        map.put("ext", ext);
         return map;
     }
 }
+ 
 ```
 
-最终的效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容，
+最终效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容，
 
-![](images/搜狗截图20180228135513.png)
+![707802DB-0969-4AF0-9EB9-FD98516420C1](.images/707802DB-0969-4AF0-9EB9-FD98516420C1.png)
+
+包含我们自定义的异常信息
+
+
 
 
 
@@ -3042,7 +3631,7 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
 
 SpringBoot默认使用Tomcat作为嵌入式的Servlet容器；
 
-![](images/搜狗截图20180301142915.png)
+![](.images/搜狗截图20180301142915.png)
 
 
 
@@ -3151,7 +3740,7 @@ public ServletRegistrationBean dispatcherServletRegistration(
 
 ### 3）、替换为其他嵌入式Servlet容器
 
-![](images/搜狗截图20180302114401.png)
+![](.images/搜狗截图20180302114401.png)
 
 默认支持：
 
@@ -3281,11 +3870,11 @@ public interface EmbeddedServletContainerFactory {
 }
 ```
 
-![](images/搜狗截图20180302144835.png)
+![](.images/搜狗截图20180302144835.png)
 
 2）、EmbeddedServletContainer：（嵌入式的Servlet容器）
 
-![](images/搜狗截图20180302144910.png)
+![](.images/搜狗截图20180302144910.png)
 
 
 
@@ -3558,7 +4147,7 @@ Spring的web模块里面有这个文件：**org.springframework.web.SpringServle
 
 4）、每一个WebApplicationInitializer都调用自己的onStartup；
 
-![](images/搜狗截图20180302221835.png)
+![](.images/搜狗截图20180302221835.png)
 
 5）、相当于我们的SpringBootServletInitializer的类会被创建对象，并执行onStartup方法
 
@@ -3659,11 +4248,11 @@ Docker支持将软件编译成一个镜像；然后在镜像中各种软件做�
 
 运行中的这个镜像称为容器，容器启动是非常快速的。
 
-![](images/搜狗截图20180303145450.png)
+![](.images/搜狗截图20180303145450.png)
 
 
 
-![](images/搜狗截图20180303145531.png)
+![](.images/搜狗截图20180303145531.png)
 
 ## 2、核心概念
 
@@ -3677,7 +4266,7 @@ docker镜像(Images)：软件打包好的镜像；放在docker仓库中；
 
 docker容器(Container)：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用
 
-![](images/搜狗截图20180303165113.png)
+![](.images/搜狗截图20180303165113.png)
 
 使用Docker的步骤：
 
@@ -4004,7 +4593,7 @@ public class DruidConfig {
 		</dependency>
 ```
 
-![](images/搜狗截图20180305194443.png)
+![](.images/搜狗截图20180305194443.png)
 
 步骤：
 
@@ -4089,7 +4678,7 @@ http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/
 
 ### 1）、SpringData简介
 
-![](images/搜狗截图20180306105412.png)
+![](.images/搜狗截图20180306105412.png)
 
 ### 2）、整合SpringData JPA
 
@@ -4179,9 +4768,9 @@ private void initialize(Object[] sources) {
 }
 ```
 
-![](images/搜狗截图20180306145727.png)
+![](.images/搜狗截图20180306145727.png)
 
-![](images/搜狗截图20180306145855.png)
+![](.images/搜狗截图20180306145855.png)
 
 ## 2、运行run方法
 
