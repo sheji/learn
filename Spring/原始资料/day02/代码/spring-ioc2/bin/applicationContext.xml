@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 默认情况下。bean对象创建的顺序，是从上到下
+			depends-on 可以设定依赖
+	
+	<bean id="a" class="com.atguigu.pojo.A" depends-on="b,c"/>
+	<bean id="b" class="com.atguigu.pojo.B" />
+	<bean id="c" class="com.atguigu.pojo.C" /> -->
+	
+<!-- 	<bean id="car1" class="com.atguigu.pojo.Car"> -->
+<!-- 		<property name="carNo" value="京B23412" /> -->
+<!-- 		<property name="name" value="劳死来死"/> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="car2" class="com.atguigu.pojo.Car"> -->
+<!-- 		<property name="carNo" value="京B23412" /> -->
+<!-- 		<property name="name" value="劳死来死2"/> -->
+<!-- 	</bean> -->
+	<!-- 
+		autowire 属性设置是否自动查找bean对象并给子对象赋值
+		
+		default 和 no 表示不自动查找并注入（你不赋值，它就null）
+		byName 	是指通过属性名做为id来查找bean对象，并注入
+					1、找到就注入
+					2、找不到就为null
+		byType  是指按属性的类型进行查找并注入
+					1、找到一个就注入
+					2、找到多个就报错
+					3、没有找到就为null
+		constructor 是指按构造器参数进行查找并注入。
+					1、先按照构造器参数类型进行查找并注入
+					2、如果按类型查找到多个，接着按参数名做为id继续查找并注入。
+					3、按id查找不到，就不赋值。
+	
+	<bean id="p19" class="com.atguigu.pojo.Person" autowire="constructor">
+		<property name="name" value="p19" />
+	</bean> -->
+	
+	<!-- 
+		scope 属性设置对象的域
+			singleton			表示单例（默认）
+								1、Spring容器在创建的时候，就会创建Bean对象
+								2、每次调用getBean都返回spring容器中的唯一一个对象
+								
+			prototype			表示多例
+								1、多例在Spring容器被创建的时候，不会跟着一起被创建。
+								2、每次调用getBean都会创建一个新对象返回
+								
+			request				在一次请求中，多次调用getBean方法都是返回同一个实例。
+			
+								getBean("p20"); 底层大概的实现原理
+									
+								Object bean = request.getAttribute("p20");
+								if (bean == null) {
+									bean = new 对象();
+									request.setAttribute("p20",bean);
+								}
+								return bean;
+								
+								
+			session				在一个会话中，多次调用getBean方法都是返回同一个实例。
+			
+								getBean("p20"); 底层大概的实现原理
+									
+								Object bean = session.getAttribute("p20");
+								if (bean == null) {
+									bean = new 对象();
+									session.setAttribute("p20",bean);
+								}
+								return bean;
+	
+	<bean id="p20" class="com.atguigu.pojo.Person" scope="singleton">
+		<property name="name" value="p20" />
+	</bean> -->
+	
+	<!-- 
+		init-method配置初始化方法(bean对象创建之后)
+		destroy-method配置销毁方法（在spring容器关闭的时候,只对单例有效）
+	 -->
+	<bean id="p21" class="com.atguigu.pojo.Person" init-method="init" destroy-method="destroy" scope="singleton">
+		<property name="name" value="p21"/>
+	</bean>
+	<!-- 配置自定义的后置处理器 -->
+	<bean class="com.atguigu.postprocessor.MyBeanPostProcessor" />
+	
+
+</beans>

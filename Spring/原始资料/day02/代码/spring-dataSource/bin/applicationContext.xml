@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- PropertyPlaceholderConfigurer类专门用来加载properties属性配置文件 
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+		<!-- location属性设置你要加载的文件路径 
+					classpath: 表示从类路径下搜索
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>-->
+
+	<!-- 标签用来代替PropertyPlaceholderConfigurer加载属性配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="username" value="${user}" />
+		<property name="password" value="${password}" />
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="initialSize" value="${initialSize}" />
+		<property name="maxActive" value="${maxActive}" />
+	</bean>
+
+</beans>

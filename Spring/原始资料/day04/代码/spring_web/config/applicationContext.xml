@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 包扫描 -->
+	<context:component-scan base-package="com.atguigu"></context:component-scan>
+	<!-- 加载jdbc.properties属性配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="username" value="${user}" />
+		<property name="password" value="${password}" />
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="initialSize" value="${initialSize}" />
+		<property name="maxActive" value="${maxActive}" />
+	</bean>
+
+	<!-- 配置Spring提供用来访问数据库的类JdbcTemplate -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+<!-- 	事务由：AOP + 切面(事务管理器) + 事务属性 -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 配置事务属性 -->
+	<tx:advice id="tx_advice" transaction-manager="transactionManager">
+		<!-- 配置事务属性 -->
+		<tx:attributes>
+			<!-- 
+				方法在匹配事务属性规则的时候，匹配顺序是：精确匹配====>>>半模糊====>>>全模糊
+			 -->
+		
+			<!-- 
+				tx:method 标签给某些方法配置事务属性
+					name属性设置方法名
+					propagation="REQUIRED"表示有事务
+				
+				精确匹配 -->
+			<tx:method name="updateUser" propagation="REQUIRED"/>
+			<!-- 
+				半模糊匹配
+				name="save*" 表示以save打头的方法，都匹配上
+			 -->
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<!-- 
+				半模糊匹配
+				name="update*" 表示以update打头的方法，都匹配上
+			 -->
+			<tx:method name="update*" propagation="REQUIRES_NEW"/>
+			<!-- 
+				name="delete*" 表示以delete打头的方法，都匹配上
+			 -->
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			
+			<tx:method name="multiUpdate" propagation="REQUIRES_NEW"/>
+			<tx:method name="multiTransaction" propagation="REQUIRED"/>
+			
+			<!-- 
+				name="*" 表示剩下的方法
+				read-only="true" 底层会做一些事务优化
+
+				全模糊
+			 -->
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务需要的aop（代理） -->
+	<aop:config>
+		<aop:advisor advice-ref="tx_advice" pointcut="execution(public * com.atguigu..*Service.*(..))"/>
+	</aop:config>
+
+</beans>
