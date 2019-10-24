@@ -107,6 +107,8 @@ public class LogUtil {
 
 #### 使用jdk动态代理统一日记
 
+是兄弟类型代理，生成一个实现同接口的类的代理对象--- 代理的类必须实现相关方法的接口
+
 创建一个计算器代理工具类:
 
 ```java
@@ -197,6 +199,10 @@ public static void main(String[] args) {
 
 #### 使用cglib代理
 
+动态字节码增强技术
+
+是继承类型代理，生成一个继承被代理类的代理对象
+
 ```java
 public class CGLibProxyFactory implements MethodInterceptor {
 
@@ -235,6 +241,14 @@ public class CGLibProxyFactory implements MethodInterceptor {
 优点：在没有接口的情况下，同样可以实现代理的效果。
 
 缺点：同样需要自己编码实现代理全部过程。
+
+
+
+如果目标对象，有接口，优先使用JDK动态代理
+
+如果目标对象，无接口，使用cglib动态代理
+
+
 
 但是为了更好的整合 Spring 框架使用。所以我们需要学习一下Spring 的 AOP 功能。也就是学习 Spring 提供的AOP 功能。
 
