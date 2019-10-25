@@ -284,7 +284,7 @@ public class CGLibProxyFactory implements MethodInterceptor {
 
 在Spring中切入点通过 org.springframework.aop.Pointcut 接口进行描述，它使用类和方法作为连接点的查询条件
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014220520.png)
+![](.images/20191014220520.png)
 
 ## 使用Spring实现AOP简单切面编程
 
@@ -409,7 +409,7 @@ public class SpringAopTest {
 
 运行结果
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014221905.png)
+![](.images/20191014221905.png)
 
 ### Spring的切入点表达式
 
@@ -508,27 +508,27 @@ execution(public int com.atguigu.aop.Calculator.add(int, int))
 
 1. 如果被代理的对象实现了接口。Spring底层使用jdk代理，在获取对象的时候，==必须要以接口==来接收返回的对象
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014224451.png)
+   ![](.images/20191014224451.png)
 
    测试的代码：
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014224750.png)
+   ![](.images/20191014224750.png)
 
    测试的结果：
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014224831.png)
+   ![](.images/20191014224831.png)
 
 2. 被切面拦截的代理对象，如果没有实现接口。Spring底层使用cglib代理，返回的对象是目标对象的子类类型，获取对象的时候==使用对象类型本身==
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014224906.png)
+   ![](.images/20191014224906.png)
 
    测试的代码：
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014224951.png)
+   ![](.images/20191014224951.png)
 
    测试结果：
 
-   ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014225021.png)
+   ![](.images/20191014225021.png)
 
 ### Spring通知的执行顺序
 
@@ -613,7 +613,7 @@ public class SpringAopTest {
 
 运行的结果：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014232129.png)
+![](.images/20191014232129.png)
 
 ### 获取连接点信息
 
@@ -659,7 +659,7 @@ public class LogUtil {
 
 前面测试的代码没有变。再次执行的结果。都能拿到拦截的方法名和参数
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014234223.png)
+![](.images/20191014234223.png)
 
 ### 获取拦截方法的返回值和抛的异常信息
 
@@ -693,7 +693,7 @@ public class LogUtil {
 
 测试的代码不变，测试的结果是:
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014234652.png)
+![](.images/20191014234652.png)
 
 ### Spring的环绕通知
 
@@ -745,7 +745,7 @@ public class SpringAopTest {
 
 运行结果：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191014235444.png)
+![](.images/20191014235444.png)
 
 ### 切入点表达式的重用
 
@@ -833,7 +833,7 @@ public class SpringAopTest {
 
 运行的结果:
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015000344.png)
+![](.images/20191015000344.png)
 
 ### 如何基于xml配置aop程序
 
@@ -966,7 +966,7 @@ public class SpringAopTest {
 
 运行的结果
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015000945.png)
+![](.images/20191015000945.png)
 
 # Spring之数据访问
 
@@ -1301,7 +1301,7 @@ public class EmployeeDao extends JdbcDaoSupport {
 }
 ```
 
-# 声明式事务
+# 事务
 
 事务分为声明式和编程式两种:
 
@@ -1318,7 +1318,7 @@ Connection connection = JdbcUtils.getConnection();
 // 设置手动管理事务
 connection.setAutoCommit(false);
 …… 
-执行若干操作
+//执行若干操作
 ……
 // 提交事务
 connection.commit();
@@ -1568,7 +1568,7 @@ public class TransactionServiceTest {
 
 运行结果：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015103251.png)
+![](.images/20191015103251.png)
 
 异常的演示
 
@@ -1594,11 +1594,11 @@ public class TransactionService {
 
 测试结果：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015103359.png)
+![](.images/20191015103359.png)
 
 数据库运行结果
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015103627.png)
+![](.images/20191015103627.png)
 
 这个时候，我们发现。其实前面的两个dao操作，其实是两个事务。
 
@@ -1612,15 +1612,15 @@ userDao.update(new User(2, "ssssssss", 2222)); 	//这是另一个事务
 
 ## PlatformTransactionManager类简单介绍
 
-PlatformTransactionManager类是 Spring 提供的专门用于统一管理事务的一个接口。
+PlatformTransactionManager 类是 Spring 提供的专门用于统一管理事务的一个接口。
 
 那么不同的持久层技术都对其实现了自己的事务管理类。
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015104120.png)
+![](.images/20191015104120.png)
 
 ## Spring底层事务管理原理的介绍
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015104014.png)
+![](.images/20191015104014.png)
 
 ## 使用Spring的注解声明事务管理
 
@@ -1759,7 +1759,7 @@ applicationContext.xml配置文件中的内容
 
 readOnly 属性 设置事务是否允许写操作。readOnly 默认值是false,表示可读，可写。如果设置为true 表示只支持读操作
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015112149.png)
+![](.images/20191015112149.png)
 
 声明事务代码
 
@@ -1778,7 +1778,7 @@ readOnly 属性 设置事务是否允许写操作。readOnly 默认值是false,�
 
 在写操作的方法上标注为只读。就会报异常
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015112248.png)
+![](.images/20191015112248.png)
 
  ## 事务超时属性timeout(秒为单位)
 
@@ -1800,7 +1800,7 @@ timeout是设置超时属性。以秒为单位。
 
 当两秒钟时间内不能完成所有操作，就会抛异常。
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015112413.png)
+![](.images/20191015112413.png)
 
 ## 事务隔离级别
 
@@ -1857,19 +1857,19 @@ rollback;
 
 ### 脏读的演示
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015113028.png)
+![](.images/20191015113028.png)
 
 ### 读未提交演示
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015113129.png)
+![](.images/20191015113129.png)
 
 ### 幻读的演示
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015113206.png)
+![](.images/20191015113206.png)
 
 ### 串行化事务的演示
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015113252.png)
+![](.images/20191015113252.png)
 
 ## 事务的传播特性propagation
 
@@ -1881,7 +1881,7 @@ rollback;
 
 事务的传播特性，有以下几种类型：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015112912.png)
+![](.images/20191015112912.png)
 
 ### 注解演示事物传播特性
 
