@@ -1972,7 +1972,7 @@ public void updateBook() {
 public void updateUser() {
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015114143.png)
+![](.images/20191015114143.png)
 
 当所有的操作都是REQUIRED的时候，所有操作都在一个事务中。所有操作要么都成功。要么都失败。
 
@@ -1987,7 +1987,7 @@ public void updateBook()
 public void updateUser()
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015114413.png)
+![](.images/20191015114413.png)
 
 1. 所有事务传播特性都是REQUIRES_NEW,也就是每个方法都会开启自己的事务。当方法执行完成。都会提交自己的事务。
 2. 如果有异常出现。就会从异常出现的代码所在的事务开始，到后面所有代码的操作都不会成功。
@@ -2003,7 +2003,7 @@ public void updateBook()
 public void updateUser()
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015114533.png)
+![](.images/20191015114533.png)
 
 1. 这个测试，每个方法也都会开启事务。如果程序正常运行。每个事务都会正常提交。
 
@@ -2020,7 +2020,7 @@ public void updateBook()
 public void updateUser()
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015114717.png)
+![](.images/20191015114717.png)
 
 1. 这个测试，在调用`multiUpdate`方法和`updateUser`方法的时候会开启事务。如果程序正常运行。每个事务都会正常提交。
 
@@ -2037,7 +2037,7 @@ public void updateBook()
 public void updateUser()
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191015115053.png)
+![](.images/20191015115053.png)
 
 1. 如果程序都正常运行，所有事务都会正常提交。
 

@@ -948,7 +948,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 **8.jar包外部的application.properties或application.yml(不带spring.profile)配置文件**
 
-![image-20191021224114753](images/image-20191021224114753.png)
+![image-20191021224114753](.images/image-20191021224114753.png)
 
 **9.jar包内部的application.properties或application.yml(不带spring.profile)配置文件**
 

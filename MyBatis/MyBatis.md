@@ -63,7 +63,7 @@ select * from t_user;
 
 创建一个Java工程
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191016172526.png)
+![](.images/20191016172526.png)
 
 导入jar包
 
@@ -192,9 +192,9 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
 
 ## 配置MyBatis配置文件的提示
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191016175624.png)
+![](.images/20191016175624.png)
 
-# 传统方式MyBatis的增，删，改，查实现
+# 传统方式的增，删，改，查实现
 
 ## 编写UserDao接口
 
@@ -419,7 +419,7 @@ public class UserDaoTest {
 	</insert>
 ```
 
-## \<selectKey>  标签的使用
+## \<selectKey> 标签的使用
 
 \<selectKey> 是一个子标签，可以设置一个 sql 语句去执行
 
@@ -449,7 +449,7 @@ selectKey 返回Oracle的序列自增主键
 </selectKey>
 ```
 
-# Mapper接口方式的MyBatis的增，删，改，查实现
+# Mapper接口方式的增，删，改，查实现
 
 ## Mapper接口编程的命名习惯
 
@@ -596,7 +596,7 @@ public class UserMapperTest {
 }
 ```
 
-# MyBatis的核心配置文件相关标签
+# 核心配置文件相关标签
 
 ## properties标签
 
@@ -2404,7 +2404,7 @@ MyBatis的二级缓存默认是不开启的。
 		<setting name="cacheEnabled" value="true"/>
 ```
 
-2. 在 Mapper 的配置文件中加入 cache 标签
+2. 在 Mapper.xml 的配置文件中加入 cache 标签
 
 ```xml
 <cache></cache>
