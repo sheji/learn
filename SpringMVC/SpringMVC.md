@@ -30,7 +30,7 @@ SpringMVC 框架围绕 ==DispatcherServlet== 这个核心展开，DispatcherServ
 | ------------------------------------------------------------ | ---- |
 | ![图片 1](.images/%E5%9B%BE%E7%89%87%201.png)                |      |
 
-# 第一个springmvc程序(Hello World)
+# springmvc程序(Hello World)
 
 ## 创建工程
 
