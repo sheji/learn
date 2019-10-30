@@ -831,8 +831,18 @@ dir /usr/local/cluster-redis
 /usr/local/redis/bin/redis-server /usr/local/cluster-redis/redis8000.conf
 ```
 
+不同命令行窗口登录这三个的客户端：
+
+```html
+/usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 6000
+/usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 7000
+/usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 8000
+```
+
 使用redis-cli停止指定服务器的命令格式如下：<br/>
 /usr/local/bin/redis-cli -h IP地址 -p 端口号 shutdown
+
+
 
 ## 3.主从关系
 
@@ -849,11 +859,19 @@ connected_slaves:0
 
 ### ②设定主从关系
 
-在从机上指定主机位置即可
+在从机上指定主机位置即可（7000和8000的将6000设置为主服务器）
 
 ``` html
 SLAVEOF 127.0.0.1 6000
 ```
+
+查看6000的这个服务器
+
+![image-20191030125713618](.images/image-20191030125713618.png)
+
+查看7000的这个服务器
+
+![image-20191030125941694](.images/image-20191030125941694.png)
 
 ### ③取消主从关系
 
@@ -867,9 +885,9 @@ SLAVEOF NO ONE
 
 - 测试1：在主机写入数据，在从机查看
 - 测试2：在从机写入数据报错。配置文件中的依据是：slave-read-only yes
-- 测试3：主机执行SHUTDOWN看从机状态
+- 测试3：主机执行SHUTDOWN看从机状态 --  从服务器不会翻身当主服务器，只是标识出主服务器down
 - 测试4：主机恢复启动，看从机状态
-- 测试5：从机SHUTDOWN，此时主机写入数据，从机恢复启动查看状态。重新设定主从关系后看新写入的数据是否同步。
+- 测试5：从机SHUTDOWN，此时主机写入数据，从机恢复启动查看状态。重新设定主从关系后看新写入的数据是否同步。 --- 从机SHUTDOWN失去主从关系，需要重新设置主从关系
 
 ## 5.哨兵模式
 
@@ -877,7 +895,7 @@ SLAVEOF NO ONE
 
 通过哨兵服务器监控master/slave实现主从复制集群的自动管理。
 
-![p04](images/p04.png)
+![p04](.images/p04.png)
 
 ### ②相关概念
 
@@ -904,17 +922,26 @@ vim /usr/local/cluster-redis/sentinel.conf
 /usr/local/redis/bin/redis-server /usr/local/cluster-redis/sentinel.conf --sentinel
 
 ``` html
-+sdown master mymaster 127.0.0.1 6379 【主观下线】
-+odown master mymaster 127.0.0.1 6379 #quorum 1/1【客观下线】
++sdown master mymaster 127.0.0.1 6000 【主观下线】
++odown master mymaster 127.0.0.1 6000 #quorum 1/1【客观下线】
 ……
 +vote-for-leader 17818eb9240c8a625d2c8a13ae9d99ae3a70f9d2 1【选举leader】
 ……
-+failover-state-send-slaveof-noone slave 127.0.0.1:6381 127.0.0.1 6381 @ mymaster 127.0.0.1 6379【把一个从机设置为主机】
++failover-state-send-slaveof-noone slave 127.0.0.1:7000 127.0.0.1 7000 @ mymaster 127.0.0.1 7000【把一个从机设置为主机】
+……
++switch-master mymaster 127.0.0.1 6000 127.0.0.1 7000 【把主机服务器从6000改成7000】
++slave slave 127.0.0.1:8000 127.0.0.1:8000 @ mymaster 127.0.0.1 7000   【8000作为7000的从服务器】
++slave slave 127.0.0.1:6000 127.0.0.1:6000 @ mymaster 127.0.0.1 7000
+
 
 -------------挂掉的主机又重新启动---------------------
--sdown slave 127.0.0.1:6379 127.0.0.1 6379 @ mymaster 127.0.0.1 6381【离开主观下线状态】
-+convert-to-slave slave 127.0.0.1:6379 127.0.0.1 6379 @ mymaster 127.0.0.1 6381【转换为从机】
+-sdown slave 127.0.0.1:6000 127.0.0.1 6000 @ mymaster 127.0.0.1 7000【6000离开主观下线状态】
++convert-to-slave slave 127.0.0.1:6000 127.0.0.1 6000 @ mymaster 127.0.0.1 7000【6000转换为从机】
 ```
+
+从服务器宕机 --> 重新启动
+
+![image-20191030131746646](.images/image-20191030131746646.png)
 
 
 
