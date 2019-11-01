@@ -141,6 +141,12 @@ redis-server文件路径 redis.conf文件路径
 /usr/local/redis/bin/redis-server /usr/local/redis/redis.conf
 ```
 
+可以查看redis对应的进程是否启动起来了
+
+```html
+ps -ef | grep redis | grep -v grep
+```
+
 实时的看日志信息
 
 ```
@@ -921,6 +927,12 @@ vim /usr/local/cluster-redis/sentinel.conf
 
 /usr/local/redis/bin/redis-server /usr/local/cluster-redis/sentinel.conf --sentinel
 
+从服务器宕机 --> 重新启动
+
+![image-20191030131746646](.images/image-20191030131746646.png)
+
+主服务器宕机 -->重新启动
+
 ``` html
 +sdown master mymaster 127.0.0.1 6000 【主观下线】
 +odown master mymaster 127.0.0.1 6000 #quorum 1/1【客观下线】
@@ -938,10 +950,6 @@ vim /usr/local/cluster-redis/sentinel.conf
 -sdown slave 127.0.0.1:6000 127.0.0.1 6000 @ mymaster 127.0.0.1 7000【6000离开主观下线状态】
 +convert-to-slave slave 127.0.0.1:6000 127.0.0.1 6000 @ mymaster 127.0.0.1 7000【6000转换为从机】
 ```
-
-从服务器宕机 --> 重新启动
-
-![image-20191030131746646](.images/image-20191030131746646.png)
 
 
 
@@ -1029,6 +1037,28 @@ System.out.println(ping);
 jedis.close();
 
 ```
+
+可能出现连接超时，主要是服务器上防火墙原因
+
+![image-20191030170402924](.images/image-20191030170402924.png)
+
+![image-20191030170519040](.images/image-20191030170519040.png)
+
+```html
+systemctl status firewalld.service   //查看防火墙状态
+systemctl stop firewalld.service     //关闭本次防火墙
+systemctl disable firewalld.service  //开机不自动启动防火墙
+```
+
+```html
+systemctl start firewalld.service    //开启防火墙
+```
+
+Jedis的日常操作都在Jedis类中
+
+![image-20191030173030931](.images/image-20191030173030931.png)
+
+
 
 ## 4.JedisPool
 

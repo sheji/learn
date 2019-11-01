@@ -25,4 +25,9 @@ Ctrl`+`Shift`+`Alt`+`N
 
 
 
-d
+搜索一个类
+
+cmd  + O
+
+Shift 双击  搜索所有的东西
+
