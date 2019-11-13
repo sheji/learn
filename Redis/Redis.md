@@ -1,5 +1,4 @@
 [TOC]
-<p style="text-align:center;font-size:100px;">Redis</p>
 # 一、从NoSQL说起
 
 NoSQL是Not only SQL的缩写，大意为“不只是SQL”，说明这项技术是<b><font color="red">传统关系型数据库的补充</font></b>而非替代。在整个NoSQL技术栈中<b><font color="blue">MemCache</font></b>、<b><font color="blue">Redis</font></b>、<b><font color="blue">MongoDB</font></b>被称为NoSQL三剑客。那么时代为什么需要NoSQL数据库呢？我们来做个对比：
@@ -12,6 +11,12 @@ NoSQL是Not only SQL的缩写，大意为“不只是SQL”，说明这项技术
 | 事务控制     | 严格的基础事务ACID原则 | CAP定理                                |
 
 所以NoSQL数据库的最大优势体现为：高性能、高可用性和可伸缩性。
+
+| 传统的ACID                                                   | CAP 定理                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| A（Atomicity）原子性<br />C（Consistency）一致性<br />I（Isolation）独立性<br />D（Durability）持久性 | C（Consistency）强一致性<br />A（Availbility）可用性 --- 高可用性<br />P（Patition tolerance）分区容错性 --- 分布式容忍性 |
+
+
 
 # 二、Redis简介
 
@@ -232,31 +237,30 @@ Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的
 ### ①切换数据库
 
 ``` cmd
-	//Redis默认有16个数据库。
-	//115 # Set the number of databases. The default database is DB 0, you can select
-	//116 # a different one on a per-connection basis using SELECT <dbid> where
-	//117 # dbid is a number between 0 and 'databases'-1
-	//118 databases 16
-	//使用select进行切换，数据库索引从0开始
-	127.0.0.1:6379> select 2   //切换到数据库索引为2的数据库
-	OK
-	127.0.0.1:6379[2]> select 0
-	OK
-	127.0.0.1:6379> 
+//Redis默认有16个数据库。
+//115 # Set the number of databases. The default database is DB 0, you can select
+//116 # a different one on a per-connection basis using SELECT <dbid> where
+//117 # dbid is a number between 0 and 'databases'-1
+//118 databases 16
+//使用select进行切换，数据库索引从0开始
+127.0.0.1:6379> select 2   //切换到数据库索引为2的数据库
+OK
+127.0.0.1:6379[2]> select 0
+OK
 ```
 
 ### ②查看数据库长度
 
 ``` cmd
-	//先人为的设置三个数据
-	127.0.0.1:6379> set k01 v01
-  OK
-  127.0.0.1:6379> set k02 v02
-  OK
-  127.0.0.1:6379> set k03 v03
-  OK
-	127.0.0.1:6379> dbsize     //查看数据库中具体包含了多少数据
-	(integer) 3
+//先人为的设置三个数据
+127.0.0.1:6379> set k01 v01
+OK
+127.0.0.1:6379> set k02 v02  
+OK
+127.0.0.1:6379> set k03 v03
+OK
+127.0.0.1:6379> dbsize     //查看数据库中具体包含了多少数据
+(integer) 3
 ```
 
 ## 2.KEY操作
