@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # 一、方法远程调用代码的对比
 
 ## 1、使用远程方法调用框架
@@ -26,34 +22,40 @@ public class HelloController {
 }
 ```
 
-## 2不使用远程方法调用框架
+## 2、不使用远程方法调用框架
 
 ```java
 // 1.创建HttpClient实例
 CloseableHttpClient client = HttpClientBuilder.create().build();
 try {
-// 2.声明服务器端URL地址
-String url = "http://[服务器端实际IP]:54321/bookManager/book/getBook/23?requestParam=AAA";
-// 3.创建具体请求方式实例
-HttpGet get = new HttpGet(url);
-// 4.调用客户端对象执行请求，进而获得响应对象
-CloseableHttpResponse response = client.execute(get);
-// 5.从响应结果中获取封装响应数据的Entity对象
-HttpEntity entity = response.getEntity();
-// 6.借助工具类将HttpEntity中包含的数据转换成可识别的字符串
-String responseData = EntityUtils.toString(entity, "UTF-8");
-// 7.处理响应结果
-System.out.println(responseData);
-//Ensures that the entity content is fully consumed and the content stream, if exists, is closed.
-//确认entity的内容已经完全被consume了，而且如果内容的流存在，确认其已经关闭了。
-EntityUtils.consume(entity);
+	// 2.声明服务器端URL地址
+	String url = "http://[服务器端实际IP]:54321/bookManager/book/getBook/23?requestParam=AAA";
+	// 3.创建具体请求方式实例
+	HttpGet get = new HttpGet(url);
+	// 4.调用客户端对象执行请求，进而获得响应对象
+	CloseableHttpResponse response = client.execute(get);
+	// 5.从响应结果中获取封装响应数据的Entity对象
+	HttpEntity entity = response.getEntity();
+	// 6.借助工具类将HttpEntity中包含的数据转换成可识别的字符串
+	String responseData = EntityUtils.toString(entity, "UTF-8");
+	// 7.处理响应结果
+	System.out.println(responseData);
+	//Ensures that the entity content is fully consumed and the content stream, if exists, is closed.
+	//确认entity的内容已经完全被consume了，而且如果内容的流存在，确认其已经关闭了。
+	EntityUtils.consume(entity);
 } catch (ClientProtocolException e) {
-e.printStackTrace();
+	e.printStackTrace();
 } catch (IOException e) {
-e.printStackTrace(); 
+	e.printStackTrace(); 
 } finally {
 // 8.释放连接，无论操作是否成功都必须释放连接
-if(client != null) {try {client.close();} catch (IOException e) {e.printStackTrace();}}
+	if(client != null) {	
+        try {
+            client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -358,15 +360,15 @@ wchp：通过路径列出服务器watch的详细信息。它输出一个与sessi
 
 ```xml
 <dependency>
-			<groupId>com.101tec</groupId>
-			<artifactId>zkclient</artifactId>
-			<version>0.10</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<version>3.4.9</version>
-		</dependency>
+    <groupId>com.101tec</groupId>
+    <artifactId>zkclient</artifactId>
+    <version>0.10</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.9</version>
+</dependency>
 ```
 
 ## 2、主要功能代码
@@ -394,51 +396,51 @@ public Stat exists(String path, boolean watch);
 ```java
 private ZooKeeper zooKeeper;
 	
-	{
-		
-		String connectString = "192.168.56.150:2181";
-		int sessionTimeout = 5000; //会话超时时间
-		Watcher watcher = new Watcher() {
-			@Override
-			public void process(WatchedEvent event) {}
-		};
-		
-		try {
-			//创建ZooKeeper对象 连接ZooKeeper服务器
-			zooKeeper = new ZooKeeper(connectString, sessionTimeout, watcher);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+{
+
+    String connectString = "192.168.56.150:2181";
+    int sessionTimeout = 5000; //会话超时时间
+    Watcher watcher = new Watcher() {
+        @Override
+        public void process(WatchedEvent event) {}
+    };
+
+    try {
+        //创建ZooKeeper对象 连接ZooKeeper服务器
+        zooKeeper = new ZooKeeper(connectString, sessionTimeout, watcher);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 ```
 
 ## 4、读取和修改节点数据
 
 ```java
 @Test
-	public void testUpdateNodeData() throws KeeperException, InterruptedException {
-		// 要操作的节点的路径
-		String path = "/animal/cat";
-		// 获取节点当前值
-		byte[] resultByteArray = zooKeeper.getData(path, false, new Stat());
-		// 将字节数组封装为字符串
-		String result = new String(resultByteArray);
-		// 打印旧值
-		System.out.println("old value="+result);
-		// 获取新值字符串对应的字节数组
-		byte[] newValueByteArray = new String("miaomiao").getBytes();
-		// 指定当前操作所基于的版本号，如果不确定可以使用-1
-		int version = -1;
-		// 执行节点值的修改
-		Stat stat = zooKeeper.setData(path, newValueByteArray, version);
-		// 获取最新版本号
-		int newVersion = stat.getVersion();
-		System.out.println("newVersion="+newVersion);
-		// 获取节点新值
-		resultByteArray = zooKeeper.getData(path, false, new Stat());
-		result = new String(resultByteArray);
-		System.out.println("new value="+result);
-	}
+public void testUpdateNodeData() throws KeeperException, InterruptedException {
+    // 要操作的节点的路径
+    String path = "/animal/cat";
+    // 获取节点当前值
+    byte[] resultByteArray = zooKeeper.getData(path, false, new Stat());
+    // 将字节数组封装为字符串
+    String result = new String(resultByteArray);
+    // 打印旧值
+    System.out.println("old value="+result);
+    // 获取新值字符串对应的字节数组
+    byte[] newValueByteArray = new String("miaomiao").getBytes();
+    // 指定当前操作所基于的版本号，如果不确定可以使用-1
+    int version = -1;
+    // 执行节点值的修改
+    Stat stat = zooKeeper.setData(path, newValueByteArray, version);
+    // 获取最新版本号
+    int newVersion = stat.getVersion();
+    System.out.println("newVersion="+newVersion);
+    // 获取节点新值
+    resultByteArray = zooKeeper.getData(path, false, new Stat());
+    result = new String(resultByteArray);
+    System.out.println("new value="+result);
+}
 ```
 
 # 七、异步通知机制
