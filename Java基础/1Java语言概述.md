@@ -18,7 +18,7 @@
 
 2. 第二代语言：汇编语言。使用助记符表示一条机器指令。
 
-   <img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/image-20190926221811935.png" style="zoom:80%;" />
+   ![image-20191115191609180](.images/image-20191115191609180.png)
 
 3. 第三代语言:高级语言
 
@@ -158,7 +158,7 @@ Java确实是从C语言和C++语言继承了许多成份，甚至可以将Java�
 
    原理：只要在需要运行Java应用程序的操作系统上，先安装一个Java虚拟机（JVM ==J==ava ==V==irual ==M==achine）。由JVM来负责Java程序在该系统中的运行。
 
-   <img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113020.png" style="zoom:80%;" />
+   ![image-20191115191628906](.images/image-20191115191628906.png)
 
    因为有了JVM，同一个Java程序在三个不同的操作系统中都可以执行。这样就实现了Java 程序的跨平台性。
 
@@ -174,9 +174,9 @@ Java确实是从C语言和C++语言继承了许多成份，甚至可以将Java�
 
    * Java虚拟机机制屏蔽了底层运行平台的差别，实现了“==一次编译，到处运行==”。
 
-     <img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113147.png" style="zoom:80%;" />
+     ![image-20191115191642595](.images/image-20191115191642595.png)
      
-     <img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113325.png" style="zoom:60%;" />
+     ![image-20191115191653415](.images/image-20191115191653415.png)
 
    
 
@@ -206,9 +206,9 @@ JRE(==J==ava ==R==untime ==E==nvironment Java运行环境)
 
 ### JDK、JRE、JVM关系
 
-<img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113428.png" style="zoom:80%;" />
+![image-20191115191813026](.images/image-20191115191813026.png)
 
-<img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113653.png" style="zoom:67%;" />
+![image-20191115191827031](.images/image-20191115191827031.png)
 
 - JDK = JRE + 开发工具集(例如Javac编译工具等)
 
@@ -218,11 +218,11 @@ JRE(==J==ava ==R==untime ==E==nvironment Java运行环境)
 
 * 在dos命令行中敲入javac，出现错误提示
 
-  ​									![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006113722.png)	
+  ​									![](.images/20191006113722.png)	
 
 * 错误原因:当前执行的程序在当前目录下如果不存在，windows系统会在系统中已有的一个名为path的环境变量指定的目录中查找。如果仍未找到，会出现以上的错误提示。所以进入到 jdk安装路径\bin目录下，执行javac，会看到javac参数提示信息。
 
-  ​									![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114043.png)			
+  ​									![](.images/20191006114043.png)			
 
 * 配置方法
 
@@ -232,7 +232,7 @@ JRE(==J==ava ==R==untime ==E==nvironment Java运行环境)
 
   打开DOS命令行，任意目录下敲入javac。如果出现javac 的参数信息，配置成功。
 
-  ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114131.png)
+  ![](.images/20191006114131.png)
 
 ## 开发体验-HelloWorld
 
@@ -244,7 +244,7 @@ JRE(==J==ava ==R==untime ==E==nvironment Java运行环境)
 
 3. 通过 java 命令对生成的 class 文件进行==运行==。
 
-<img src="https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114206.png" style="zoom:80%;" />
+![image-20191115191929693](.images/image-20191115191929693.png)
 
 ### 步骤一：编写
 
@@ -276,7 +276,7 @@ javac Test.java
 java Test
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114235.png)
+![](.images/20191006114235.png)
 
 有了可执行的java程序(Test.class字节码文件)，通过运行工具java.exe对字节码文件进行执行。
 
@@ -332,11 +332,11 @@ javadoc -d HelloWordDoc -author -version HelloWorld.java
 
 生成如下文件
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114303.png)
+![](.images/20191006114303.png)
 
 打开 index.html，可以看见自动生成的文档
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114332.png)
+![](.images/20191006114332.png)
 
 # 小结
 
@@ -356,7 +356,7 @@ Java语言提供了大量的基础类，因此 Oracle 也为这些基础类提�
 
 Additional Resources-Java SE 8 Documentation下载。
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191006114355.png)
+![](.images/20191006114355.png)
 
 # Java开发工具
 
