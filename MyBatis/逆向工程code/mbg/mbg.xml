@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 
+		targetRuntime 表示你要生成的版本
+			MyBatis3				豪华版本
+			MyBatis3Simple			CRUD标准版
+	 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+
+  	<!-- 去掉全部的注释 -->
+	<commentGenerator>
+        <property name="suppressAllComments" value="true" />
+    </commentGenerator>
+
+  
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/mbg"
+        userId="root"
+        password="root">
+    </jdbcConnection>
+
+
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- javaModelGenerator配置生成模型JavaBean
+			targetPackage生成的javaBean的包名
+			targetProject生成之后在哪个工程目录下
+	 -->
+    <javaModelGenerator targetPackage="com.atguigu.pojo" targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	
+	<!-- 
+		sqlMapGenerator生成sql的mapper.xml配置文件
+			targetPackage生成mapper.xml配置文件放的包名
+	 -->
+    <sqlMapGenerator targetPackage="com.atguigu.mapper"  targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 
+		javaClientGenerator配置生成的Mapper接口
+			
+	 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.atguigu.mapper"  targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 一个table标签，表示一个表 -->
+    <table tableName="t_user" domainObjectName="User" ></table>
+    <table tableName="t_book" domainObjectName="Book" ></table>
+    
+
+  </context>
+</generatorConfiguration>
