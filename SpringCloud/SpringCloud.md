@@ -573,7 +573,7 @@ Consummer通过http://localhost:8001来访问Provider中提供的服务需要知
 
 
 
-# 二、**SpringCloud**单机版Eureka
+# 二、SpringCloud单机版Eureka
 
 ## 1、简介
 
@@ -871,7 +871,7 @@ defaultZone: http://www.eureka7000.com:7000/eureka,http://www.eureka7001.com:700
 
 ## 1、简介
 
-SpringCloud技术栈中的Nginx。但是Ribbon和Nginx有一个重大区别：Ribbon是一个**客户端**负载均衡解决方案。
+SpringCloud技术栈中的Nginx。但是Ribbon和Nginx有一个重大区别：==Ribbon是一个**客户端**负载均衡解决方案==。
 
 按照我们前面例子的架构组成，Ribbon需要配置在SCMS-Consummer-Dept80工程中（其实我们已经配置好了）。
 
@@ -1171,7 +1171,7 @@ SCMS-Consummer-Feign
 
 在微服务架构体系下，服务间的调用错综复杂，交织成一张大网。如果其中某个节点突然无法正常工作，则访问它的众多服务都会被卡住，进而有更多服务被卡住，系统中的线程、CPU、内存等资源有可能被迅速耗尽，最终整个服务体系崩溃。
 
-我们管这样的现象叫服务雪崩。
+我们管这样的现象叫服务==雪崩==。
 
 ![anchc](.images/anchc.png)
 
@@ -1185,15 +1185,17 @@ Hytrix能够提供服务降级、服务熔断、服务限流、接近实时的�
 
 ## 2、服务熔断机制
 
+## (1)、简介
+
 熔断机制是应对雪崩效应的一种微服务链路保护机制。
 
 当扇出链路的某个微服务不可用或者响应时间太长时，会进行服务的降级，进而熔断该节点微服务的调用，快速响应错误信息。当检测到该节点微服务调用响应正常后恢复调用链路。在SpringCloud框架里熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内20次调用失败就会启动熔断机制。熔断机制的注解是@HystrixCommand。
 
-### (1)、创建SCMS-Provider-Hystrix-8004工程
+### ()、创建SCMS-Provider-Hystrix-8004工程
 
 ![dadcxc](.images/dadcxc.png)
 
-### (2)、编辑pom.xml
+### (3)、编辑pom.xml
 
 在SCMS-Provider-Dept8001基础上添加Hystrix依赖
 
@@ -1204,7 +1206,7 @@ Hytrix能够提供服务降级、服务熔断、服务限流、接近实时的�
 </dependency>
 ```
 
-### (3)、编辑yml文件
+### ()、编辑yml文件
 
 在SCMS-Provider-Dept8001基础上修改端口号和应用名称
 
@@ -1216,7 +1218,7 @@ spring:
     name: Atguigu-SCMS-Hystrix-Dept
 ```
 
-### (4)、 Java代码
+### (5)、 Java代码
 
 把SCMS-Provider-Dept8001的Java代码复制过来。
 
@@ -1279,7 +1281,7 @@ public class SCMSProviderHystrixDept {
 }
 ```
 
-### (5)、测试
+### ()、测试
 
 这时启动Eureka集群和SCMS-Provider-Hystrix-8004工程即可。
 
@@ -1644,7 +1646,7 @@ zuul:
 
 访问方式http://localhost:9002/good/atguigu-demo/dept/get/3
 
-# 八、**SpringCloud**微服务理论
+# 八、SpringCloud微服务理论
 
 ## 1、 微服务
 
