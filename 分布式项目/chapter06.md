@@ -1,6 +1,10 @@
 # 第六章 swagger
 
+接口文档生成组件
+
 ![images](images/image91.png)
+
+![image-20191118000422947](images/image-20191118000422947.png)
 
 ## 1.加入依赖
 
@@ -161,3 +165,10 @@ java.lang.NoSuchMethodError: com.google.common.collect.FluentIterable.concat<br/
 将带有swagger注解的微服务启动起来，访问swagger-ui.html
 
 ![images](images/image92.png)
+
+![image-20191118001512273](images/image-20191118001512273.png)
+
+直接可以在此界面上进行接口的测试
+
+![image-20191118001749649](images/image-20191118001749649.png)
+

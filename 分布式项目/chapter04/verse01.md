@@ -79,7 +79,7 @@ PS：前端界面形式
 
 ![image](../images/image65.png)
 
-- 问题1：造成Session在各个服务器上“同量”保存。TomcatA保存了1G的Session数据，TomcatB也需要保存1G的Session数据。数据量太大的会导致Tomcat性能下降。
+- 问题1：造成Session在各个服务器上"同量"保存。TomcatA保存了1G的Session数据，TomcatB也需要保存1G的Session数据。数据量太大的会导致Tomcat性能下降。
 - 问题2：数据同步对性能有一定影响。
 - 问题3：对于集群外的服务器无效。
 
@@ -103,7 +103,7 @@ PS：前端界面形式
 - 问题1：具体一个浏览器，专门访问某一个具体服务器，如果服务器宕机，会丢失数据。存在单点故障风险。
 - 问题2：仅仅适用于集群范围内，超出集群范围，负载均衡服务器无效。
 
-#### [4]后端统一存储Session数据
+#### [4]==后端统一存储Session数据==
 
 后端存储Session数据时，一般需要使用Redis这样的内存数据库，而一般不采用MySQL这样的关系型数据库。原因如下：
 
@@ -125,6 +125,8 @@ PS：前端界面形式
 ### ③SpringSession使用
 
 以下文档针对在SpringBoot环境下使用
+
+![image-20191117233427891](images/image-20191117233427891.png)
 
 #### [1]引入依赖
 
@@ -154,7 +156,7 @@ spring.session.store-type=redis
 
 #### [3]基本原理
 
-概括：SpringSession从底层全方位“**<font color='blue'>接管</font>**”了Tomcat对Session的管理。
+概括：SpringSession从底层全方位"**<font color='blue'>接管</font>**"了Tomcat对Session的管理。
 
 ##### (0)SpringSession需要完成的任务
 

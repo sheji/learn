@@ -138,7 +138,7 @@ public String doLogin(MemberVO memberVO, Model model, HttpSession session) {
 
 
 
-## 2.退出登录
+## 4.退出登录
 
 ```java
 @RequestMapping("/member/logout.html")

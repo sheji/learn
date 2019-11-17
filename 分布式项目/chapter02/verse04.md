@@ -11,7 +11,9 @@
 
 ### ②token存储的两种方式
 
-##### [1]使用Cookie、Session机制存储
+##### [1]使用Cookie、Session机制存储 
+
+适合服务端渲染方式 JSP 
 
 ![images](../images/image82.png)
 
@@ -23,6 +25,8 @@
 | -------------- | ------------------------------------------------------------ |
 | localStorage   | 没有时间限制的数据存储，对应整个Web应用，相当于服务端域对象中的application |
 | sessionStorage | 针对一个 session 的数据存储，当用户关闭浏览器窗口后，数据会被删除。相当于服务端域对象中的session |
+
+适合前后端分离
 
 ![images](../images/image83.png)
 
@@ -39,7 +43,7 @@
 - 比较密码
   - 不一致：登录失败
   - 一致：继续执行
-- 生成token值
+- 生成token值 
 - 将token拼接固定前缀作为KEY，将MemberId作为VALUE存入Redis
 - 封装MemberSignSuccessVO对象
   - 用户昵称：username
