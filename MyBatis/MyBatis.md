@@ -1575,7 +1575,7 @@ insertinto t_student(`name`,`clazz_id`) values('stu0420_1',3);
 
 通过班级找到学生
 
-<collection>专门配置集合属性的标签
+\<collection>专门配置集合属性的标签
 
 学生类：
 
@@ -2519,7 +2519,7 @@ readOnly 为false 展示：
 
 每次二级缓存中取数据，都会创建一个新的对象
 
-readOnly 为false 展示：
+readOnly 为true 展示：
 
 ![image-20191121222942700](images/image-20191121222942700.png)
 
