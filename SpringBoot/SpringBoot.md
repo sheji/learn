@@ -2331,7 +2331,7 @@ SpringBoot对SpringMVC的自动配置不需要了，所有都是我们自己配�
 
 ```java
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
-@EnableWebMvc
+@EnableWebMvc //添加这个注解
 @Configuration
 public class MyMvcConfig extends WebMvcConfigurerAdapter {
 

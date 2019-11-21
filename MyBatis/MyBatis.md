@@ -63,7 +63,7 @@ select * from t_user;
 
 创建一个Java工程
 
-![](.images/20191016172526.png)
+![](images/20191016172526.png)
 
 导入jar包
 
@@ -192,7 +192,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
 
 ## 8、配置MyBatis配置文件的提示
 
-![](.images/20191016175624.png)
+![](images/20191016175624.png)
 
 # 三、传统方式的增，删，改，查实现
 
@@ -602,7 +602,7 @@ public class UserMapperTest {
 
 数据库的相关配置我们一般放在 jdbc.properties中
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191016200233.png)
+![image-20191121220656623](images/image-20191121220656623.png)
 
 mybatis-config.xml 要获取  jdbc.properties 中的内容，采用 \<properties> 标签
 
@@ -711,7 +711,7 @@ mybatis-config.xml 要获取  jdbc.properties 中的内容，采用 \<properties
 	</typeAliases>
 ```
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191016201804.png)
+![image-20191121214914112](images/image-20191121214914112.png)
 
 在 map.xml 中原来要使用全类名的地方
 
@@ -978,7 +978,7 @@ UserMapper.xml配置文件内容：
 
 | ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191016220245.png) |      |
+| ![image-20191121223148458](images/image-20191121223148458.png) |      |
 
 
 
@@ -1225,7 +1225,7 @@ ${} 它是把表示的参数值原样输出，然后和sql语句的字符串做�
 
 ### (2)、MySQL的字符串拼接，concat函数实现
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017103208.png)
+![image-20191121221501699](images/image-20191121221501699.png)
 
 可以使用concat很好的解决 模糊查询的问题
 
@@ -1495,7 +1495,7 @@ KeyMapper.xml配置文件：
 
 运行结果：查询了两次
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017114943.png)
+![image-20191121223305587](images/image-20191121223305587.png)
 
 ## 3、延迟加载（懒加载）
 
@@ -1512,7 +1512,7 @@ KeyMapper.xml配置文件：
 
 上述代码继续运行，可以看出只查询了一次
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017114427.png)
+![image-20191121221721991](images/image-20191121221721991.png)
 
 修改测试代码：
 
@@ -1537,7 +1537,7 @@ KeyMapper.xml配置文件：
 
 可以看出，当用到了第二个对象的时候，才进行第二次查询
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017114625.png)
+![image-20191121223403146](images/image-20191121223403146.png)
 
 ## 4、多对一、一对多案例
 
@@ -1863,9 +1863,9 @@ StudentMapper.xml配置文件：
 
 运行结果：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017163326.png)
+![image-20191121221838832](images/image-20191121221838832.png)
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017163535.png)
+![image-20191121221912304](images/image-20191121221912304.png)
 
 双向关联的常见问题：死循环。
 
@@ -2287,9 +2287,9 @@ public class UserMapperTest {
 
 日志中只查询了一次 sql
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017201409.png)
+![image-20191121222110086](images/image-20191121222110086.png)
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017201753.png)
+![image-20191121222234674](images/image-20191121222234674.png)
 
 ### (1)、一级缓存的管理
 
@@ -2391,7 +2391,7 @@ public void queryOne() {
 
 ## 2、MyBatis的二级缓存
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017203331.png)
+![image-20191121223500930](images/image-20191121223500930.png)
 
 ### (1)、二级缓存使用方法
 
@@ -2440,7 +2440,7 @@ public void queryOne() {
 
 日志显示：缓存命中率为 0.75，4次查询命中了三次
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017203851.png)
+![image-20191121222733559](images/image-20191121222733559.png)
 
 ### (3)、useCache="false"的演示和说明
 
@@ -2515,13 +2515,13 @@ cache标签示例解析：
 
 readOnly 为false 展示：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017205742.png)
+![image-20191121222847882](images/image-20191121222847882.png)
 
 每次二级缓存中取数据，都会创建一个新的对象
 
 readOnly 为false 展示：
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017205944.png)
+![image-20191121222942700](images/image-20191121222942700.png)
 
 每次二级缓存中取数据，都是地址值的引用，不会创建新对象。
 
@@ -2617,7 +2617,7 @@ select * from t_book;
 
 ## 2、创建一个Java工程
 
-![](https://raw.githubusercontent.com/sheji/CommonImage/master/img/20191017211956.png)
+![image-20191121223010657](images/image-20191121223010657.png)
 
 导入jar包：
 
