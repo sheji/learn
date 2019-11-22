@@ -10,7 +10,7 @@
 
 **控制器**（Controller）：用来控制应用程序的流程和处理用户所发出的请求。当控制器接收到用户的请求后，会将用户的数据和模型的更新相映射，也就是调用模型来实现用户请求的功能；然后控制器会选择用于响应的视图，把模型更新后的数据展示给用户。起到总调度的作用，Controller通常由框架实现，使用时基本不需要编写代码
 
-![image-20191028195452040](.images/image-20191028195452040.png)
+![image-20191028195452040](images/image-20191028195452040.png)
 
 ## 2、SpringMVC介绍
 
@@ -28,27 +28,27 @@ SpringMVC 框架围绕 ==DispatcherServlet== 这个核心展开，DispatcherServ
 
 | dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![图片 1](.images/%E5%9B%BE%E7%89%87%201.png)                |      |
+| ![图片 1](images/%E5%9B%BE%E7%89%87%201.png)                 |      |
 
 # 二、springmvc程序(Hello World)
 
 ## 1、创建工程
 
-![image-20191028195637443](.images/image-20191028195637443.png)
+![image-20191028195637443](images/image-20191028195637443.png)
 
-![image-20191028195649833](.images/image-20191028195649833.png)
+![image-20191028195649833](images/image-20191028195649833.png)
 
-![image-20191028195708224](.images/image-20191028195708224.png)
+![image-20191028195708224](images/image-20191028195708224.png)
 
 点击"finish"完成：
 
-![image-20191028195723360](.images/image-20191028195723360.png)
+![image-20191028195723360](images/image-20191028195723360.png)
 
 ## 2、引入jar包及源码包
 
 1. 从 spring-framework-4.3.12.RELEASE\libs目录下copy一下jar包：
 
-![image-20191028195736623](.images/image-20191028195736623.png)
+![image-20191028195736623](images/image-20191028195736623.png)
 
 Spring-web：web开发相关的基础功能包
 
@@ -56,13 +56,13 @@ Spring-webmvc：SpringMVC框架核心包
 
 2. 从课前资料lib\extra中copy日志相关jar包：
 
-   ![image-20191028195747143](.images/image-20191028195747143.png)
+   ![image-20191028195747143](images/image-20191028195747143.png)
 
    
 
 ## 3、配置web.xml-DispatcherServlet入口
 
-![image-20191028195758229](.images/image-20191028195758229.png)
+![image-20191028195758229](images/image-20191028195758229.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -95,7 +95,7 @@ Spring-webmvc：SpringMVC框架核心包
 </web-app>
 ```
 
-![image-20191028200613029](.images/image-20191028200613029.png)
+![image-20191028200613029](images/image-20191028200613029.png)
 
 Tomcat 运行的时候，tomcat 容器加载 web.xml 文件，然后根据 web.xml 加载其中的 DispatcherServlet ，DispatcherServlet 加载 springmvc 的容器， springmvc 的容器再加载 springmvc-servlet.xml 的配置文件
 
@@ -109,15 +109,15 @@ Tomcat 运行的时候，tomcat 容器加载 web.xml 文件，然后根据 web.x
 
 找到 DispatcherServlet 这个类：
 
-![image-20191028200638042](.images/image-20191028200638042.png)
+![image-20191028200638042](images/image-20191028200638042.png)
 
 | dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
 | ------------------------------------------------------------ | ---- |
-| ![image-20191028200652285](.images/image-20191028200652285.png) |      |
+| ![image-20191028200652285](images/image-20191028200652285.png) |      |
 
 由此知道，springmvc 默认读取 /WEB-INF/{servlet-name}-servlet.xml 这个配置文件，因为我们在 web.xml 中的 servlet-name 配置的是 springmvc，所以在WEB-INF目录下创建 springmvc-servlet.xml 文件：
 
-![image-20191028200706398](.images/image-20191028200706398.png)
+![image-20191028200706398](images/image-20191028200706398.png)
 
 springmvc 配置文件的头信息和 spring 一样。
 
@@ -166,9 +166,9 @@ springmvc 配置文件的头信息和 spring 一样。
 
 ## 5、HandlerMapping映射器
 
-![image-20191028200721450](.images/image-20191028200721450.png)
+![image-20191028200721450](images/image-20191028200721450.png)
 
-![image-20191028200730251](.images/image-20191028200730251.png)
+![image-20191028200730251](images/image-20191028200730251.png)
 
 springmvc-servlet.xml 配置文件中
 
@@ -179,9 +179,9 @@ springmvc-servlet.xml 配置文件中
 
 ## 6、HandlerAdapter适配器
 
-![image-20191028200744717](.images/image-20191028200744717.png)
+![image-20191028200744717](images/image-20191028200744717.png)
 
-![image-20191028200755554](.images/image-20191028200755554.png)
+![image-20191028200755554](images/image-20191028200755554.png)
 
 springmvc-servlet.xml 配置文件中
 
@@ -192,7 +192,7 @@ springmvc-servlet.xml 配置文件中
 
 ## 7、Handler - HelloController
 
-![image-20191028203840225](.images/image-20191028203840225.png)
+![image-20191028203840225](images/image-20191028203840225.png)
 
 HelloController内容：
 
@@ -227,11 +227,11 @@ springmvc-servlet.xml 配置文件中，HandlerAdapter 根据 bean 的 name 属�
 
 ## 8、ViewResolver试图解析器
 
-![image-20191028203905416](.images/image-20191028203905416.png)
+![image-20191028203905416](images/image-20191028203905416.png)
 
-![image-20191028203915222](.images/image-20191028203915222.png)
+![image-20191028203915222](images/image-20191028203915222.png)
 
-![image-20191028203925337](.images/image-20191028203925337.png)
+![image-20191028203925337](images/image-20191028203925337.png)
 
 由此可见，视图解析器的规则是：prefix+viewName+suffix
 
@@ -247,7 +247,7 @@ springmvc-servlet.xml 配置文件中，HandlerAdapter 根据 bean 的 name 属�
 
 添加jsp页面（hello.jsp）
 
-![image-20191028204052304](.images/image-20191028204052304.png)
+![image-20191028204052304](images/image-20191028204052304.png)
 
 Jsp内容：
 
@@ -268,15 +268,15 @@ Jsp内容：
 
 ## 10、运行结果
 
-![image-20191028204108913](.images/image-20191028204108913.png)
+![image-20191028204108913](images/image-20191028204108913.png)
 
 通过浏览器访问：http://localhost:8080/springmvc/hello.do
 
-![image-20191028204118182](.images/image-20191028204118182.png)
+![image-20191028204118182](images/image-20191028204118182.png)
 
 ## 11、添加log日志
 
-![image-20191028204131191](.images/image-20191028204131191.png)
+![image-20191028204131191](images/image-20191028204131191.png)
 
 Log4j.properties内容：
 
@@ -303,11 +303,11 @@ log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c
 
 ## 12、流程分析
 
-![image-20191028204145915](.images/image-20191028204145915.png)
+![image-20191028204145915](images/image-20191028204145915.png)
 
-![image-20191028204157042](.images/image-20191028204157042.png)
+![image-20191028204157042](images/image-20191028204157042.png)
 
-![image-20191028204207588](.images/image-20191028204207588.png)
+![image-20191028204207588](images/image-20191028204207588.png)
 
 ## 13、优化helloworld程序
 
@@ -321,7 +321,7 @@ log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c
 
 解决方案：让 tomcat 启动时就去加载 DispatcherServlet 并初始化 Spring 容器。
 
-![image-20191028204221766](.images/image-20191028204221766.png)
+![image-20191028204221766](images/image-20191028204221766.png)
 
 #### [2]、指定SpringMVC的配置文件
 
@@ -331,7 +331,7 @@ log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c
 
 例如：现在把配置文件移动到src根目录下
 
-![image-20191028204240225](.images/image-20191028204240225.png)
+![image-20191028204240225](images/image-20191028204240225.png)
 
 这时就需要在 web.xml 中去指定 springMVC 的存放路径，配置方式：
 
@@ -360,29 +360,29 @@ log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c
 
 原理：参见 DispatcherServlet 父类的注释
 
-![image-20191028204309024](.images/image-20191028204309024.png)
+![image-20191028204309024](images/image-20191028204309024.png)
 
 ### (2)、{servlet-name}-servlet.xml
 
 DispatchServlet.class源码中：
 
-![image-20191028204319033](.images/image-20191028204319033.png)
+![image-20191028204319033](images/image-20191028204319033.png)
 
 找到DispatchServlet.properties文件：
 
-![image-20191028204329427](.images/image-20191028204329427.png)
+![image-20191028204329427](images/image-20191028204329427.png)
 
-![image-20191028204339356](.images/image-20191028204339356.png)
+![image-20191028204339356](images/image-20191028204339356.png)
 
 在这个默认的配置文件中，已经配置了映射器和适配器。
 
 所以在 springmvc-servlet.xml 文件中可以省略之前配置的映射器和适配器
 
-![image-20191028204418747](.images/image-20191028204418747.png)
+![image-20191028204418747](images/image-20191028204418747.png)
 
 再次测试：
 
-![image-20191028204429331](.images/image-20191028204429331.png)
+![image-20191028204429331](images/image-20191028204429331.png)
 
 ## 14、helloword的缺点
 
@@ -400,11 +400,11 @@ DispatchServlet.class源码中：
 
 > 在 DispatchServlet.properties 文件中，已经提供了默认的注解映射器和适配器，所以咱们可以直接书写注解的代码
 
-![image-20191028204503523](.images/image-20191028204503523.png)
+![image-20191028204503523](images/image-20191028204503523.png)
 
 ### (1)、创建hello2Controller
 
-![image-20191028204514630](.images/image-20191028204514630.png)
+![image-20191028204514630](images/image-20191028204514630.png)
 
 内容：
 
@@ -460,7 +460,7 @@ public class Hello2Controller {
 
 ### (3)、测试
 
-![image-20191028204529180](.images/image-20191028204529180.png)
+![image-20191028204529180](images/image-20191028204529180.png)
 
 ### (4)、日志
 
@@ -484,9 +484,9 @@ public class Hello2Controller {
 
 找到默认的注解映射器和适配器，发现他们都已过时。
 
-![image-20191028204542345](.images/image-20191028204542345.png)
+![image-20191028204542345](images/image-20191028204542345.png)
 
-![image-20191028204550582](.images/image-20191028204550582.png)
+![image-20191028204550582](images/image-20191028204550582.png)
 
 既然默认配置的映射器和适配器都已经过期，并且springmvc也推荐了相应的支持注解的映射器和适配器
 
@@ -531,7 +531,7 @@ public class Hello2Controller {
 
 ### (2)、测试
 
-![image-20191028204605246](.images/image-20191028204605246.png)
+![image-20191028204605246](images/image-20191028204605246.png)
 
 ### (3)、日志
 
@@ -588,7 +588,7 @@ public class Hello2Controller {
 
 AnnotationDrivenBeanDefinitionParser 的注释
 
-![image-20191028204622111](.images/image-20191028204622111.png)
+![image-20191028204622111](images/image-20191028204622111.png)
 
 ## ==4、注解配置最终方案==
 
@@ -690,11 +690,11 @@ public ModelAndView test4(){
 
 测试：
 
-![image-20191028204725602](.images/image-20191028204725602.png)
+![image-20191028204725602](images/image-20191028204725602.png)
 
-![image-20191028204732075](.images/image-20191028204732075.png)
+![image-20191028204732075](images/image-20191028204732075.png)
 
-![image-20191028204740485](.images/image-20191028204740485.png)
+![image-20191028204740485](images/image-20191028204740485.png)
 
 思考：
 
@@ -710,7 +710,7 @@ public ModelAndView test4(){
 
 ## 3、占位符的映射
 
-![image-20191028204800105](.images/image-20191028204800105.png)
+![image-20191028204800105](images/image-20191028204800105.png)
 
 > @RequestMapping(value=“/user/{userId}/{name} ")
 >
@@ -734,11 +734,11 @@ public ModelAndView test5(@PathVariable("name")String name, @PathVariable("id")L
 
 测试：
 
-![image-20191028204810620](.images/image-20191028204810620.png)
+![image-20191028204810620](images/image-20191028204810620.png)
 
 如果传递的参数类型和接受参数的形参类型不一致，则会自动转换，如果转换出错（例如：id传了abc字符串，方法形参使用Long来接受参数），则会报400错误（参数列表错误）
 
-![image-20191028204823674](.images/image-20191028204823674.png)
+![image-20191028204823674](images/image-20191028204823674.png)
 
 ## 4、限定请求方法的映射
 
@@ -756,23 +756,23 @@ public ModelAndView test6(){
 
 用到了框架提供的 RequestMethod 枚举类，源代码截图：
 
-![image-20191028204833809](.images/image-20191028204833809.png)
+![image-20191028204833809](images/image-20191028204833809.png)
 
 此时 show6 限定请求方法为 POST 请求，如果通过浏览器地址栏输入请求路径（也就是GET请求），结果：
 
-![image-20191028204845744](.images/image-20191028204845744.png)
+![image-20191028204845744](images/image-20191028204845744.png)
 
 地址栏无法模拟 POST 请求，需要使用浏览器插件，模拟 POST 请求，下面为 chrome 浏览器的模拟插件，参见课前资料
 
 安装过程参见教程：
 
-![image-20191028204859926](.images/image-20191028204859926.png)
+![image-20191028204859926](images/image-20191028204859926.png)
 
 安装完成后的使用：应用 -- > Advanced REST client
 
-![image-20191028204910290](.images/image-20191028204910290.png)
+![image-20191028204910290](images/image-20191028204910290.png)
 
-![image-20191028204920089](.images/image-20191028204920089.png)
+![image-20191028204920089](images/image-20191028204920089.png)
 
 **限定多种请求方法**
 
@@ -860,11 +860,11 @@ public ModelAndView test13() {
 
 谷歌浏览器测试：
 
-![image-20191028204940581](.images/image-20191028204940581.png)
+![image-20191028204940581](images/image-20191028204940581.png)
 
 火狐浏览器测试：
 
-![image-20191028204948512](.images/image-20191028204948512.png)
+![image-20191028204948512](images/image-20191028204948512.png)
 
 ## 7、组合注解
 
@@ -927,7 +927,7 @@ public ModelAndView test18(HttpServletRequest request, HttpServletResponse respo
 }
 ```
 
-![image-20191028205008762](.images/image-20191028205008762.png)
+![image-20191028205008762](images/image-20191028205008762.png)
 
 ## 2、SpringMVC特有内置对象
 
@@ -947,7 +947,7 @@ public String test19(Model model, ModelMap modelMap, Map<String, Object> map){
 
 测试：
 
-![image-20191028205020465](.images/image-20191028205020465.png)
+![image-20191028205020465](images/image-20191028205020465.png)
 
 ## 3、接收占位符参数
 
@@ -965,11 +965,11 @@ public String test20(@PathVariable("name")String name, Model model){
 
 测试：
 
-![image-20191028205030371](.images/image-20191028205030371.png)
+![image-20191028205030371](images/image-20191028205030371.png)
 
 省略 @PathVariable(value="id") 中的 (value="id") 发现也能访问成功，是因为编译器开启了功能
 
-![image-20191028205353475](.images/image-20191028205353475.png)
+![image-20191028205353475](images/image-20191028205353475.png)
 
 ## 4、接收普通的请求参数
 
@@ -1011,7 +1011,7 @@ public String test23(@RequestParam(value = "name", defaultValue = "lisi")String 
 >
 > defaultValue：默认值。如果设置了该值，required=true将失效，自动为false，如果请求中不包含该参数则使用默认值。
 
-![image-20191028205416517](.images/image-20191028205416517.png)
+![image-20191028205416517](images/image-20191028205416517.png)
 
 ```java
 @RequestMapping("show24")
@@ -1023,7 +1023,7 @@ public String test24(@RequestHeader("User-Agent")String userAgent, Model model){
 
 测试：
 
-![image-20191028205428024](.images/image-20191028205428024.png)
+![image-20191028205428024](images/image-20191028205428024.png)
 
 ## 6、获取cookie
 
@@ -1039,7 +1039,7 @@ public String test25(@CookieValue("JSESSIONID")String sessionId, Model model){
 
 测试：
 
-![image-20191028205443914](.images/image-20191028205443914.png)
+![image-20191028205443914](images/image-20191028205443914.png)
 
 ## 7、基本数据类型的绑定
 
@@ -1047,7 +1047,7 @@ public String test25(@CookieValue("JSESSIONID")String sessionId, Model model){
 
 在 WebContent 目录下，创建 user.html 表单：
 
-![image-20191028205457395](.images/image-20191028205457395.png)
+![image-20191028205457395](images/image-20191028205457395.png)
 
 ```html
 <!DOCTYPE html>
@@ -1106,19 +1106,19 @@ public void test26(@RequestParam("name") String name, @RequestParam("age") Integ
 
 相应状态 HttpStatus 是一个枚举类：
 
-![image-20191028205514254](.images/image-20191028205514254.png)
+![image-20191028205514254](images/image-20191028205514254.png)
 
 测试：
 
-![image-20191028205523556](.images/image-20191028205523556.png)
+![image-20191028205523556](images/image-20191028205523556.png)
 
 由于Controller方法没有任何返回值，所以浏览器没有任何信息：
 
-![image-20191028205532063](.images/image-20191028205532063.png)
+![image-20191028205532063](images/image-20191028205532063.png)
 
 控制台：
 
-![image-20191028205539929](.images/image-20191028205539929.png)
+![image-20191028205539929](images/image-20191028205539929.png)
 
 ## 8、Pojo对象的绑定
 
@@ -1136,11 +1136,11 @@ public String test27(User user, @RequestParam("name") String name, Model model) 
 
 测试：
 
-![image-20191028205553143](.images/image-20191028205553143.png)
+![image-20191028205553143](images/image-20191028205553143.png)
 
 User类：
 
-![image-20191028205602514](.images/image-20191028205602514.png)
+![image-20191028205602514](images/image-20191028205602514.png)
 
 User内容：
 
@@ -1223,7 +1223,7 @@ public String test28(Model model, List<User> users) {
 }
 ```
 
-![image-20191028205625868](.images/image-20191028205625868.png)
+![image-20191028205625868](images/image-20191028205625868.png)
 
 如果方法需要接受的 list 集合，不能够直接在方法中形参中使用List\<User>
 
@@ -1233,7 +1233,7 @@ List 的绑定，需要将 List 对象包装到一个类中才能绑定
 
 UserVO：
 
-![image-20191028205636972](.images/image-20191028205636972.png)
+![image-20191028205636972](images/image-20191028205636972.png)
 
 内容：
 
@@ -1258,17 +1258,17 @@ public class UserVO {
 
 Controller 方法使用 UserVO 接收集合对象：
 
-![image-20191028205647800](.images/image-20191028205647800.png)
+![image-20191028205647800](images/image-20191028205647800.png)
 
 效果：
 
-![image-20191028205656125](.images/image-20191028205656125.png)
+![image-20191028205656125](images/image-20191028205656125.png)
 
 简单集合：
 
-![image-20191028205937126](.images/image-20191028205937126.png)
+![image-20191028205937126](images/image-20191028205937126.png)
 
-![image-20191028205901559](.images/image-20191028205901559.png)
+![image-20191028205901559](images/image-20191028205901559.png)
 
 # 六、转发及重定向(forward、redirect)
 
@@ -1329,19 +1329,19 @@ public String test31(Model model, @RequestParam("id")Long id, @RequestParam("key
 
 在 RestClient 测试转发（show29.do）：
 
-![image-20191028210130669](.images/image-20191028210130669.png)
+![image-20191028210130669](images/image-20191028210130669.png)
 
 在浏览器中测试转发：
 
-![image-20191028210139059](.images/image-20191028210139059.png)
+![image-20191028210139059](images/image-20191028210139059.png)
 
 使用 RestClient 测试重定向（show30.do）：
 
-![image-20191028210147100](.images/image-20191028210147100.png)
+![image-20191028210147100](images/image-20191028210147100.png)
 
 在浏览器地址栏测试重定向：
 
-![image-20191028210155475](.images/image-20191028210155475.png)
+![image-20191028210155475](images/image-20191028210155475.png)
 
 # 七、jstl标签的使用
 
@@ -1353,11 +1353,11 @@ public String test31(Model model, @RequestParam("id")Long id, @RequestParam("key
 
 ## 1、导入jstl依赖包
 
-![image-20191028210204760](.images/image-20191028210204760.png)
+![image-20191028210204760](images/image-20191028210204760.png)
 
 ## 2、静态页面
 
-![image-20191028210212179](.images/image-20191028210212179.png)
+![image-20191028210212179](images/image-20191028210212179.png)
 
 内容
 
@@ -1447,7 +1447,7 @@ public String test31(Model model, @RequestParam("id")Long id, @RequestParam("key
 
 ## 5、使用\<c:foreach>标签
 
-![image-20191028210228511](.images/image-20191028210228511.png)
+![image-20191028210228511](images/image-20191028210228511.png)
 
 ## 6、Controller方法
 
@@ -1470,13 +1470,13 @@ public String test32(Model model){
 
 ##  7、效果
 
-![image-20191028210244463](.images/image-20191028210244463.png)
+![image-20191028210244463](images/image-20191028210244463.png)
 
 ## 8、SpringMVC标签
 
 ### (1)、Jsp页面
 
-![image-20191028210402190](.images/image-20191028210402190.png)
+![image-20191028210402190](images/image-20191028210402190.png)
 
 user.jsp内容：
 
@@ -1534,11 +1534,11 @@ public void save(User user){
 
 访问user.jsp:
 
-![image-20191028210416202](.images/image-20191028210416202.png)
+![image-20191028210416202](images/image-20191028210416202.png)
 
 输入内容，点击提交：
 
-![image-20191028210424884](.images/image-20191028210424884.png)
+![image-20191028210424884](images/image-20191028210424884.png)
 
 # 八、JSON
 
@@ -1550,7 +1550,7 @@ public void save(User user){
 
 ## 1、引入jackson依赖包
 
-![image-20191028210437266](.images/image-20191028210437266.png)
+![image-20191028210437266](images/image-20191028210437266.png)
 
 ## 2、原理
 
@@ -1558,9 +1558,9 @@ Json 的转化是由注解驱动完成的。
 
 注解驱动会判断是否引入了 jackson 依赖，并决定是否加载 json 转化的消息转化器
 
-![image-20191028210451581](.images/image-20191028210451581.png)
+![image-20191028210451581](images/image-20191028210451581.png)
 
-![image-20191028210500701](.images/image-20191028210500701.png)
+![image-20191028210500701](images/image-20191028210500701.png)
 
 ## 3、@ResponseBody
 
@@ -1594,7 +1594,7 @@ public List<User> test33(Model model){
 
 测试：
 
-![image-20191028210524024](.images/image-20191028210524024.png)
+![image-20191028210524024](images/image-20191028210524024.png)
 
 ### (1)、@JsonFormat
 
@@ -1602,25 +1602,25 @@ public List<User> test33(Model model){
 
 首先在 User 中添加日期类型的 birthday 字段。
 
-![image-20191028210536681](.images/image-20191028210536681.png)
+![image-20191028210536681](images/image-20191028210536681.png)
 
 改造show33方法：
 
-![image-20191028210545660](.images/image-20191028210545660.png)
+![image-20191028210545660](images/image-20191028210545660.png)
 
 在浏览器中测试：
 
-![image-20191028210556012](.images/image-20191028210556012.png)
+![image-20191028210556012](images/image-20191028210556012.png)
 
 显示格式极其不友好。
 
 在 birthday 字段上使用 @JsonFormat 注解格式化日期：@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 
-![image-20191028210605190](.images/image-20191028210605190.png)
+![image-20191028210605190](images/image-20191028210605190.png)
 
 再次测试：
 
-![image-20191028210613178](.images/image-20191028210613178.png)
+![image-20191028210613178](images/image-20191028210613178.png)
 
 ### (2)、@JsonIgnore
 
@@ -1628,19 +1628,19 @@ public List<User> test33(Model model){
 
 在 User 类中添加 password 字段及 getter 和 setter 方法：
 
-![image-20191028210621804](.images/image-20191028210621804.png)
+![image-20191028210621804](images/image-20191028210621804.png)
 
 再次改造show33方法：
 
-![image-20191028210631460](.images/image-20191028210631460.png)
+![image-20191028210631460](images/image-20191028210631460.png)
 
 测试：
 
-![image-20191028210639816](.images/image-20191028210639816.png)
+![image-20191028210639816](images/image-20191028210639816.png)
 
 在User类中的password字段上使用@JsonIgnore注解：
 
-![image-20191028210649734](.images/image-20191028210649734.png)
+![image-20191028210649734](images/image-20191028210649734.png)
 
 ## 4、@RequestBody
 
@@ -1652,7 +1652,7 @@ public String test34(@RequestBody User user, Model model){
 }
 ```
 
-![image-20191028210659924](.images/image-20191028210659924.png)
+![image-20191028210659924](images/image-20191028210659924.png)
 
 # 九、文件上传
 
@@ -1660,7 +1660,7 @@ public String test34(@RequestBody User user, Model model){
 
 ## 1、添加文件上传依赖包
 
-![image-20191028210711541](.images/image-20191028210711541.png)
+![image-20191028210711541](images/image-20191028210711541.png)
 
 ## 2、文件上传解析器
 
@@ -1691,7 +1691,7 @@ public String test35(Model model, @RequestParam("file") MultipartFile file)
 
 ## 4、成功页面
 
-![image-20191028210725262](.images/image-20191028210725262.png)
+![image-20191028210725262](images/image-20191028210725262.png)
 
 在webapp目录下创建success.html文件
 
@@ -1710,13 +1710,13 @@ public String test35(Model model, @RequestParam("file") MultipartFile file)
 
 ## 5、效果
 
-![image-20191028210734162](.images/image-20191028210734162.png)
+![image-20191028210734162](images/image-20191028210734162.png)
 
 # 十、异常处理
 
 ## 1、实现HandlerExceptionResolver接口
 
-![image-20191028210744429](.images/image-20191028210744429.png)
+![image-20191028210744429](images/image-20191028210744429.png)
 
 实现：
 
@@ -1748,7 +1748,7 @@ public class MyException implements HandlerExceptionResolver {
 
 HandlerExceptionResolver 异常解析器接口，提供了一些默认的实现类，其中有一个SimpleMappingExceptionResolver：
 
-![image-20191028210754885](.images/image-20191028210754885.png)
+![image-20191028210754885](images/image-20191028210754885.png)
 
 我们只需要简单的配置一下就可以使用了。
 
@@ -1771,7 +1771,7 @@ key：异常类的全路径
 
 创建对应的jsp页面：
 
-![image-20191028210804574](.images/image-20191028210804574.png)
+![image-20191028210804574](images/image-20191028210804574.png)
 
 ## 3、使用@ExceptionHandler注解
 
@@ -1801,7 +1801,7 @@ public ModelAndView handleException2(RuntimeException ex){
 
 ## ==4、使用@ControllerAdvice + @ ExceptionHandler==
 
-![image-20191028210817635](.images/image-20191028210817635.png)
+![image-20191028210817635](images/image-20191028210817635.png)
 
 内容：
 
@@ -1858,13 +1858,13 @@ c.afterCompletion视图渲染完成之后执行
 
  ## 1、拦截器的执行过程
 
-![image-20191028210831572](.images/image-20191028210831572.png)
+![image-20191028210831572](images/image-20191028210831572.png)
 
-![image-20191028210839787](.images/image-20191028210839787.png)
+![image-20191028210839787](images/image-20191028210839787.png)
 
 ## 2、编写自定义拦截器
 
-![image-20191028210849104](.images/image-20191028210849104.png)
+![image-20191028210849104](images/image-20191028210849104.png)
 
 MyInterceptor内容：
 
@@ -1923,11 +1923,11 @@ public class MyInterceptor implements HandlerInterceptor {
 
 ## 4、测试
 
-![image-20191028210902211](.images/image-20191028210902211.png)
+![image-20191028210902211](images/image-20191028210902211.png)
 
 ## 5、配置多个拦截器
 
-![image-20191028210910049](.images/image-20191028210910049.png)
+![image-20191028210910049](images/image-20191028210910049.png)
 
 编写拦截器2：
 
@@ -1988,7 +1988,7 @@ public class MyInterceptor2 implements HandlerInterceptor {
 
 测试：
 
-![image-20191028210926742](.images/image-20191028210926742.png)
+![image-20191028210926742](images/image-20191028210926742.png)
 
 结论：拦截器的前置方法依次执行，后置方法和完成方法倒续执行
 

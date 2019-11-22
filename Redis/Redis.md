@@ -158,7 +158,7 @@ ps -ef | grep redis | grep -v grep
 tail -f redis.log
 ```
 
-![image-20191029193622898](.images/image-20191029193622898.png)
+![image-20191029193622898](images/image-20191029193622898.png)
 
 
 
@@ -208,7 +208,7 @@ Redis中最基本的类型，它是key对应的一个单一值。二进制安全
 
 Redis 列表是简单的字符串列表，按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）。说明它的底层是基于链表实现的，所以它操作时头尾效率高，中间效率低。
 
-![p01](.images/p01.png)
+![p01](images/p01.png)
 
 ## 4.set类型
 
@@ -222,7 +222,7 @@ Redis的set是string类型的无序集合。它是基于哈希表实现的。   
 
 可以当做Java中的Map<String,Object>对待。
 
-![image-20191029210951845](.images/image-20191029210951845.png)
+![image-20191029210951845](images/image-20191029210951845.png)
 
 ## 6.zset类型
 
@@ -420,7 +420,7 @@ OK
 
 
 
-![image-20191029210754209](.images/image-20191029210754209.png)
+![image-20191029210754209](images/image-20191029210754209.png)
 
 
 
@@ -534,7 +534,7 @@ save 60 10000
 
 压力测试：写入成千上万的数据
 
-![image-20191029222202596](.images/image-20191029222202596.png)
+![image-20191029222202596](images/image-20191029222202596.png)
 
 #### [2]使用保存命令
 
@@ -771,13 +771,13 @@ QUEUED
 
   ==认为当前环境不容易发生碰撞==，所以执行操作前不锁定数据，万一碰撞真的发生了，那么放弃自己的操作。
 
-![image-20191029234324478](.images/image-20191029234324478.png)
+![image-20191029234324478](images/image-20191029234324478.png)
 
 ​	乐观锁性能更好，读操作很多。
 
 # 八、Redis主从复制机制
 
-![p02](.images/p02.png)
+![p02](images/p02.png)
 
 ## 1.读写分离的好处：
 
@@ -790,7 +790,7 @@ QUEUED
 
 Redis集群在运行时使用的是同一个可执行文件，只是对应的配置文件不同。
 
-![p03](.images/p03.png)
+![p03](images/p03.png)
 
 每个配置文件中相同的参数是：
 
@@ -877,11 +877,11 @@ SLAVEOF 127.0.0.1 6000
 
 查看6000的这个服务器
 
-![image-20191030125713618](.images/image-20191030125713618.png)
+![image-20191030125713618](images/image-20191030125713618.png)
 
 查看7000的这个服务器
 
-![image-20191030125941694](.images/image-20191030125941694.png)
+![image-20191030125941694](images/image-20191030125941694.png)
 
 ### ③取消主从关系
 
@@ -905,7 +905,7 @@ SLAVEOF NO ONE
 
 通过哨兵服务器监控master/slave实现主从复制集群的自动管理。
 
-![p04](.images/p04.png)
+![p04](images/p04.png)
 
 ### ②相关概念
 
@@ -933,7 +933,7 @@ vim /usr/local/cluster-redis/sentinel.conf
 
 从服务器宕机 --> 重新启动
 
-![image-20191030131746646](.images/image-20191030131746646.png)
+![image-20191030131746646](images/image-20191030131746646.png)
 
 主服务器宕机 -->重新启动
 
@@ -1044,9 +1044,9 @@ jedis.close();
 
 可能出现连接超时，主要是服务器上防火墙原因
 
-![image-20191030170402924](.images/image-20191030170402924.png)
+![image-20191030170402924](images/image-20191030170402924.png)
 
-![image-20191030170519040](.images/image-20191030170519040.png)
+![image-20191030170519040](images/image-20191030170519040.png)
 
 ```html
 systemctl status firewalld.service   //查看防火墙状态
@@ -1060,7 +1060,7 @@ systemctl start firewalld.service    //开启防火墙
 
 Jedis的日常操作都在Jedis类中
 
-![image-20191030173030931](.images/image-20191030173030931.png)
+![image-20191030173030931](images/image-20191030173030931.png)
 
 
 

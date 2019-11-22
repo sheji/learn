@@ -256,7 +256,7 @@ public class LambdaTest1 {
 - 我们可以在一个接口上使用 ==@FunctionalInterface== 注解，这样做可以检查它是否是一个函数式接口。同时 javadoc 也会包含一条声明，说明这个接口是一个函数式接口。 
 - ==在java.util.function包下定义了Java 8 的丰富的函数式接口== 
 
- ![image-20191103222127637](.images/image-20191103222127637.png)
+ ![image-20191103222127637](images/image-20191103222127637.png)
 
 
 
@@ -272,11 +272,11 @@ public class LambdaTest1 {
 
 ## 3、自定义函数式接口 
 
-![image-20191103222559064](.images/image-20191103222559064.png)
+![image-20191103222559064](images/image-20191103222559064.png)
 
 函数式接口中使用泛型: 
 
-![image-20191103222617079](.images/image-20191103222617079.png)
+![image-20191103222617079](images/image-20191103222617079.png)
 
 ## 4、Java 内置四大核心函数式接口 
 
@@ -728,7 +728,7 @@ Stream到底是什么呢?
 
 一旦执行终止操作，就执行中间操作链，并产生结果。之后，不会再被使用 
 
-![image-20191104102853808](.images/image-20191104102853808.png)
+![image-20191104102853808](images/image-20191104102853808.png)
 
 ## 5、创建 Stream方式 
 

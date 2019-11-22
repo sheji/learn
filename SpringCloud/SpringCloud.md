@@ -20,17 +20,17 @@
 
 (3)、 聚合、依赖、调用关系
 
-![xxx](.images/xxx.png)
+![xxx](images/xxx.png)
 
 ## 2、SCMS-Parent创建过程
 
 ### (1)、创建Maven工程
 
-![xxx](.images/xxx-3735730.png)
+![xxx](images/xxx-3735730.png)
 
-![image-20191114205255889](.images/image-20191114205255889.png)
+![image-20191114205255889](images/image-20191114205255889.png)
 
-![xxx](.images/xxx-3735748.png)
+![xxx](images/xxx-3735748.png)
 
 ### (2)、编辑pom.xml
 
@@ -100,11 +100,11 @@
 
 在SCMS-Parent工程上点右键，然后new
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736226.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736226.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736242.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736242.png)
 
 ### (2)、创建Dept实体类
 
@@ -125,11 +125,11 @@ public class Dept {
 
 在SCMS-Parent工程上点右键，然后new
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736341.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736341.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736354.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736354.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736369.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736369.png)
 
 ### (2)、编辑pom.xml
 
@@ -177,11 +177,11 @@ public class Dept {
 
 ### (3)、依赖SCMS-API的操作过程
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736459.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736459.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736476.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736476.png)
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736496.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736496.png)
 
 ### (4)、创建数据库和数据库表
 
@@ -235,7 +235,7 @@ public interface DeptMapper {
 
 #### [2]、第二步：创建DeptMapper.xml
 
-![图片 1](.images/%E5%9B%BE%E7%89%87%201-3736686.png)
+![图片 1](images/%E5%9B%BE%E7%89%87%201-3736686.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -259,7 +259,7 @@ public interface DeptMapper {
 
 #### [3]、第三步：创建mybatis.cfg.xml
 
-![1212121](.images/1212121.png)
+![1212121](images/1212121.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -278,7 +278,7 @@ public interface DeptMapper {
 
 #### [4]、第四步：创建application.yml
 
-![323234](.images/323234.png)
+![323234](images/323234.png)
 
 ```yml
 server:
@@ -433,11 +433,11 @@ public class SCMSProviderDept8001 {
 
 在SCMS-Parent工程上点右键，然后new
 
-![4352323](.images/4352323.png)
+![4352323](images/4352323.png)
 
-![43423](.images/43423.png)
+![43423](images/43423.png)
 
-![62323](.images/62323.png)
+![62323](images/62323.png)
 
 ### (2)、编辑pom.xml
 
@@ -464,7 +464,7 @@ public class SCMSProviderDept8001 {
 
 ### (3)、创建application.yml
 
-![5423](.images/5423.png)
+![5423](images/5423.png)
 
 ```yaml
 server:
@@ -563,7 +563,7 @@ public class SCMSConsummerDept80 {
 
 访问http://localhost/consummer/dept/get/all
 
-![image-20191114214559059](.images/image-20191114214559059.png)
+![image-20191114214559059](images/image-20191114214559059.png)
 
 ## 6、遗留问题
 
@@ -579,15 +579,15 @@ Consummer通过http://localhost:8001来访问Provider中提供的服务需要知
 
 Eureka相当于我们熟悉的Zookeeper，用来注册我们的微服务。
 
-![524243](.images/524243.png)
+![524243](images/524243.png)
 
 ## 2、创建SCMS-Eureka-7000工程模块
 
 ### (1)、创建Maven模块
 
-![2312443](.images/2312443.png)
+![2312443](images/2312443.png)
 
-![dada](.images/dada.png)
+![dada](images/dada.png)
 
 ### (2)、编辑pom.xml
 
@@ -643,7 +643,7 @@ public class SpringCloudEurekaApp {
 
 访问http://localhost:7000
 
-![43542e](.images/43542e.png)
+![43542e](images/43542e.png)
 
 ## 3、将SCMS-Provider-Dept8001注册进Eureka
 
@@ -690,7 +690,7 @@ public class SCMSProviderDept8001 {
 
 在Eureka微服务已经启动的前提下，启动SCMS-Provider-Dept8001。
 
-![323212](.images/323212.png)
+![323212](images/323212.png)
 
 ## 4、在SCMS-Consummer-Dept80中通过Eureka中注册的服务器名访问微服务  
 
@@ -783,7 +783,7 @@ SCMS-Eureka-7002
 
 ### (1)、配置域名
 
-![dsds](.images/dsds.png)
+![dsds](images/dsds.png)
 
 ### (2)、创建SCMS-Eureka-7001和SCMS-Eureka-7002工程
 
@@ -839,7 +839,7 @@ eureka:
 
 http://www.eureka7000.com:7000/
 
-![image-20191114235659555](.images/image-20191114235659555.png)
+![image-20191114235659555](images/image-20191114235659555.png)
 
 显示了另外两个集群的
 
@@ -855,7 +855,7 @@ defaultZone: http://www.eureka7000.com:7000/eureka,http://www.eureka7001.com:700
 
 ### (3)、查看服务注册情况
 
-![233we](.images/233we.png)
+![233we](images/233we.png)
 
 ### (4)、编辑SCMS-Consummer-Dept80的yml文件
 
@@ -1010,11 +1010,11 @@ http://localhost/consummer/dept/get/all
 
 如果看到不同请求访问时看到的数据库名数据不一样那么说明负载均衡配置成功。
 
-![dadsad](.images/dadsad.png)
+![dadsad](images/dadsad.png)
 
-![dasaadwe](.images/dasaadwe.png)
+![dasaadwe](images/dasaadwe.png)
 
-![dsfs](.images/dsfs.png)
+![dsfs](images/dsfs.png)
 
 
 
@@ -1071,7 +1071,7 @@ SCMS-Consummer-Feign工程是SCMS-Consummer-Dept80的升级版，所以有些配
 
 ### (1)、创建Maven模块
 
-![daacx](.images/daacx.png)
+![daacx](images/daacx.png)
 
 pom.xml文件和SCMS-Consummer-Dept80工程一致。
 
@@ -1167,13 +1167,13 @@ SCMS-Consummer-Feign
 
 ### (1)、分布式系统面临的问题
 
-![dadasaz](.images/dadasaz.png)
+![dadasaz](images/dadasaz.png)
 
 在微服务架构体系下，服务间的调用错综复杂，交织成一张大网。如果其中某个节点突然无法正常工作，则访问它的众多服务都会被卡住，进而有更多服务被卡住，系统中的线程、CPU、内存等资源有可能被迅速耗尽，最终整个服务体系崩溃。
 
 我们管这样的现象叫服务==雪崩==。
 
-![anchc](.images/anchc.png)
+![anchc](images/anchc.png)
 
 ### (2)、Hytrix介绍
 
@@ -1193,7 +1193,7 @@ Hytrix能够提供服务降级、服务熔断、服务限流、接近实时的�
 
 ### ()、创建SCMS-Provider-Hystrix-8004工程
 
-![dadcxc](.images/dadcxc.png)
+![dadcxc](images/dadcxc.png)
 
 ### (3)、编辑pom.xml
 
@@ -1380,7 +1380,7 @@ feign:
 
 ### (1)、新建Maven模块
 
-![dadfada](.images/dadfada.png)
+![dadfada](images/dadfada.png)
 
 ### (2)、编辑pom.xml
 
@@ -1438,7 +1438,7 @@ public class SpringCloudHytrixDashBord {
 
 http://localhost:9001/hystrix
 
-![dadcz](.images/dadcz.png)
+![dadcz](images/dadcz.png)
 
 #### [2]、直接查看监控数据
 
@@ -1446,25 +1446,25 @@ http://localhost:8004/hystrix.stream
 
 8004是被监控的微服务端口
 
-![davcs](.images/davcs.png)
+![davcs](images/davcs.png)
 
 #### [3]、图形化界面方式查看监控数据
 
-![davcxz](.images/davcxz.png)
+![davcxz](images/davcxz.png)
 
 Delay：该参数用来控制服务器上轮询监控信息的延迟时间，默认为2000毫秒，可以通过配置该属性来降低客户端的网络和CPU消耗。
 
 Title：该参数对应了头部标题Hystrix Stream之后的内容，默认会使用具体监控实例的URL，可以通过配置该信息来展示更合适的标题。 
 
-![davacz](.images/davacz.png)
+![davacz](images/davacz.png)
 
 #### [4]、参数说明
 
-![davzxc](.images/davzxc.png)
+![davzxc](images/davzxc.png)
 
 #### [5]、复杂监控效果示例
 
-![dsvjlkj](.images/dsvjlkj.png)
+![dsvjlkj](images/dsvjlkj.png)
 
 # 七、SpringCloud Zuul
 
@@ -1486,13 +1486,13 @@ Zuul包含了对请求的路由和过滤两个最主要的功能：
 
 总体来说，Zuul提供了**代理**、**路由**和**过滤**的功能。
 
-![image-20191115223437952](.images/image-20191115223437952.png)
+![image-20191115223437952](images/image-20191115223437952.png)
 
 ## 2、创建SCMS-Zuul-9002工程
 
 ### (1)、创建Maven模块
 
-![davcad](.images/davcad.png)
+![davcad](images/davcad.png)
 
 ### (2)、编辑pom.xml
 
@@ -1582,7 +1582,7 @@ public class SpringCloudZuulApp {
 
 查看Eureka上注册的服务
 
-![daadvaa](.images/daadvaa.png)
+![daadvaa](images/daadvaa.png)
 
 不用路由直接访问http://localhost:8004/dept/get/3
 
@@ -1660,7 +1660,7 @@ https://martinfowler.com/articles/microservices.html
 
 强调的是服务的大小，它关注的是某一个点，是具体解决某一个问题/提供落地对应服务的一个服务应用，狭义的看，可以看作Eclipse里面的一个个微服务工程或者Module。
 
-![daccvkjh](.images/daccvkjh.png)
+![daccvkjh](images/daccvkjh.png)
 
 微服务架构是一种架构模式，它提倡将单一应用程序划分成一组⼩的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相协作（通常是基于HTTP协议的RESTful API）。每个服务都围绕着具体业务进⾏构建，并且能够被独立的部署到生产环境、类生产环境等。另外，应当尽量避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建。
 
@@ -1686,7 +1686,7 @@ https://martinfowler.com/articles/microservices.html
 
 ## 2、SpringCloud
 
-![dada](.images/dada-3830057.png)
+![dada](images/dada-3830057.png)
 
 SpringCloud，基于SpringBoot提供了一套微服务解决方案，包括服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件，除了基于NetFlix的开源组件做高度抽象封装之外，还有一些选型中立的开源组件。
 
@@ -1696,17 +1696,17 @@ SpringBoot并没有重复制造轮子，它只是将目前各家公司开发的�
 
 SpringCloud=分布式微服务架构下的**一站式解决方案**，是各个微服务架构落地技术的集合体，俗称微服务全家桶
 
-![adaadada](.images/adaadada.png)
+![adaadada](images/adaadada.png)
 
-![dadaczd](.images/dadaczd.png)
+![dadaczd](images/dadaczd.png)
 
-![adcvnnm](.images/adcvnnm.png)
+![adcvnnm](images/adcvnnm.png)
 
-![dammnnbb](.images/dammnnbb.png)
+![dammnnbb](images/dammnnbb.png)
 
-![nhbggg](.images/nhbggg.png)
+![nhbggg](images/nhbggg.png)
 
-![danhggh](.images/danhggh.png)
+![danhggh](images/danhggh.png)
 
 ## 3、 SpringBoot和SpringCloud的关系
 
@@ -1716,7 +1716,7 @@ SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoo
 
 ## 4、Dubbo和SpringCloud如何选择？ 
 
-![vbghjks](.images/vbghjks.png)
+![vbghjks](images/vbghjks.png)
 
 |              | Dubbo         | Spring Cloud                 |
 | ------------ | ------------- | ---------------------------- |
