@@ -10,11 +10,11 @@ NoSQL是Not only SQL的缩写，大意为“不只是SQL”，说明这项技术
 | 数据操作方式 | SQL                    | 所有数据都是键值对，没有声明性查询语言 |
 | 事务控制     | 严格的基础事务ACID原则 | CAP定理                                |
 
-所以NoSQL数据库的最大优势体现为：高性能、高可用性和可伸缩性。
+所以NoSQL数据库的最大优势体现为：==高性能、高可用性和可伸缩性==。
 
 | 传统的ACID                                                   | CAP 定理                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| A（Atomicity）原子性<br />C（Consistency）一致性<br />I（Isolation）独立性<br />D（Durability）持久性 | C（Consistency）强一致性<br />A（Availbility）可用性 --- 高可用性<br />P（Patition tolerance）分区容错性 --- 分布式容忍性 |
+| A（Atomicity）原子性<br />C（Consistency）一致性<br />I（Isolation）独立性<br />D（Durability）持久性 | C（Consistency）强一致性<br />A（Availability）可用性 --- 高可用性<br />P（Partition tolerance）分区容错性 --- 分布式容忍性 |
 
 
 
@@ -338,7 +338,6 @@ OK
 	一次性新建多个值
 ●GETSET KEY VALUE
 	设置新值，同时能够将旧值返回
-
 ```
 
 ## 3.list操作
@@ -372,7 +371,6 @@ OK
 	把指定索引位置的元素替换为另一个值
 ●LTRIM key start stop
 	仅保留指定区间的数据，两边的数据被删除
-
 ```
 
 ## 4.set操作
@@ -688,7 +686,7 @@ RDB的数据不实时，同时使用两者时服务器重启也只会找AOF文�
 
 其他应用方式综合考虑性能和完整性、一致性要求。
 
-RDB文件只用作后备用途，建议只在Slave上持久化RDB文件，而且只要15分钟备份一次就够了，只保留save 900 1这条规则。如果Enalbe AOF，好处是在最恶劣情况下也只会丢失不超过两秒数据，启动脚本较简单只load自己的AOF文件就可以了。代价一是带来了持续的IO，二是AOF rewrite的最后将rewrite过程中产生的新数据写到新文件造成的阻塞几乎是不可避免的。只要硬盘许可，应该尽量减少AOF rewrite的频率，AOF重写的基础大小默认值64M太小了，可以设到==5G==以上。默认超过原大小100%大小时重写可以改到适当的数值（==几千倍==）。如果不开启AOF，仅靠Master-Slave Replication 实现高可用性能也不错。能省掉一大笔IO也减少了rewrite时带来的系统波动。代价是如果Master/Slave同时倒掉，会丢失十几分钟的数据，启动脚本也要比较两个Master/Slave中的RDB文件，载入较新的那个。新浪微博就选用了这种架构。
+RDB文件只用作后备用途，建议只在Slave上持久化RDB文件，而且只要==15分钟==备份一次就够了，只保留save 900 1这条规则。如果Enalbe AOF，好处是在最恶劣情况下也只会丢失不超过两秒数据，启动脚本较简单只load自己的AOF文件就可以了。代价一是带来了持续的IO，二是AOF rewrite的最后将rewrite过程中产生的新数据写到新文件造成的阻塞几乎是不可避免的。只要硬盘许可，应该==尽量减少AOF rewrite==的频率，AOF重写的基础大小默认值64M太小了，可以设到==5G==以上。默认超过原大小100%大小时重写可以改到适当的数值（==几千倍==）。如果不开启AOF，仅靠Master-Slave Replication 实现高可用性能也不错。能省掉一大笔IO也减少了rewrite时带来的系统波动。代价是如果Master/Slave同时倒掉，会丢失十几分钟的数据，启动脚本也要比较两个Master/Slave中的RDB文件，载入较新的那个。新浪微博就选用了这种架构。
 
 # 七、Redis事务控制
 
