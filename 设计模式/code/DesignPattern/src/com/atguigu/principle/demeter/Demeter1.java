@@ -11,37 +11,21 @@ public class Demeter1 {
 		SchoolManager schoolManager = new SchoolManager();
 		//输出学院的员工id 和  学校总部的员工信息
 		schoolManager.printAllEmployee(new CollegeManager());
-
 	}
-
 }
-
 
 //学校总部员工类
 class Employee {
 	private String id;
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getId() {
-		return id;
-	}
+	public void setId(String id) { this.id = id; }
+	public String getId() { return id; }
 }
-
 
 //学院的员工类
 class CollegeEmployee {
 	private String id;
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getId() {
-		return id;
-	}
+	public void setId(String id) { this.id = id; }
+	public String getId() { return id; }
 }
 
 

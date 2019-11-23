@@ -12,39 +12,22 @@ public class Demeter1 {
 		SchoolManager schoolManager = new SchoolManager();
 		//输出学院的员工id 和  学校总部的员工信息
 		schoolManager.printAllEmployee(new CollegeManager());
-
 	}
-
 }
-
 
 //学校总部员工类
 class Employee {
 	private String id;
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getId() {
-		return id;
-	}
+	public void setId(String id) { this.id = id; }
+	public String getId() { return id; }
 }
-
 
 //学院的员工类
 class CollegeEmployee {
 	private String id;
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getId() {
-		return id;
-	}
+	public void setId(String id) { this.id = id; }
+	public String getId() { return id; }
 }
-
 
 //管理学院员工的管理类
 class CollegeManager {
@@ -71,9 +54,6 @@ class CollegeManager {
 }
 
 //学校管理类
-
-//分析 SchoolManager 类的直接朋友类有哪些 Employee、CollegeManager
-//CollegeEmployee 不是 直接朋友 而是一个陌生类，这样违背了 迪米特法则 
 class SchoolManager {
 	//返回学校总部的员工
 	public List<Employee> getAllEmployee() {

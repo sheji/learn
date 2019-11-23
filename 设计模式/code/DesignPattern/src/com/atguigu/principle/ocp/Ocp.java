@@ -9,7 +9,6 @@ public class Ocp {
 		graphicEditor.drawShape(new Circle());
 		graphicEditor.drawShape(new Triangle());
 	}
-
 }
 
 //这是一个用于绘图的类 [使用方]
@@ -20,22 +19,16 @@ class GraphicEditor {
 			drawRectangle(s);
 		else if (s.m_type == 2)
 			drawCircle(s);
-		else if (s.m_type == 3)
+		else if (s.m_type == 3) //新增类型增加的代码
 			drawTriangle(s);
 	}
 
 	//绘制矩形
-	public void drawRectangle(Shape r) {
-		System.out.println(" 绘制矩形 ");
-	}
-
+	public void drawRectangle(Shape r) { System.out.println(" 绘制矩形 "); }
 	//绘制圆形
-	public void drawCircle(Shape r) {
-		System.out.println(" 绘制圆形 ");
-	}
-	
-	//绘制三角形
-	public void drawTriangle(Shape r) {
+	public void drawCircle(Shape r) { System.out.println(" 绘制圆形 "); }
+	//新增绘制三角形
+	public void drawTriangle(Shape r) {//新增类型增加的代码
 		System.out.println(" 绘制三角形 ");
 	}
 }
@@ -46,20 +39,14 @@ class Shape {
 }
 
 class Rectangle extends Shape {
-	Rectangle() {
-		super.m_type = 1;
-	}
+	Rectangle() { super.m_type = 1; }
 }
 
 class Circle extends Shape {
-	Circle() {
-		super.m_type = 2;
-	}
+	Circle() { super.m_type = 2; }
 }
 
 //新增画三角形
 class Triangle extends Shape {
-	Triangle() {
-		super.m_type = 3;
-	}
+	Triangle() { super.m_type = 3; }
 }
