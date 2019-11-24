@@ -3,11 +3,7 @@ package com.atguigu.factory.factorymethod.pizzastore.order;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import com.atguigu.factory.factorymethod.pizzastore.pizza.Pizza;
-
-
-
 
 public abstract class OrderPizza {
 
@@ -26,11 +22,8 @@ public abstract class OrderPizza {
 			pizza.bake();
 			pizza.cut();
 			pizza.box();
-			
 		} while (true);
 	}
-
-	
 
 	// 写一个方法，可以获取客户希望订购的披萨种类
 	private String getType() {
