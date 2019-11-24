@@ -18,9 +18,7 @@ public class SingletonTest01 {
 class Singleton {
 	
 	//1. 构造器私有化, 外部能new
-	private Singleton() {
-		
-	}
+	private Singleton() {}
 	
 	//2.本类内部创建对象实例
 	private final static Singleton instance = new Singleton();
