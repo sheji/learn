@@ -1,7 +1,6 @@
 package com.atguigu.builder;
 
 public abstract class AbstractHouse {
-	
 	//´òµØ»ù
 	public abstract void buildBasic();
 	//ÆöÇ½

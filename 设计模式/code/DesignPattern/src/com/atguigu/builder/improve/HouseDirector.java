@@ -1,6 +1,6 @@
 package com.atguigu.builder.improve;
 
-//指挥者，这里去指定制作流程，返回产品
+//Director(指挥者)，这里去指定制作流程，返回产品
 public class HouseDirector {
 	
 	HouseBuilder houseBuilder = null;
@@ -22,6 +22,5 @@ public class HouseDirector {
 		houseBuilder.roofed();
 		return houseBuilder.buildHouse();
 	}
-	
 	
 }
