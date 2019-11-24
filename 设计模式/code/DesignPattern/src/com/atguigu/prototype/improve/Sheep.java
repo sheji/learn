@@ -1,8 +1,5 @@
 package com.atguigu.prototype.improve;
 
-
-
-
 public class Sheep implements Cloneable {
 	private String name;
 	private int age;
@@ -34,8 +31,6 @@ public class Sheep implements Cloneable {
 		this.color = color;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		return "Sheep [name=" + name + ", age=" + age + ", color=" + color + ", address=" + address + "]";
@@ -43,17 +38,13 @@ public class Sheep implements Cloneable {
 	//克隆该实例，使用默认的clone方法来完成
 	@Override
 	protected Object clone()  {
-		
 		Sheep sheep = null;
 		try {
 			sheep = (Sheep)super.clone();
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
-		// TODO Auto-generated method stub
 		return sheep;
 	}
-	
 	
 }

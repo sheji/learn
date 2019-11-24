@@ -33,5 +33,4 @@ public class Sheep {
 		return "Sheep [name=" + name + ", age=" + age + ", color=" + color + "]";
 	}
 	
-	
 }

@@ -14,7 +14,6 @@ public class DeepProtoType implements Serializable, Cloneable{
 		super();
 	}
 	
-	
 	//深拷贝 - 方式 1 使用clone 方法
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
@@ -25,13 +24,10 @@ public class DeepProtoType implements Serializable, Cloneable{
 		//对引用类型的属性，进行单独处理
 		DeepProtoType deepProtoType = (DeepProtoType)deep;
 		deepProtoType.deepCloneableTarget  = (DeepCloneableTarget)deepCloneableTarget.clone();
-		
-		// TODO Auto-generated method stub
 		return deepProtoType;
 	}
 	
 	//深拷贝 - 方式2 通过对象的序列化实现 (推荐)
-	
 	public Object deepClone() {
 		
 		//创建流对象
@@ -41,7 +37,6 @@ public class DeepProtoType implements Serializable, Cloneable{
 		ObjectInputStream ois = null;
 		
 		try {
-			
 			//序列化
 			bos = new ByteArrayOutputStream();
 			oos = new ObjectOutputStream(bos);
@@ -53,9 +48,7 @@ public class DeepProtoType implements Serializable, Cloneable{
 			DeepProtoType copyObj = (DeepProtoType)ois.readObject();
 			
 			return copyObj;
-			
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return null;
 		} finally {
@@ -66,11 +59,9 @@ public class DeepProtoType implements Serializable, Cloneable{
 				bis.close();
 				ois.close();
 			} catch (Exception e2) {
-				// TODO: handle exception
 				System.out.println(e2.getMessage());
 			}
 		}
-		
 	}
 	
 }
