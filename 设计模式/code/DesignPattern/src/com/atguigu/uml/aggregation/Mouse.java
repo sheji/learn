@@ -1,5 +1,2 @@
 package com.atguigu.uml.aggregation;
-
-public class Mouse {
-
-}
+public class Mouse {}

@@ -1,5 +1,2 @@
 package com.atguigu.uml.generalization;
-
-public class PersonServiceBean extends DaoSupport {
-
-}
+public class PersonServiceBean extends DaoSupport {}

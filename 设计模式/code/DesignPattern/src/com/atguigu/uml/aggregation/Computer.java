@@ -9,5 +9,4 @@ public class Computer {
 	public void setMoniter(Moniter moniter) {
 		this.moniter = moniter;
 	}
-	
 }

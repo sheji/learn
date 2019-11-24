@@ -1,5 +1,2 @@
 package com.atguigu.uml.dependence;
-
-public class IDCard {
-
-}
+public class IDCard {}
