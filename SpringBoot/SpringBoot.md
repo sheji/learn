@@ -946,7 +946,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 ==**再来加载不带profile**==
 
-**8jar包外部的application.properties或application.yml(不带spring.profile)配置文件**
+**8、jar包外部的application.properties或application.yml(不带spring.profile)配置文件**
 
 ![image-20191021224114753](images/image-20191021224114753.png)
 
@@ -987,9 +987,7 @@ SpringFactoriesLoader.loadFactoryNames()
 ```
 
 ```
-    
-
-**==将类路径下META-INF/spring.factories 里面配置的所有EnableAutoConfiguration的值加入到了容器中；==**
+将类路径下META-INF/spring.factories 里面配置的所有EnableAutoConfiguration的值加入到了容器中；
 
 ​```properties
 # Auto Configure
@@ -4057,7 +4055,7 @@ public void refresh() throws BeansException, IllegalStateException {
 }
 ```
 
-4）、  onRefresh(); web的ioc容器重写了onRefresh方法
+4）、onRefresh(); web的ioc容器重写了onRefresh方法
 
 5）、webioc容器会创建嵌入式的Servlet容器；**createEmbeddedServletContainer**();
 
