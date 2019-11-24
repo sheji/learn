@@ -2,7 +2,6 @@ package com.atguigu.spring.springmvc;
 
 //多种Controller实现  
 public interface Controller {
-
 }
 
 class HttpController implements Controller {

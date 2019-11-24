@@ -1,7 +1,6 @@
 package com.atguigu.adapter.classadapter;
 
 public class Phone {
-
 	//³äµç
 	public void charging(IVoltage5V iVoltage5V) {
 		if(iVoltage5V.output5V() == 5) {

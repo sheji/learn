@@ -14,7 +14,6 @@ public class DispatchServlet {
 	}
 
 	public void doDispatch() {
-
 		// 此处模拟SpringMVC从request取handler的对象，
 		// 适配器可以获取到希望的Controller
 		 HttpController controller = new HttpController();
@@ -24,7 +23,6 @@ public class DispatchServlet {
 		HandlerAdapter adapter = getHandler(controller);
 		// 通过适配器执行对应的controller对应方法
 		adapter.handle(controller);
-
 	}
 
 	public HandlerAdapter getHandler(Controller controller) {

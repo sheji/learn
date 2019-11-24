@@ -152,8 +152,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>86</x>
-                    <y>262</y>
+                    <x>120</x>
+                    <y>261</y>
                   </constraint>
                   <sourceConnections>
                     <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../.."/>
@@ -199,7 +199,7 @@
                     </net.java.amateras.uml.properties.BooleanPropertyDescriptor>
                   </propertyDescriptors>
                   <stereoType></stereoType>
-                  <name>A</name>
+                  <name>Client</name>
                   <isAbstract>false</isAbstract>
                 </source>
                 <target class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
