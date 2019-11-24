@@ -7,14 +7,13 @@ public class SingletonTest01 {
 		Singleton instance = Singleton.getInstance();
 		Singleton instance2 = Singleton.getInstance();
 		System.out.println(instance == instance2); // true
-		System.out.println("instance.hashCode=" + instance.hashCode());
-		System.out.println("instance2.hashCode=" + instance2.hashCode());
+		System.out.println("instance.hashCode=" + instance.hashCode());//instance.hashCode=865113938
+		System.out.println("instance2.hashCode=" + instance2.hashCode());//instance2.hashCode=865113938
 	}
 
 }
 
 //饿汉式(静态变量)
-
 class Singleton {
 	
 	//1. 构造器私有化, 外部能new

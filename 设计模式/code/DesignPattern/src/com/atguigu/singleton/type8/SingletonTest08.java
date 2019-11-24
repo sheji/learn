@@ -10,6 +10,7 @@ public class SingletonTest08 {
 		System.out.println(instance2.hashCode());
 		
 		instance.sayOK();
+		Runtime
 	}
 }
 

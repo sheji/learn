@@ -28,9 +28,7 @@ class Singleton {
 	}
 	
 	//提供一个静态的公有方法，直接返回SingletonInstance.INSTANCE
-	
 	public static synchronized Singleton getInstance() {
-		
 		return SingletonInstance.INSTANCE;
 	}
 }
