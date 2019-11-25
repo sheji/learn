@@ -4541,7 +4541,7 @@ schema-*.sql、data-*.sql
 ## 2、整合Druid数据源
 
 ```java
-导入druid数据源
+//导入druid数据源
 @Configuration
 public class DruidConfig {
 
@@ -4653,7 +4653,7 @@ public class MyBatisConfig {
 
 
 ```java
-使用MapperScan批量扫描所有的Mapper接口；
+//使用MapperScan批量扫描所有的Mapper接口；
 @MapperScan(value = "com.atguigu.springboot.mapper")
 @SpringBootApplication
 public class SpringBoot06DataMybatisApplication {
