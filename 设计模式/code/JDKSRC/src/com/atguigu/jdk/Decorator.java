@@ -1,14 +1,10 @@
 package com.atguigu.jdk;
-
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 public class Decorator {
 
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
-		
 		//说明
 		//1. InputStream 是抽象类, 类似我们前面讲的 Drink
 		//2. FileInputStream 是  InputStream 子类，类似我们前面的 DeCaf, LongBlack
@@ -21,7 +17,6 @@ public class Decorator {
 		System.out.println(dis.read());
 		dis.close();
 	}
-
 }
 
 
