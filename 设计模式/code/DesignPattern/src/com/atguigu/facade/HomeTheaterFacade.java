@@ -23,7 +23,6 @@ public class HomeTheaterFacade {
 	}
 
 	//操作分成 4 步
-	
 	public void ready() {
 		popcorn.on();
 		popcorn.pop();
@@ -50,9 +49,4 @@ public class HomeTheaterFacade {
 		stereo.off();
 		dVDPlayer.off();
 	}
-
-
-	
-	
-	
 }

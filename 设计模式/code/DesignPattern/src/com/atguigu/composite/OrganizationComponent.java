@@ -41,5 +41,4 @@ public abstract class OrganizationComponent {
 	//方法print, 做成抽象的, 子类都需要实现
 	protected abstract void print();
 	
-	
 }

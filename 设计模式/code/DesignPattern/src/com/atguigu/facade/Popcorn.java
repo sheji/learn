@@ -8,15 +8,7 @@ public class Popcorn {
 		return instance;
 	}
 	
-	public void on() {
-		System.out.println(" popcorn on ");
-	}
-	
-	public void off() {
-		System.out.println(" popcorn ff ");
-	}
-	
-	public void pop() {
-		System.out.println(" popcorn is poping  ");
-	}
+	public void on() { System.out.println(" popcorn on "); }
+	public void off() { System.out.println(" popcorn ff "); }
+	public void pop() { System.out.println(" popcorn is poping "); }
 }

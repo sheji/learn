@@ -8,16 +8,7 @@ public class Screen {
 		return instance;
 	}
 	
-	
-	
-	
-	public void up() {
-		System.out.println(" Screen up ");
-	}
-	
-	public void down() {
-		System.out.println(" Screen down ");
-	}
-	
+	public void up() { System.out.println(" Screen up "); }
+	public void down() { System.out.println(" Screen down "); }
 
 }
