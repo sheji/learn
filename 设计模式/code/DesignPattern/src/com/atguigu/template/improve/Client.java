@@ -3,9 +3,6 @@ package com.atguigu.template.improve;
 public class Client {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//ÖÆ×÷ºì¶¹¶¹½¬
-		
 		System.out.println("----ÖÆ×÷ºì¶¹¶¹½¬----");
 		SoyaMilk redBeanSoyaMilk = new RedBeanSoyaMilk();
 		redBeanSoyaMilk.make();
