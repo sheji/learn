@@ -5,19 +5,16 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class ProxyFactory {
-
 	//维护一个目标对象 , Object
 	private Object target;
-
+	
 	//构造器 ， 对target 进行初始化
 	public ProxyFactory(Object target) {
-		
 		this.target = target;
 	} 
 	
 	//给目标对象 生成一个代理对象
 	public Object getProxyInstance() {
-		
 		//说明
 		/*
 		 *  public static Object newProxyInstance(ClassLoader loader,
@@ -34,7 +31,6 @@ public class ProxyFactory {
 					
 					@Override
 					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-						// TODO Auto-generated method stub
 						System.out.println("JDK代理开始~~");
 						//反射机制调用目标对象的方法
 						Object returnVal = method.invoke(target, args);
@@ -43,6 +39,5 @@ public class ProxyFactory {
 					}
 				}); 
 	}
-	
-	
+
 }

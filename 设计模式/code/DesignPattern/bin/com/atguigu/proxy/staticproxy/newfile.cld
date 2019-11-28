@@ -351,8 +351,8 @@
                     </java.beans.PropertyChangeSupport>
                   </listeners>
                   <constraint>
-                    <height>107</height>
-                    <width>281</width>
+                    <height>67</height>
+                    <width>323</width>
                     <x>201</x>
                     <y>378</y>
                   </constraint>
