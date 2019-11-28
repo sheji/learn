@@ -3,7 +3,6 @@ package com.atguigu.jdk;
 public class FlyWeight {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//如果 Integer.valueOf(x) x 在  -128 --- 127 直接，就是使用享元模式返回,如果不在
 		//范围类，则仍然 new 
 		
@@ -18,23 +17,15 @@ public class FlyWeight {
 		Integer z = Integer.valueOf(127);//..
 		Integer w = new Integer(127);
 		
-		
-		
 		System.out.println(x.equals(y)); // 大小，true
-		System.out.println(x == y ); //  false
+		System.out.println(x == y ); // false
 		System.out.println(x == z ); // true
 		System.out.println(w == x ); // false
 		System.out.println(w == y ); // false
 		
-		
 		Integer x1 = Integer.valueOf(200);
 		Integer x2 = Integer.valueOf(200);
-		System.out.println("x1==x2" + (x1 == x2)); // false
-		
-		
-		
-
-
+		System.out.println("x1==x2 " + (x1 == x2)); // false
 	}
 
 }

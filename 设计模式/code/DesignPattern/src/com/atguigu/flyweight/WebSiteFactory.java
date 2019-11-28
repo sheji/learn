@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 // 网站工厂类，根据需要返回压一个网站
 public class WebSiteFactory {
-
 	
 	//集合， 充当池的作用
 	private HashMap<String, ConcreteWebSite> pool = new HashMap<>();
@@ -15,7 +14,6 @@ public class WebSiteFactory {
 			//就创建一个网站，并放入到池中
 			pool.put(type, new ConcreteWebSite(type));
 		}
-		
 		return (WebSite)pool.get(type);
 	}
 	
