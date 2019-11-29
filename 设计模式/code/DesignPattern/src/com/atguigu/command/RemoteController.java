@@ -10,12 +10,9 @@ public class RemoteController {
 	Command undoCommand;
 
 	// 构造器，完成对按钮初始化
-
 	public RemoteController() {
-
 		onCommands = new Command[5];
 		offCommands = new Command[5];
-
 		for (int i = 0; i < 5; i++) {
 			onCommands[i] = new NoCommand();
 			offCommands[i] = new NoCommand();
@@ -34,16 +31,14 @@ public class RemoteController {
 		onCommands[no].execute();
 		// 记录这次的操作，用于撤销
 		undoCommand = onCommands[no];
-
 	}
 
-	// 按下开按钮
+	// 按下关按钮
 	public void offButtonWasPushed(int no) { // no 0
 		// 找到你按下的关的按钮， 并调用对应方法
 		offCommands[no].execute();
 		// 记录这次的操作，用于撤销
 		undoCommand = offCommands[no];
-
 	}
 	
 	// 按下撤销按钮
