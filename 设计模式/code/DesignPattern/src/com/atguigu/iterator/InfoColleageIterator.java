@@ -5,11 +5,9 @@ import java.util.List;
 
 public class InfoColleageIterator implements Iterator {
 
-	
 	List<Department> departmentList; // 信息工程学院是以List方式存放系
 	int index = -1;//索引
 	
-
 	public InfoColleageIterator(List<Department> departmentList) {
 		this.departmentList = departmentList;
 	}
@@ -28,13 +26,9 @@ public class InfoColleageIterator implements Iterator {
 
 	@Override
 	public Object next() {
-		// TODO Auto-generated method stub
 		return departmentList.get(index);
 	}
 	
 	//空实现remove
-	public void remove() {
-		
-	}
-
+	public void remove() {}
 }

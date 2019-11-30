@@ -69,8 +69,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>355</x>
-              <y>325</y>
+              <x>327</x>
+              <y>275</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.RealizationModel>
@@ -118,8 +118,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>68</x>
-                    <y>286</y>
+                    <x>25</x>
+                    <y>302</y>
                   </constraint>
                   <sourceConnections>
                     <net.java.amateras.uml.classdiagram.model.RealizationModel>
@@ -233,8 +233,8 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>524</x>
-                                      <y>321</y>
+                                      <x>506</x>
+                                      <y>307</y>
                                     </constraint>
                                     <sourceConnections>
                                       <net.java.amateras.uml.classdiagram.model.RealizationModel>
@@ -566,8 +566,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>231</x>
-                                <y>384</y>
+                                <x>212</x>
+                                <y>398</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../parent/children/net.java.amateras.uml.classdiagram.model.ClassModel[3]/targetConnections/net.java.amateras.uml.classdiagram.model.DependencyModel"/>
@@ -878,8 +878,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>347</x>
-        <y>114</y>
+        <x>391</x>
+        <y>134</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>

@@ -2,7 +2,6 @@ package com.atguigu.iterator;
 
 //ϵ
 public class Department {
-
 	private String name;
 	private String desc;
 	public Department(String name, String desc) {
@@ -22,7 +21,4 @@ public class Department {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
-	
-	
 }
