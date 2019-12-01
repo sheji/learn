@@ -13,7 +13,5 @@ public class Client {
 		//天气情况变化
 		System.out.println("============天气情况变化=============");
 		weatherData.setData(40, 160, 20);
-		
-
 	}
 }

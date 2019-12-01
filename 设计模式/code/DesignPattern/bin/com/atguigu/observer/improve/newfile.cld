@@ -73,8 +73,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>454</x>
-              <y>102</y>
+              <x>449</x>
+              <y>116</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.AggregationModel>

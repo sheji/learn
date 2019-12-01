@@ -1,7 +1,7 @@
 package com.atguigu.observer.improve;
 
 public class CurrentConditions implements Observer {
-
+	
 	// ÎÂ¶È£¬ÆøÑ¹£¬Êª¶È
 	private float temperature;
 	private float pressure;

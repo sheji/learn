@@ -5,8 +5,6 @@ package com.atguigu.observer;
  * 1. 包含最新的天气情况信息 
  * 2. 含有 CurrentConditions 对象
  * 3. 当数据有更新时，就主动的调用   CurrentConditions对象update方法(含 display), 这样他们（接入方）就看到最新的信息
- * @author Administrator
- *
  */
 public class WeatherData {
 	private float temperatrue;

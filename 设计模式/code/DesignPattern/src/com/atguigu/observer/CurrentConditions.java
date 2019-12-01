@@ -2,8 +2,6 @@ package com.atguigu.observer;
 
 /**
  * 显示当前天气情况（可以理解成是气象站自己的网站）
- * @author Administrator
- *
  */
 public class CurrentConditions {
 	// 温度，气压，湿度
