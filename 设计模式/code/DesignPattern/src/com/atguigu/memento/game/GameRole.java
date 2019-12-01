@@ -37,5 +37,4 @@ public class GameRole {
 		this.def = def;
 	}
 	
-	
 }

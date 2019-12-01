@@ -1,7 +1,6 @@
 package com.atguigu.memento.theory;
 
 public class Originator {
-
 	private String state;//в╢л╛пео╒
 
 	public String getState() {

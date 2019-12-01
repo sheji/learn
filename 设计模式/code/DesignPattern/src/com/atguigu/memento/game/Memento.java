@@ -1,13 +1,11 @@
 package com.atguigu.memento.game;
 
 public class Memento {
-
 	//¹¥»÷Á¦
 	private int vit;
 	//·ÀÓùÁ¦
 	private int def;
 	public Memento(int vit, int def) {
-		super();
 		this.vit = vit;
 		this.def = def;
 	}
@@ -23,8 +21,4 @@ public class Memento {
 	public void setDef(int def) {
 		this.def = def;
 	}
-	
-	
-	
-	
 }

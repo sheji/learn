@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Caretaker {
-	
 	//在List 集合中会有很多的备忘录对象
 	private List<Memento> mementoList = new ArrayList<Memento>();
 	

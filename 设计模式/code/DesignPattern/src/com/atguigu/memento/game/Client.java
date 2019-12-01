@@ -3,7 +3,6 @@ package com.atguigu.memento.game;
 public class Client {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//创建游戏角色
 		GameRole gameRole = new GameRole();
 		gameRole.setVit(100);
@@ -22,7 +21,7 @@ public class Client {
 		
 		gameRole.display();
 		
-		System.out.println("大战后，使用备忘录对象恢复到站前");
+		System.out.println("大战后，使用备忘录对象恢复到战斗前");
 		
 		gameRole.recoverGameRoleFromMemento(caretaker.getMemento());
 		System.out.println("恢复后的状态");
