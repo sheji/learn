@@ -2,8 +2,6 @@ package com.atguigu.state;
 
 /**
  * 发放奖品的状态
- * @author Administrator
- *
  */
 public class DispenseState extends State {
 
@@ -13,8 +11,6 @@ public class DispenseState extends State {
     public DispenseState(RaffleActivity activity) {
         this.activity = activity;
     }
-    
-    //
 
     @Override
     public void deductMoney() {

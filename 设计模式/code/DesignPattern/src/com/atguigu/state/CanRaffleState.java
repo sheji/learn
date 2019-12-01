@@ -4,8 +4,6 @@ import java.util.Random;
 
 /**
  * 可以抽奖的状态
- * @author Administrator
- *
  */
 public class CanRaffleState extends State {
 
@@ -26,8 +24,7 @@ public class CanRaffleState extends State {
     public boolean raffle() {
         System.out.println("正在抽奖，请稍等！");
         Random r = new Random();
-        int num = r.nextInt(10);
-        // 10%中奖机会
+        int num = r.nextInt(10);//10%中奖机会
         if(num == 0){
             // 改变活动状态为发放奖品 context
             activity.setState(activity.getDispenseState());

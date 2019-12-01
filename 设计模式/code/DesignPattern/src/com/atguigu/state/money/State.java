@@ -2,8 +2,6 @@ package com.atguigu.state.money;
 
 /**
  * ×´Ì¬½Ó¿Ú
- * @author Administrator
- *
  */
 public interface State {
 

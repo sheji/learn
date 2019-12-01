@@ -2,8 +2,6 @@ package com.atguigu.state;
 
 /**
  * ²»ÄÜ³é½±×´Ì¬
- * @author Administrator
- *
  */
 public class NoRaffleState extends State {
 

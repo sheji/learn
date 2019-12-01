@@ -1,10 +1,7 @@
 package com.atguigu.state;
 
 /**
- * 抽奖活动 //
- * 
- * @author Administrator
- *
+ * 抽奖活动 
  */
 public class RaffleActivity {
 
@@ -40,7 +37,6 @@ public class RaffleActivity {
         	//领取奖品
             state.dispensePrize();
         }
-
     }
 
     public State getState() {
