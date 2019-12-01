@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 /**
  * ¼Ó·¨½âÊÍÆ÷
- * @author Administrator
- *
  */
 public class AddExpression extends SymbolExpression  {
 

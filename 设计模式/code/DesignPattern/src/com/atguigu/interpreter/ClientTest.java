@@ -8,9 +8,8 @@ import java.util.HashMap;
 public class ClientTest {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		String expStr = getExpStr(); // a+b
-		HashMap<String, Integer> var = getValue(expStr);// var {a=10, b=20}
+		String expStr = getExpStr(); // a+b-c
+		HashMap<String, Integer> var = getValue(expStr);// var {a=10, b=20, c=5}
 		Calculator calculator = new Calculator(expStr);
 		System.out.println("ÔËËã½á¹û£º" + expStr + "=" + calculator.run(var));
 	}
@@ -34,7 +33,6 @@ public class ClientTest {
 				}
 			}
 		}
-
 		return map;
 	}
 }

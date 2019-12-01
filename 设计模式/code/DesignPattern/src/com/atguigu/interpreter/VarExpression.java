@@ -5,8 +5,6 @@ import java.util.HashMap;
 
 /**
  * 变量的解释器
- * @author Administrator
- *
  */
 public class VarExpression extends Expression {
 
@@ -16,7 +14,7 @@ public class VarExpression extends Expression {
 		this.key = key;
 	}
 
-	// var 就是{a=10, b=20}
+	// var 就是{a=10, b=20, c=5}
 	// interpreter 根据 变量名称，返回对应值
 	@Override
 	public int interpreter(HashMap<String, Integer> var) {
