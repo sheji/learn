@@ -6,15 +6,13 @@ public abstract class Colleague {
 	public String name;
 
 	public Colleague(Mediator mediator, String name) {
-
 		this.mediator = mediator;
 		this.name = name;
-
 	}
 
-	public Mediator GetMediator() {
+	public Mediator getMediator() {
 		return this.mediator;
 	}
 
-	public abstract void SendMessage(int stateChange);
+	public abstract void sendMessage(int stateChange);
 }

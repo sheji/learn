@@ -14,11 +14,8 @@ public class ConcreteMediator extends Mediator {
 	}
 
 	@Override
-	public void Register(String colleagueName, Colleague colleague) {
-		// TODO Auto-generated method stub
+	public void register(String colleagueName, Colleague colleague) {
 		colleagueMap.put(colleagueName, colleague);
-
-		// TODO Auto-generated method stub
 
 		if (colleague instanceof Alarm) {
 			interMap.put("Alarm", colleagueName);
@@ -29,30 +26,27 @@ public class ConcreteMediator extends Mediator {
 		} else if (colleague instanceof Curtains) {
 			interMap.put("Curtains", colleagueName);
 		}
-
 	}
 
 	//具体中介者的核心方法
 	//1. 根据得到消息，完成对应任务
 	//2. 中介者在这个方法，协调各个具体的同事对象，完成任务
 	@Override
-	public void GetMessage(int stateChange, String colleagueName) {
-		// TODO Auto-generated method stub
-
+	public void getMessage(int stateChange, String colleagueName) {
+		
 		//处理闹钟发出的消息
 		if (colleagueMap.get(colleagueName) instanceof Alarm) {
 			if (stateChange == 0) {
-				((CoffeeMachine) (colleagueMap.get(interMap
-						.get("CoffeeMachine")))).StartCoffee();
-				((TV) (colleagueMap.get(interMap.get("TV")))).StartTv();
+				((Alarm)(colleagueMap.get(interMap.get("Alarm")))).ringing();
+				((CoffeeMachine) (colleagueMap.get(interMap.get("CoffeeMachine")))).startCoffee();
+				((Curtains) (colleagueMap.get(interMap.get("Curtains")))).fallCurtains();
+				((TV) (colleagueMap.get(interMap.get("TV")))).startTv();
 			} else if (stateChange == 1) {
-				((TV) (colleagueMap.get(interMap.get("TV")))).StopTv();
+				((TV) (colleagueMap.get(interMap.get("TV")))).stopTv();
 			}
 
 		} else if (colleagueMap.get(colleagueName) instanceof CoffeeMachine) {
-			((Curtains) (colleagueMap.get(interMap.get("Curtains"))))
-					.UpCurtains();
-
+			
 		} else if (colleagueMap.get(colleagueName) instanceof TV) {//如果TV发现消息
 
 		} else if (colleagueMap.get(colleagueName) instanceof Curtains) {
@@ -62,9 +56,5 @@ public class ConcreteMediator extends Mediator {
 	}
 
 	@Override
-	public void SendMessage() {
-		// TODO Auto-generated method stub
-
-	}
-
+	public void sendMessage() {}
 }

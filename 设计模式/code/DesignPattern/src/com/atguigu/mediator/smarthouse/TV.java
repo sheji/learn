@@ -4,23 +4,19 @@ public class TV extends Colleague {
 
 	public TV(Mediator mediator, String name) {
 		super(mediator, name);
-		// TODO Auto-generated constructor stub
-		mediator.Register(name, this);
+		mediator.register(name, this);
 	}
 
 	@Override
-	public void SendMessage(int stateChange) {
-		// TODO Auto-generated method stub
-		this.GetMediator().GetMessage(stateChange, this.name);
+	public void sendMessage(int stateChange) {
+		this.getMediator().getMessage(stateChange, this.name);
 	}
 
-	public void StartTv() {
-		// TODO Auto-generated method stub
+	public void startTv() {
 		System.out.println("It's time to StartTv!");
 	}
 
-	public void StopTv() {
-		// TODO Auto-generated method stub
+	public void stopTv() {
 		System.out.println("StopTv!");
 	}
 }
