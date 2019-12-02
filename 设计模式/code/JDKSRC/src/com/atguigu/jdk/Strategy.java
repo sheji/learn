@@ -7,7 +7,6 @@ import java.util.Comparator;
 public class Strategy {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//数组
 		Integer[] data = { 9, 1, 2, 8, 4, 3 };
 		// 实现降序排序，返回-1放左边，1放右边，0保持不变
@@ -25,7 +24,7 @@ public class Strategy {
 				}
 			};
 		};
-		
+
 		// 说明
 		/*
 		 * public static <T> void sort(T[] a, Comparator<? super T> c) {
@@ -42,13 +41,11 @@ public class Strategy {
 		 */
 		//方式1 
 		Arrays.sort(data, comparator);
-		
 		System.out.println(Arrays.toString(data)); // 降序排序
 
 		
 		//方式2- 同时lambda 表达式实现 策略模式
 		Integer[] data2 = { 19, 11, 12, 18, 14, 13 };
-		
 		Arrays.sort(data2, (var1, var2) -> {
 			if(var1.compareTo(var2) > 0) {
 				return -1;
@@ -56,9 +53,6 @@ public class Strategy {
 				return 1;
 			}
 		});
-		
 		System.out.println("data2=" + Arrays.toString(data2));
-		
 	}
-
 }

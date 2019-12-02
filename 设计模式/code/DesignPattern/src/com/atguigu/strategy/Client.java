@@ -3,8 +3,14 @@ package com.atguigu.strategy;
 public class Client {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//≤‚ ‘
+		WildDuck wildDuck = new WildDuck();
+		wildDuck.fly();
+		
+		PekingDuck pekingDuck = new PekingDuck();
+		pekingDuck.fly();
+		
+		ToyDuck toyDuck = new ToyDuck();
+		toyDuck.fly();
 	}
-
 }
