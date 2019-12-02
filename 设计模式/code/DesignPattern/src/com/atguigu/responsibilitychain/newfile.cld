@@ -306,8 +306,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>254</x>
-              <y>283</y>
+              <x>264</x>
+              <y>273</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>
@@ -417,8 +417,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>500</x>
-              <y>281</y>
+              <x>483</x>
+              <y>272</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>

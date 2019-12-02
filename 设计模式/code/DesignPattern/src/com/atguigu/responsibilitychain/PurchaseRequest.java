@@ -1,6 +1,5 @@
 package com.atguigu.responsibilitychain;
 
-
 //«Î«Û¿‡
 public class PurchaseRequest {
 
@@ -22,9 +21,5 @@ public class PurchaseRequest {
 	public int getId() {
 		return id;
 	}
-	
-	
-	
-	
-	
+
 }
