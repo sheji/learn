@@ -134,7 +134,6 @@ public class SingleLinkedListDemo {
 			cur = cur.next;
 		}
 		return cur;
-		
 	}
 	
 	//方法：获取到单链表的节点的个数(如果是带头结点的链表，需求不统计头节点)
@@ -164,7 +163,6 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
 	//先初始化一个头节点, 头节点不要动, 不存放具体的数据
 	private HeroNode head = new HeroNode(0, "", "");
-	
 	
 	//返回头节点
 	public HeroNode getHead() {
@@ -206,8 +204,7 @@ class SingleLinkedList {
 			} 
 			if(temp.next.no > heroNode.no) { //位置找到，就在temp的后面插入
 				break;
-			} else if (temp.next.no == heroNode.no) {//说明希望添加的heroNode的编号已然存在
-				
+			} else if (temp.next.no == heroNode.no) {//说明希望添加的heroNode的编号已然存在			
 				flag = true; //说明编号存在
 				break;
 			}
@@ -322,5 +319,4 @@ class HeroNode {
 	public String toString() {
 		return "HeroNode [no=" + no + ", name=" + name + ", nickname=" + nickname + "]";
 	}
-	
 }
