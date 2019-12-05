@@ -1,5 +1,4 @@
 package com.atguigu.queue;
-
 import java.util.Scanner;
 
 public class ArrayQueueDemo {
@@ -54,10 +53,8 @@ public class ArrayQueueDemo {
 				break;
 			}
 		}
-		
 		System.out.println("程序退出~~");
 	}
-
 }
 
 // 使用数组模拟队列-编写一个ArrayQueue类
