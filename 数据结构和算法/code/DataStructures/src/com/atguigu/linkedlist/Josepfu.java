@@ -3,14 +3,12 @@ package com.atguigu.linkedlist;
 public class Josepfu {
 
 	public static void main(String[] args) {
-		// 测试一把看看构建环形链表，和遍历是否ok
-		CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
-		circleSingleLinkedList.addBoy(125);// 加入5个小孩节点
-		circleSingleLinkedList.showBoy();
+		// 测试一把看看构建环形链表，和遍历是否ok 创建5个小孩的环形链表
+		CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList(5);
+		circleSingleLinkedList.showBoy();// 展示环形链表中的小孩编号
 		
 		//测试一把小孩出圈是否正确
-		circleSingleLinkedList.countBoy(10, 20, 125); // 2->4->1->5->3
-		//String str = "7*2*2-5+1-5+3-3";
+		circleSingleLinkedList.countBoy(1, 2, 5); // 2->4->1->5->3
 	}
 
 }
@@ -19,9 +17,13 @@ public class Josepfu {
 class CircleSingleLinkedList {
 	// 创建一个first节点,当前没有编号
 	private Boy first = null;
+	
+	public CircleSingleLinkedList(int nums) {
+		initBoy(nums);
+	}
 
 	// 添加小孩节点，构建成一个环形的链表
-	public void addBoy(int nums) {
+	private void initBoy(int nums) {
 		// nums 做一个数据校验
 		if (nums < 1) {
 			System.out.println("nums的值不正确");
@@ -65,13 +67,9 @@ class CircleSingleLinkedList {
 
 	// 根据用户的输入，计算出小孩出圈的顺序
 	/**
-	 * 
-	 * @param startNo
-	 *            表示从第几个小孩开始数数
-	 * @param countNum
-	 *            表示数几下
-	 * @param nums
-	 *            表示最初有多少小孩在圈中
+	 * @param startNo 表示从第几个小孩开始数数
+	 * @param countNum 表示数几下
+	 * @param nums 表示最初有多少小孩在圈中
 	 */
 	public void countBoy(int startNo, int countNum, int nums) {
 		// 先对数据进行校验
