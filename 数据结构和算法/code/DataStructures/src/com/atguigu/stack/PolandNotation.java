@@ -26,7 +26,6 @@ public class PolandNotation {
 		System.out.printf("expression=%d", calculate(suffixExpreesionList)); // ?
 		
 		
-		
 		/*
 		
 		//先定义给逆波兰表达式
