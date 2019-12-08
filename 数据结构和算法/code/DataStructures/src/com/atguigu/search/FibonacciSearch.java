@@ -7,9 +7,7 @@ public class FibonacciSearch {
 	public static int maxSize = 20;
 	public static void main(String[] args) {
 		int [] arr = {1,8, 10, 89, 1000, 1234};
-		
-		System.out.println("index=" + fibSearch(arr, 189));// 0
-		
+		System.out.println("index=" + fibSearch(arr, 1000));
 	}
 
 	//因为后面我们mid=low+F(k-1)-1，需要使用到斐波那契数列，因此我们需要先获取到一个斐波那契数列
@@ -27,7 +25,6 @@ public class FibonacciSearch {
 	//编写斐波那契查找算法
 	//使用非递归的方式编写算法
 	/**
-	 * 
 	 * @param a  数组
 	 * @param key 我们需要查找的关键码(值)
 	 * @return 返回对应的下标，如果没有-1
@@ -47,7 +44,7 @@ public class FibonacciSearch {
 		int[] temp = Arrays.copyOf(a, f[k]);
 		//实际上需求使用a数组最后的数填充 temp
 		//举例:
-		//temp = {1,8, 10, 89, 1000, 1234, 0, 0}  => {1,8, 10, 89, 1000, 1234, 1234, 1234,}
+		//temp = {1,8, 10, 89, 1000, 1234, 0, 0}  => {1,8, 10, 89, 1000, 1234, 1234, 1234}
 		for(int i = high + 1; i < temp.length; i++) {
 			temp[i] = a[high];
 		}
