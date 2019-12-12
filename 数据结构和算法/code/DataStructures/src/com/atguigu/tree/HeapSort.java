@@ -8,25 +8,28 @@ public class HeapSort {
 
 	public static void main(String[] args) {
 		//要求将数组进行升序排序
-		//int arr[] = {4, 6, 8, 5, 9};
-		// 创建要给80000个的随机的数组
-		int[] arr = new int[8000000];
-		for (int i = 0; i < 8000000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // 生成一个[0, 8000000) 数
-		}
-
-		System.out.println("排序前");
-		Date data1 = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("排序前的时间是=" + date1Str);
-		
+		int arr[] = {4, 6, 8, 5, 9};
+		System.out.println("排序前="+ Arrays.toString(arr));
 		heapSort(arr);
+		System.out.println("排序后=" + Arrays.toString(arr));
+//		// 创建要给80000个的随机的数组
+//		int[] arr = new int[8000000];
+//		for (int i = 0; i < 8000000; i++) {
+//			arr[i] = (int) (Math.random() * 8000000); // 生成一个[0, 8000000) 数
+//		}
+//
+//		System.out.println("排序前");
+//		Date data1 = new Date();
+//		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		String date1Str = simpleDateFormat.format(data1);
+//		System.out.println("排序前的时间是=" + date1Str);
+//		
+//		heapSort(arr);
+//		
+//		Date data2 = new Date();
+//		String date2Str = simpleDateFormat.format(data2);
+//		System.out.println("排序前的时间是=" + date2Str);
 		
-		Date data2 = new Date();
-		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("排序前的时间是=" + date2Str);
-		//System.out.println("排序后=" + Arrays.toString(arr));
 	}
 
 	//编写一个堆排序的方法
@@ -36,7 +39,7 @@ public class HeapSort {
 		
 //		//分步完成
 //		adjustHeap(arr, 1, arr.length);
-//		System.out.println("第一次" + Arrays.toString(arr)); // 4, 9, 8, 5, 6
+//		System.out.println("第一次" + Arrays.toString(arr)); // 4,9,8,5,6
 //		
 //		adjustHeap(arr, 0, arr.length);
 //		System.out.println("第2次" + Arrays.toString(arr)); // 9,6,8,5,4

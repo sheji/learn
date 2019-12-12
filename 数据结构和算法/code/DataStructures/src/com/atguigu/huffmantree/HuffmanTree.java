@@ -11,7 +11,8 @@ public class HuffmanTree {
 		Node root = createHuffmanTree(arr);
 		
 		//测试一把
-		preOrder(root); //
+		System.out.println("前序遍历赫夫曼树：");
+		preOrder(root); 
 		
 	}
 	
@@ -26,7 +27,6 @@ public class HuffmanTree {
 
 	// 创建赫夫曼树的方法
 	/**
-	 * 
 	 * @param arr 需要创建成哈夫曼树的数组
 	 * @return 创建好后的赫夫曼树的root结点
 	 */
@@ -41,7 +41,6 @@ public class HuffmanTree {
 		}
 		
 		//我们处理的过程是一个循环的过程
-		
 		
 		while(nodes.size() > 1) {
 		
@@ -105,7 +104,6 @@ class Node implements Comparable<Node> {
 
 	@Override
 	public int compareTo(Node o) {
-		// TODO Auto-generated method stub
 		// 表示从小到大排序
 		return this.value - o.value;
 	}
