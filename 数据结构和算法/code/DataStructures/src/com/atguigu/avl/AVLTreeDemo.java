@@ -205,8 +205,6 @@ class Node {
 		right = right.right;
 		//把当前结点的左子树(左子结点)设置成新的结点
 		left = newNode;
-		
-		
 	}
 	
 	//右旋转
