@@ -1,7 +1,5 @@
 package com.atguigu.avl;
 
-
-
 public class AVLTreeDemo {
 
 	public static void main(String[] args) {
@@ -24,7 +22,6 @@ public class AVLTreeDemo {
 		System.out.println("树的左子树高度=" + avlTree.getRoot().leftHeight()); // 2
 		System.out.println("树的右子树高度=" + avlTree.getRoot().rightHeight()); // 2
 		System.out.println("当前的根结点=" + avlTree.getRoot());//8
-		
 		
 	}
 
