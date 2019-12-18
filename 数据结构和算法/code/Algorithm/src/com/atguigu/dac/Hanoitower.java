@@ -3,12 +3,18 @@ package com.atguigu.dac;
 public class Hanoitower {
 
 	public static void main(String[] args) {
-		hanoiTower(10, 'A', 'B', 'C');
+		hanoiTower(3, 'A', 'B', 'C');
 	}
 	
 	//汉诺塔的移动的方法
 	//使用分治算法
-	
+	/**
+	 * 
+	 * @param num 总共多少个盘
+	 * @param a 起始柱子
+	 * @param b 借助的柱子
+	 * @param c 目标柱子
+	 */
 	public static void hanoiTower(int num, char a, char b, char c) {
 		//如果只有一个盘
 		if(num == 1) {
@@ -21,7 +27,6 @@ public class Hanoitower {
 			System.out.println("第" + num + "个盘从 " + a + "->" + c);
 			//3. 把B塔的所有盘 从 B->C , 移动过程使用到 a塔  
 			hanoiTower(num - 1, b, a, c);
-			
 		}
 	}
 
