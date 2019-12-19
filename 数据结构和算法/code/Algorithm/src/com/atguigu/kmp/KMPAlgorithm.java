@@ -5,16 +5,15 @@ import java.util.Arrays;
 public class KMPAlgorithm {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String str1 = "BBC ABCDAB ABCDABCDABDE";
 		String str2 = "ABCDABD";
 		//String str2 = "BBC";
 		
-		int[] next = kmpNext("ABCDABD"); //[0, 1, 2, 0]
-		System.out.println("next=" + Arrays.toString(next));
+		int[] next = kmpNext("ABCDABD"); 
+		System.out.println("next=" + Arrays.toString(next));//[0, 0, 0, 0, 1, 2, 0]
 		
 		int index = kmpSearch(str1, str2, next);
-		System.out.println("index=" + index); // 15ак
+		System.out.println("index=" + index); // 15
 		
 		
 	}

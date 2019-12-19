@@ -3,10 +3,9 @@ package com.atguigu.kmp;
 public class ViolenceMatch {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//²âÊÔ±©Á¦Æ¥ÅäËã·¨
 		String str1 = "¹è¹è¹È ÉĞ¹è¹ÈÄãÉĞ¹è ÉĞ¹è¹ÈÄãÉĞ¹è¹ÈÄãÉĞ¹èÄãºÃ";
-		String str2 = "ÉĞ¹è¹ÈÄãÉĞ¹èÄã~";
+		String str2 = "ÉĞ¹è¹ÈÄãÉĞ¹èÄã";
 		int index = violenceMatch(str1, str2);
 		System.out.println("index=" + index);
 

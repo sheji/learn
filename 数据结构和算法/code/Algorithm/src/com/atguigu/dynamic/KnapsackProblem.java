@@ -3,13 +3,10 @@ package com.atguigu.dynamic;
 public class KnapsackProblem {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int[] w = {1, 4, 3};//物品的重量
 		int[] val = {1500, 3000, 2000}; //物品的价值 这里val[i] 就是前面讲的v[i]
 		int m = 4; //背包的容量
 		int n = val.length; //物品的个数
-		
-		
 		
 		//创建二维数组，
 		//v[i][j] 表示在前i个物品中能够装入容量为j的背包中的最大价值
