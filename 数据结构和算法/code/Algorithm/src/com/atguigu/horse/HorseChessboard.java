@@ -52,7 +52,7 @@ public class HorseChessboard {
 		//获取当前位置可以走的下一个位置的集合 
 		ArrayList<Point> ps = next(new Point(column, row));
 		//对ps进行排序,排序的规则就是对ps的所有的Point对象的下一步的位置的数目，进行非递减排序
-		sort(ps);
+		sort(ps);//最后采用的优化 不优化时候用时一般是 39秒(优化后是60ms)
 		//遍历 ps
 		while(!ps.isEmpty()) {
 			Point p = ps.remove(0);//取出下一个可以走的位置
@@ -126,7 +126,6 @@ public class HorseChessboard {
 
 			@Override
 			public int compare(Point o1, Point o2) {
-				// TODO Auto-generated method stub
 				//获取到o1的下一步的所有位置个数
 				int count1 = next(o1).size();
 				//获取到o2的下一步的所有位置个数
