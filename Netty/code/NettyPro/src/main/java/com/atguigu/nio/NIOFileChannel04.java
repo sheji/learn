@@ -8,8 +8,8 @@ public class NIOFileChannel04 {
     public static void main(String[] args)  throws Exception {
 
         //创建相关流
-        FileInputStream fileInputStream = new FileInputStream("d:\\a.jpg");
-        FileOutputStream fileOutputStream = new FileOutputStream("d:\\a2.jpg");
+        FileInputStream fileInputStream = new FileInputStream("Koala.jpg");
+        FileOutputStream fileOutputStream = new FileOutputStream("Koala2.jpg");
 
         //获取各个流对应的filechannel
         FileChannel sourceCh = fileInputStream.getChannel();

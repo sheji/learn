@@ -43,6 +43,10 @@ Ctrl`+`Shift`+`Alt`+`N
 | 补全代码                                                     | alt+/                                                        |              |                                                              | alt+ /          |
 | 智能提示(实现未实现的接口，创建类....)                       | alt+Enter                                                    |              |                                                              |                 |
 | 构造、Setter/Getter、toString、hashCode等                    | ctrl+return、cmd+n                                           | alt+insert   |                                                              |                 |
+| 代码左右(上下)分屏                                           | 文件右键->Split Vertically(Horizontally)                     |              |                                                              |                 |
+|                                                              |                                                              |              |                                                              |                 |
+|                                                              |                                                              |              |                                                              |                 |
+|                                                              |                                                              |              |                                                              |                 |
 |                                                              |                                                              |              |                                                              |                 |
 
 

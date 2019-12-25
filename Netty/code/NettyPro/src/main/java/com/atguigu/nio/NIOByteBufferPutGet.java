@@ -11,7 +11,7 @@ public class NIOByteBufferPutGet {
         //类型化方式放入数据
         buffer.putInt(100);
         buffer.putLong(9);
-//        buffer.putChar('尚');
+        buffer.putChar('爱');
         buffer.putShort((short) 4);
 
         //取出
@@ -23,11 +23,5 @@ public class NIOByteBufferPutGet {
         System.out.println(buffer.getLong());
         System.out.println(buffer.getChar());
         System.out.println(buffer.getShort());
-
-
-
-
-
-
     }
 }

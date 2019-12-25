@@ -6,9 +6,9 @@ public class ReadOnlyBuffer {
     public static void main(String[] args) {
 
         //创建一个buffer
-        ByteBuffer buffer = ByteBuffer.allocate(64);
+        ByteBuffer buffer = ByteBuffer.allocate(2);
 
-        for(int i = 0; i < 64; i++) {
+        for(int i = 0; i < 2; i++) {
             buffer.put((byte)i);
         }
 

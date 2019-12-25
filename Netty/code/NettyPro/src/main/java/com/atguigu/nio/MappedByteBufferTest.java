@@ -26,7 +26,7 @@ public class MappedByteBufferTest {
 
         mappedByteBuffer.put(0, (byte) 'H');
         mappedByteBuffer.put(3, (byte) '9');
-        mappedByteBuffer.put(5, (byte) 'Y');//IndexOutOfBoundsException
+//        mappedByteBuffer.put(5, (byte) 'Y');//IndexOutOfBoundsException
 
         randomAccessFile.close();
         System.out.println("修改成功~~");
