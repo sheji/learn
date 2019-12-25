@@ -38,7 +38,7 @@ public class ScatteringAndGatheringTest {
                 long l = socketChannel.read(byteBuffers);
                 byteRead += l; //累计读取的字节数
                 System.out.println("byteRead=" + byteRead);
-                //使用流打印, 看看当前的这个buffer的position 和 limit
+                //使用流打印, 看看当前的这个buffer的positimon 和 liit
                 Arrays.asList(byteBuffers).stream().map(buffer ->
                         "postion=" + buffer.position() + ", limit=" + buffer.limit()).forEach(System.out::println);
             }
