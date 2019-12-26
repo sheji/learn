@@ -67,9 +67,7 @@ public class GroupChatServer {
                         }
                         if(key.isReadable()) { //通道发送read事件，即通道是可读的状态
                             //处理读 (专门写方法..)
-
                             readData(key);
-
                         }
                         //当前的key 删除，防止重复处理
                         iterator.remove();
@@ -85,7 +83,6 @@ public class GroupChatServer {
 
         }finally {
             //发生异常处理....
-
         }
     }
 
@@ -107,7 +104,7 @@ public class GroupChatServer {
                 //把缓存区的数据转成字符串
                 String msg = new String(buffer.array());
                 //输出该消息
-                System.out.println("form 客户端: " + msg);
+                System.out.println("from 客户端: " + msg);
 
                 //向其它的客户端转发消息(去掉自己), 专门写一个方法来处理
                 sendInfoToOtherClients(msg, channel);
@@ -159,13 +156,4 @@ public class GroupChatServer {
     }
 }
 
-//可以写一个Handler
-class MyHandler {
-    public void readData() {
-
-    }
-    public void sendInfoToOtherClients(){
-
-    }
-}
 

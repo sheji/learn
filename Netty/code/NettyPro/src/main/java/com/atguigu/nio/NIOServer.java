@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class NIOServer {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         //创建ServerSocketChannel -> ServerSocket
 
@@ -27,12 +27,11 @@ public class NIOServer {
         System.out.println("注册后的selectionkey 数量=" + selector.keys().size()); // 1
 
 
-
         //循环等待客户端连接
         while (true) {
 
             //这里我们等待1秒，如果没有事件发生, 返回
-            if(selector.select(1000) == 0) { //没有事件发生
+            if (selector.select(1000) == 0) { //没有事件发生
                 System.out.println("服务器等待了1秒，无连接");
                 continue;
             }
@@ -51,7 +50,7 @@ public class NIOServer {
                 //获取到SelectionKey
                 SelectionKey key = keyIterator.next();
                 //根据key 对应的通道发生的事件做相应处理
-                if(key.isAcceptable()) { //如果是 OP_ACCEPT, 有新的客户端连接
+                if (key.isAcceptable()) { //如果是 OP_ACCEPT, 有新的客户端连接
                     //该该客户端生成一个 SocketChannel
                     SocketChannel socketChannel = serverSocketChannel.accept();
                     System.out.println("客户端连接成功 生成了一个 socketChannel " + socketChannel.hashCode());
@@ -62,18 +61,16 @@ public class NIOServer {
                     socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
 
                     System.out.println("客户端连接后 ，注册的selectionkey 数量=" + selector.keys().size()); //2,3,4..
-
-
                 }
-                if(key.isReadable()) {  //发生 OP_READ
+                if (key.isReadable()) {  //发生 OP_READ
 
                     //通过key 反向获取到对应channel
-                    SocketChannel channel = (SocketChannel)key.channel();
+                    SocketChannel channel = (SocketChannel) key.channel();
 
                     //获取到该channel关联的buffer
-                    ByteBuffer buffer = (ByteBuffer)key.attachment();
+                    ByteBuffer buffer = (ByteBuffer) key.attachment();
                     channel.read(buffer);
-                    System.out.println("form 客户端 " + new String(buffer.array()));
+                    System.out.println("from 客户端 " + new String(buffer.array()));
 
                 }
 

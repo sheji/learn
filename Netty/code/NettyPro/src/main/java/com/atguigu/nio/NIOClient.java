@@ -22,7 +22,7 @@ public class NIOClient {
         }
 
         //...如果连接成功，就发送数据
-        String str = "hello, 尚硅谷~";
+        String str = "hello, 你好~";
         //Wraps a byte array into a buffer
         ByteBuffer buffer = ByteBuffer.wrap(str.getBytes());
         //发送数据，将 buffer 数据写入 channel

@@ -30,8 +30,8 @@ public class NewIOServer {
 
                     readcount = socketChannel.read(byteBuffer);
 
-                }catch (Exception ex) {
-                   // ex.printStackTrace();
+                } catch (Exception ex) {
+                    // ex.printStackTrace();
                     break;
                 }
                 //
