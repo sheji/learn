@@ -58,7 +58,7 @@ public class MyServer {
                     4. WebSocketServerProtocolHandler 核心功能是将 http协议升级为 ws协议 , 保持长连接
                     5. 是通过一个 状态码 101
                      */
-                    pipeline.addLast(new WebSocketServerProtocolHandler("/hello2"));
+                    pipeline.addLast(new WebSocketServerProtocolHandler("/hello"));
 
                     //自定义的handler ，处理业务逻辑
                     pipeline.addLast(new MyTextWebSocketFrameHandler());
@@ -66,7 +66,7 @@ public class MyServer {
             });
 
             //启动服务器
-            ChannelFuture channelFuture = serverBootstrap.bind(7000).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(9000).sync();
             channelFuture.channel().closeFuture().sync();
 
         }finally {

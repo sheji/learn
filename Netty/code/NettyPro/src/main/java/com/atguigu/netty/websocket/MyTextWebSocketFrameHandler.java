@@ -7,7 +7,7 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.time.LocalDateTime;
 
 //这里 TextWebSocketFrame 类型，表示一个文本帧(frame)
-public class MyTextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>{
+public class MyTextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
 

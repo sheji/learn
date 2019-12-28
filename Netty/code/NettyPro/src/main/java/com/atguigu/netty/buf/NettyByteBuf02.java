@@ -12,7 +12,7 @@ public class NettyByteBuf02 {
         ByteBuf byteBuf = Unpooled.copiedBuffer("hello,world!", Charset.forName("utf-8"));
 
         //使用相关的方法
-        if(byteBuf.hasArray()) { // true
+        if (byteBuf.hasArray()) { // true
 
             byte[] content = byteBuf.array();
 
@@ -21,29 +21,27 @@ public class NettyByteBuf02 {
 
             System.out.println("byteBuf=" + byteBuf);
 
-            System.out.println(byteBuf.arrayOffset()); // 0
-            System.out.println(byteBuf.readerIndex()); // 0
-            System.out.println(byteBuf.writerIndex()); // 12
-            System.out.println(byteBuf.capacity()); // 36
+            System.out.println("arrayOffset=" + byteBuf.arrayOffset()); // 0
+            System.out.println("readerIndex=" + byteBuf.readerIndex()); // 0
+            System.out.println("writerIndex=" + byteBuf.writerIndex()); // 12
+            System.out.println("capacity=" + byteBuf.capacity()); // 36
 
-            //System.out.println(byteBuf.readByte()); //
+            //System.out.println(byteBuf.readByte()); //readerIndex会后移
             System.out.println(byteBuf.getByte(0)); // 104
 
             int len = byteBuf.readableBytes(); //可读的字节数  12
-            System.out.println("len=" + len);
+            System.out.println("readableBytes=" + len);
 
             //使用for取出各个字节
-            for(int i = 0; i < len; i++) {
-                System.out.println((char) byteBuf.getByte(i));
+            for (int i = 0; i < len; i++) {
+                System.out.print((char) byteBuf.getByte(i) + " ");
             }
-
+            System.out.println();
             //按照某个范围读取
             System.out.println(byteBuf.getCharSequence(0, 4, Charset.forName("utf-8")));
             System.out.println(byteBuf.getCharSequence(4, 6, Charset.forName("utf-8")));
 
-
         }
-
 
     }
 }
