@@ -23,7 +23,6 @@ message MyMessage {
 
 }
 
-
 message Student {
     int32 id = 1;//Student类的属性
     string name = 2; //
