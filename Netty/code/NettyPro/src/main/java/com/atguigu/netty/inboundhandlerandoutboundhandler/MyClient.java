@@ -17,7 +17,7 @@ public class MyClient {
             bootstrap.group(group).channel(NioSocketChannel.class)
                     .handler(new MyClientInitializer()); //自定义一个初始化类
 
-            ChannelFuture channelFuture = bootstrap.connect("localhost", 7000).sync();
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 9000).sync();
 
             channelFuture.channel().closeFuture().sync();
 
