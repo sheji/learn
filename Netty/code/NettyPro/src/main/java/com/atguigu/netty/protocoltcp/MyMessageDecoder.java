@@ -22,6 +22,5 @@ public class MyMessageDecoder extends ReplayingDecoder<Void> {
         messageProtocol.setContent(content);
 
         out.add(messageProtocol);
-
     }
 }

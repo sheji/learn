@@ -1,6 +1,5 @@
 package com.atguigu.netty.protocoltcp;
 
-
 //协议包
 public class MessageProtocol {
     private int len; //关键

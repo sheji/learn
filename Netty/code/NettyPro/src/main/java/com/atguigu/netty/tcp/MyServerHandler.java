@@ -8,12 +8,11 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.nio.charset.Charset;
 import java.util.UUID;
 
-public class MyServerHandler extends SimpleChannelInboundHandler<ByteBuf>{
+public class MyServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private int count;
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        //cause.printStackTrace();
         ctx.close();
     }
 
