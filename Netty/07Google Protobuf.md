@@ -87,7 +87,7 @@ message Student { //会在 StudentPOJO 外部类生成一个内部类 Student，
 
 
 
-MAC 先可参照  https://blog.csdn.net/new_Aiden/article/details/73076860 将Student.proto 文件生成StudentPOJO.java文件
+MAC 先可参照  https://blog.csdn.net/new_Aiden/article/details/73076860 将Student.proto 文件生成StudentPOJO.java文件(也可以==idea集成ProtoBuf的插件==操作，可参考https://blog.csdn.net/qq_21383435/article/details/88605891)
 
 ```cmd
 protoc --java_out=. Student.proto
