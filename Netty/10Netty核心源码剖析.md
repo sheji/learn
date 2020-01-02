@@ -115,8 +115,6 @@ public final class EchoServer {
 }
 ```
 
-说明：
-
 1. 先看启动类:main 方法中，首先创建了关于 SSL 的配置类。
 
 2. 重点分析下 创建了两个 EventLoopGroup 对象:
@@ -221,8 +219,8 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
 说明:
 
-1. 这是一个普通的处理器类，用于处理客户端发送来的消息，在我们这里，我们简单的解析出客户端传过 来的内容，然后打印，最后发送字符串给客户端。
-2. 大致讲解了我们的 demo 源码的作用。后面的 debug 的时候会详细
+* 这是一个普通的处理器类，用于处理客户端发送来的消息，在我们这里，我们简单的解析出客户端传过 来的内容，然后打印，最后发送字符串给客户端。
+* 大致讲解了我们的 demo 源码的作用。后面的 debug 的时候会详细
 
 
 
@@ -347,17 +345,12 @@ protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
 
 说明:
 
-(1) 如果 executor 是 null，创建一个默认的 ThreadPerTaskExecutor，使用 Netty 默认的线程工厂。
-
-(2) 根据传入的线程数(CPU*2)创建一个线程池(单例线程池)数组。
-
-(3) 循环填充数组中的元素。如果异常，则关闭所有的单例线程池。
-
-(4) 根据线程选择工厂创建一个线程选择器。
-
-(5) 为每一个单例线程池添加一个关闭监听器。
-
-(6) 将所有的单例线程池添加到一个 HashSet 中。
+* 如果 executor 是 null，创建一个默认的 ThreadPerTaskExecutor，使用 Netty 默认的线程工厂。
+* 根据传入的线程数(CPU*2)创建一个线程池(单例线程池)数组。
+* 循环填充数组中的元素。如果异常，则关闭所有的单例线程池。
+* 根据线程选择工厂创建一个线程选择器。
+* 为每一个单例线程池添加一个关闭监听器。
+* 将所有的单例线程池添加到一个 HashSet 中。
 
 
 
@@ -402,17 +395,11 @@ b.group(bossGroup, workerGroup)
 
 说明：
 
-(1) 链式调用:group 方法，将 boss 和 worker 传入，boss 赋值给 parentGroup 属性,worker 赋值给 childGroup属性。
-
-(2) channel 方法传入 NioServerSocketChannel.class 对象。会根据这个 class 创建 channel 对象。
-
-(3) option 方法传入 TCP 参数，放在一个 LinkedHashMap 中。
-
-(4) handler 方法传入一个 handler 中，这个 hanlder 只专属于 ServerSocketChannel 而不是 SocketChannel。
-
-(5) childHandler 传入一个 hanlder ，这个 handler 将会在每个客户端连接的时候调用。供 SocketChannel 使
-
-用。
+* 链式调用:group 方法，将 boss 和 worker 传入，boss 赋值给 parentGroup 属性,worker 赋值给 childGroup属性。
+* channel 方法传入 NioServerSocketChannel.class 对象。会根据这个 class 创建 channel 对象。
+* option 方法传入 TCP 参数，放在一个 LinkedHashMap 中。
+* handler 方法传入一个 handler 中，这个 hanlder 只专属于 ServerSocketChannel 而不是 SocketChannel。
+* childHandler 传入一个 hanlder ，这个 handler 将会在每个客户端连接的时候调用。供 SocketChannel 使用。
 
 
 
@@ -506,32 +493,30 @@ final ChannelFuture initAndRegister() {
 
 4.1 说明: `channelFactory.newChannel()` 方法 的作用通过 **ServerBootstrap** 的通道工厂反射创建一个 **NioServerSocketChannel,** 具体追踪源码可以得到下面结论:
 
-1. 通过 NIO 的 SelectorProvider 的 openServerSocketChannel 方法得到 JDK 的 channel。目的是让 Netty 包装 JDK 的 channel。
-
-2. 创建了一个唯一的 ChannelId，创建了一个 NioMessageUnsafe，用于操作消息，创建了一 个 DefaultChannelPipeline 管道，是个双向链表结构，用于过滤所有的进出的消息。
-
-3. 创建了一个 NioServerSocketChannelConfig 对象，用于对外展示一些配置。`channel = channelFactory.newChannel();//NioServerSocketChannel`
+* 通过 NIO 的 SelectorProvider 的 openServerSocketChannel 方法得到 JDK 的 channel。目的是让 Netty 包装 JDK 的 channel。
+* 创建了一个唯一的 ChannelId，创建了一个 NioMessageUnsafe，用于操作消息，创建了一 个 DefaultChannelPipeline 管道，是个双向链表结构，用于过滤所有的进出的消息。
+* 创建了一个 NioServerSocketChannelConfig 对象，用于对外展示一些配置。`channel = channelFactory.newChannel();//NioServerSocketChannel`
 
 
 
 4.2 说明:**init** 初始化这个 **NioServerSocketChannel**，具体追踪源码可以得到如下结论:
 
-1. **init** 方法，这是个抽象方法**(AbstractBootstrap** 类的**)**，由 **ServerBootstrap** 实现(可以追一下源码 `setChannelOptions(channel, options, logger);`
-2. 设置 **NioServerSocketChannel** 的 **TCP** 属性。
-3. 由于 **LinkedHashMap** 是非线程安全的，使用同步进行处理。
-4. 对 **NioServerSocketChannel** 的 **ChannelPipeline** 添加 **ChannelInitializer** 处理器。
-5. 可以看出， **init** 的方法的核心作用在和 **ChannelPipeline** 相关。
-6. 从 **NioServerSocketChannel** 的初始化过程中，我们知道，**pipeline** 是一个双向链表，并且，他本身就初始化了 **head** 和 **tail**，这里调用了他的 **addLast** 方法，也就是将整个 **handler** 插入到 **tail** 的 前面，因为 **tail** 永远会在后面，需要做一些系统的固定工作。
+* **init** 方法，这是个抽象方法**(AbstractBootstrap** 类的**)**，由 **ServerBootstrap** 实现(可以追一下源码 `setChannelOptions(channel, options, logger);`
+* 设置 **NioServerSocketChannel** 的 **TCP** 属性。
+* 由于 **LinkedHashMap** 是非线程安全的，使用同步进行处理。
+* 对 **NioServerSocketChannel** 的 **ChannelPipeline** 添加 **ChannelInitializer** 处理器。
+* 可以看出， **init** 的方法的核心作用在和 **ChannelPipeline** 相关。
+* 从 **NioServerSocketChannel** 的初始化过程中，我们知道，**pipeline** 是一个双向链表，并且，他本身就初始化了 **head** 和 **tail**，这里调用了他的 **addLast** 方法，也就是将整个 **handler** 插入到 **tail** 的 前面，因为 **tail** 永远会在后面，需要做一些系统的固定工作。
 
 
 
 4.3 说明:
 
-1. 基本说明: `initAndRegister()` 初始化 **NioServerSocketChannel** 通道并注册各个 **handler**，返回一个 **future**。
-2. 通过 **ServerBootstrap** 的通道工厂反射创建一个 **NioServerSocketChannel**。
-3. **init** 初始化这个 **NioServerSocketChannel**。
-4. `config().group().register(channel)` 通过 **ServerBootstrap** 的 **bossGroup** 注册 **NioServerSocketChannel**。
-5. 最后，返回这个异步执行的占位符即 **regFuture**。
+* 基本说明: `initAndRegister()` 初始化 **NioServerSocketChannel** 通道并注册各个 **handler**，返回一个 **future**。
+* 通过 **ServerBootstrap** 的通道工厂反射创建一个 **NioServerSocketChannel**。
+* init** 初始化这个 **NioServerSocketChannel**。
+* config().group().register(channel)` 通过 **ServerBootstrap** 的 **bossGroup** 注册 **NioServerSocketChannel**。
+* 最后，返回这个异步执行的占位符即 **regFuture**。
 
 
 
@@ -576,17 +561,12 @@ public final ChannelPipeline addLast(EventExecutorGroup group, String name, Chan
 
 说明:
 
-(1) addLast 方法，在 DefaultChannelPipeline 类中。
-
-(2) addLast 方法这就是 pipeline 方法的核心。
-
-(3) 检查该 handler 是否符合标准。
-
-(4) 创建一个 AbstractChannelHandlerContext 对象 ， 这里说一下 ， ChannelHandlerContext 对象是ChannelHandler 和 ChannelPipeline 之间的关联，每当有 ChannelHandler 添加到 Pipeline 中时，都会创建 Context。Context 的主要功能是管理他所关联的 Handler 和同一个 Pipeline 中的其他 Handler 之间的交互。
-
-(5) 将 Context 添加到链表中。也就是追加到 tail 节点的前面。
-
-(6) 最后，同步或者异步或者晚点异步的调用 callHandlerAdded0 方法
+* addLast 方法，在 DefaultChannelPipeline 类中。
+* addLast 方法这就是 pipeline 方法的核心。
+* 检查该 handler 是否符合标准。
+* 创建一个 AbstractChannelHandlerContext 对象 ， 这里说一下 ， ChannelHandlerContext 对象是ChannelHandler 和 ChannelPipeline 之间的关联，每当有 ChannelHandler 添加到 Pipeline 中时，都会创建 Context。Context 的主要功能是管理他所关联的 Handler 和同一个 Pipeline 中的其他 Handler 之间的交互。
+* 将 Context 添加到链表中。也就是追加到 tail 节点的前面。
+* 最后，同步或者异步或者晚点异步的调用 callHandlerAdded0 方法
 
 
 
@@ -615,9 +595,8 @@ private static void doBind0(
 
 说明:
 
-(1) 该方法的参数为 initAndRegister 的 future，NioServerSocketChannel，端口地址，NioServerSocketChannel 的 promise。
-
-(2) 这里就可以根据前面下的断点，一直 debug:
+* 该方法的参数为 initAndRegister 的 future，NioServerSocketChannel，端口地址，NioServerSocketChannel 的 promise。
+* 这里就可以根据前面下的断点，一直 debug:
 
 ![image-20200102200640684](images/image-20200102200640684.png)
 
@@ -645,7 +624,7 @@ public final void bind(final SocketAddress localAddress, final ChannelPromise pr
 	}}
 ```
 
-(3) 最终 doBind 就会追踪到 NioServerSocketChannel 的 doBind, 说明 Netty 底层使用的是 Nio
+* 最终 doBind 就会追踪到 NioServerSocketChannel 的 doBind, 说明 Netty 底层使用的是 Nio
 
 ```java
 protected void doBind(SocketAddress localAddress) throws Exception {
@@ -801,15 +780,11 @@ public void read() {
 
 说明:
 
-(1) 检查该 eventloop 线程是否是当前线程。`assert eventLoop().inEventLoop()`。
-
-(2) 执行 doReadMessages 方法，并传入一个 readBuf 变量，这个变量是一个 List，也就是容器。
-
-(3) 循环容器，执行 `pipeline.fireChannelRead(readBuf.get(i));`
-
-(4) doReadMessages 是读取 boss 线程中的 NioServerSocketChannel 接受到的请求。并把这些请求放进容器，一会我们 **debug** 下 **doReadMessages** 方法。
-
-(5) 循环遍历容器中的所有请求，调用 pipeline 的 fireChannelRead 方法，用于处理这些接受的请求或者其他事件，在 read 方法中，循环调用 ServerSocket 的 pipeline 的 fireChannelRead 方法, 开始执行管道中的 handler 的 ChannelRead 方法(debug 进入)。
+* 检查该 eventloop 线程是否是当前线程。`assert eventLoop().inEventLoop()`。
+* 执行 doReadMessages 方法，并传入一个 readBuf 变量，这个变量是一个 List，也就是容器。
+* 循环容器，执行 `pipeline.fireChannelRead(readBuf.get(i));`
+* doReadMessages 是读取 boss 线程中的 NioServerSocketChannel 接受到的请求。并把这些请求放进容器，一会我们 **debug** 下 **doReadMessages** 方法。
+* 循环遍历容器中的所有请求，调用 pipeline 的 fireChannelRead 方法，用于处理这些接受的请求或者其他事件，在 read 方法中，循环调用 ServerSocket 的 pipeline 的 fireChannelRead 方法, 开始执行管道中的 handler 的 ChannelRead 方法(debug 进入)。
 
 
 
@@ -840,11 +815,9 @@ protected int doReadMessages(List<Object> buf) throws Exception {
 
 说明:
 
-(1) 通过工具类，调用 NioServerSocketChannel 内部封装的 serverSocketChannel 的 accept 方法，这是 Nio 做法。
-
-(2) 获取到一个 JDK 的 SocketChannel，然后，使用 NioSocketChannel 进行封装。最后添加到容器中。
-
-(3) 这样容器 buf 中就有了 NioSocketChannel [如果有兴趣可以追一下 NioSocketChannel 是如何创建的，我就不追了]。
+* 通过工具类，调用 NioServerSocketChannel 内部封装的 serverSocketChannel 的 accept 方法，这是 Nio 做法。
+*  获取到一个 JDK 的 SocketChannel，然后，使用 NioSocketChannel 进行封装。最后添加到容器中。
+* 这样容器 buf 中就有了 NioSocketChannel [如果有兴趣可以追一下 NioSocketChannel 是如何创建的，我就不追了]。
 
 
 
@@ -889,15 +862,14 @@ public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
 说明:
 
-(1) msg 强转成 Channel ，实际上就是 NioSocketChannel 。
+* msg 强转成 Channel ，实际上就是 NioSocketChannel 。
 
-(2) 添加 NioSocketChannel 的 pipeline 的 handler ，就是我们 main 方法里面设置的 childHandler 方法里的。
+*  添加 NioSocketChannel 的 pipeline 的 handler ，就是我们 main 方法里面设置的 childHandler 方法里的。
 
-(3) 设置 NioSocketChannel 的各种属性。
+*  设置 NioSocketChannel 的各种属性。
 
-(4) 将该 NioSocketChannel 注册到 childGroup 中的一个 EventLoop 上，并添加一个监听器。
-
-(5) 这个 childGroup 就是我们 main 方法创建的数组 workerGroup。
+* 将该 NioSocketChannel 注册到 childGroup 中的一个 EventLoop 上，并添加一个监听器。
+* 这个 childGroup 就是我们 main 方法创建的数组 workerGroup。
 
 
 
@@ -1004,41 +976,41 @@ Netty 中的 ChannelPipeline 、 ChannelHandler 和 ChannelHandlerContext 是非
 
 ## 10.4.3 源码剖析
 
-### 1. ChannelPipeline | ChannelHandler | ChannelHandlerContext介绍
+### 1. 相关类介绍
 
 1. 三者关系
 
-(1) 每当 ServerSocket 创建一个新的连接，就会创建一个 Socket，对应的就是目标客户端。
+1.1 每当 ServerSocket 创建一个新的连接，就会创建一个 Socket，对应的就是目标客户端。
 
-(2) 每一个新创建的 Socket 都将会分配一个全新的 ChannelPipeline(以下简称 pipeline)。
+1.2 每一个新创建的 Socket 都将会分配一个全新的 ChannelPipeline(以下简称 pipeline)。
 
-(3) 每一个 ChannelPipeline 内部都含有多个 ChannelHandlerContext(以下简称 Context)。
+ 每一个 ChannelPipeline 内部都含有多个 ChannelHandlerContext(以下简称 Context)。
 
-(4) 他们一起组成了双向链表，这些 Context 用于包装我们调用 addLast 方法时添加的 ChannelHandler(以下简称 handler)。
+1.4 他们一起组成了双向链表，这些 Context 用于包装我们调用 addLast 方法时添加的 ChannelHandler(以下简称 handler)。
 
 ![image-20200102215432760](images/image-20200102215432760.png)
 
 上图中:
 
-1) ChannelSocket 和 ChannelPipeline 是一对一的关联关系，而 pipeline 内部的多个 Context 形成了链 表，**Context** 只是对 **Handler** 的封装。
+*  ChannelSocket 和 ChannelPipeline 是一对一的关联关系，而 pipeline 内部的多个 Context 形成了链 表，**Context** 只是对 **Handler** 的封装。
 
-2) 当一个请求进来的时候，会进入 Socket 对应的 pipeline，并经过 pipeline 所有的 handler，就是设计模式中的过滤器模式。
+* 当一个请求进来的时候，会进入 Socket 对应的 pipeline，并经过 pipeline 所有的 handler，就是设计模式中的过滤器模式。
 
 
 
-2. ChannelPipeline 作用及设计
+2. **ChannelPipeline** 作用及设计
 
-(1) pipeline 的接口设计
+2.1 pipeline 的接口设计
 
 ![image-20200102215742180](images/image-20200102215742180.png)
 
-部分源码
+2.2 部分源码
 
 ![image-20200102215823310](images/image-20200102215823310.png)
 
 可以看到该接口继承了 inBound，outBound，Iterable 接口，表示他可以==调用数据出站的方法和入站==的方法，同时 也能遍历内部的链表， 看看他的几个代表性的方法，基本上都是针对 handler 链表的插入，追加，删除，替换操作，类似是一个 LinkedList。同时，也能返回 channel(也就是 socket)。
 
-1) 在 pipeline 的接口文档上，提供了一幅图
+在 pipeline 的接口文档上，提供了一幅图
 
 ```java
 * <pre>
@@ -1100,5 +1072,207 @@ pipeline.addLast(group，"handler"，new MyBusinessLogicHandler());
 
 
 
-3. ChannelHandler 作用及设计
+3. **ChannelHandler** 作用及设计
 
+3.1 源码
+
+```java
+public interface ChannelHandler {
+	//当把 ChannelHandler 添加到 pipeline 时被调用
+	void handlerAdded(ChannelHandlerContext ctx) throws Exception; 
+    //当从 pipeline 中移除时调用
+	void handlerRemoved(ChannelHandlerContext ctx) throws Exception; 
+    // 当处理过程中在 pipeline 发生异常时调用
+	@Deprecated
+	void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception;
+}
+```
+
+3.2 ChannelHandler 的作用就是处理 IO 事件或拦截 IO 事件，并将其转发给下一个处理程序 ChannelHandler。 Handler 处理事件时分入站和出站的，两个方向的操作都是不同的，因此，Netty 定义了两个子接口继承 ChannelHandler
+
+3.3 ChannelInboundHandler 入站事件接口
+
+![image-20200102234236267](images/image-20200102234236267.png)
+
+* channelActive 用于当 Channel 处于活动状态时被调用。
+* channelRead 当从 Channel 读取数据时被调用等等方法。
+* 程序员需要重写一些方法，当发生关注的事件，需要在方法中实现我们的业务逻辑，因为当事件发生时，Netty 会回调对应的方法。
+
+3.4 ChannelOutboundHandler 出站事件接口
+
+![image-20200102234445976](images/image-20200102234445976.png)
+
+*  bind 方法，当请求将 Channel 绑定到本地地址时调用。
+* close 方法，当请求关闭 Channel 时调用等等。
+* 出站操作都是一些连接和写出数据类似的方法。
+
+3.5 ChannelDuplexHandler 处理出站和入站事件
+
+![image-20200102234617687](images/image-20200102234617687.png)
+
+* ChannelDuplexHandler 间接实现了入站接口并直接实现了出站接口。
+* 是一个通用的能够同时处理入站事件和出站事件的类。
+
+
+
+4. **ChannelHandlerContext** 作用及设计
+
+4.1 ChannelHandlerContext UML 图
+
+![image-20200102234826429](images/image-20200102234826429.png)
+
+* ChannelHandlerContext 继承了出站方法调用接口和入站方法调用接口。
+
+* ChannelOutboundInvoker 和 ChannelInboundInvoker 部分源码：
+
+![image-20200102235019905](images/image-20200102235019905.png)
+
+![image-20200102235040316](images/image-20200102235040316.png)
+
+* 这两个 invoker 就是针对入站或出站方法来的，就是在入站或出站 handler 的外层再包装一层，达到在方法前 后拦截并做一些特定操作的目的。
+
+4.2 ChannelHandlerContext部分源码
+
+![image-20200102235144271](images/image-20200102235144271.png)
+
+* ChannelHandlerContext 不仅仅时继承了他们两个的方法，同时也定义了一些自己的方法。
+
+* 这些方法能够获取 Context 上下文环境中对应的比如 channel，executor，handler ，pipeline，内存分配器，关联的 handler 是否被删除。
+
+* Context 就是包装了 handler 相关的一切，以方便 Context 可以在 pipeline 方便的操作 handler。
+
+  
+
+### 2.相关类创建过程
+
+
+
+分为 3 个步骤来看创建的过程:
+
+* 任何一个 ChannelSocket 创建的同时都会创建 一个 pipeline。
+* 当用户或系统内部调用 pipeline 的 add*** 方法添加 handler 时，都会创建一个包装这 handler 的 Context。
+* 这些 Context 在 pipeline 中组成了双向链表。
+
+
+
+1. Socket 创建的时候创建 pipeline
+
+在 NioSocketChannel 的抽象父类 AbstractChannel 的构造方法中
+
+```java
+protected AbstractChannel(Channel parent) {
+    this.parent = parent;
+    id = newId();
+    unsafe = newUnsafe();
+    pipeline = newChannelPipeline();
+}
+```
+
+Debug 一下, 可以看到代码会执行到这里, 然后继续追踪到
+
+```java
+protected DefaultChannelPipeline(Channel channel) {
+    this.channel = ObjectUtil.checkNotNull(channel, "channel");
+    succeededFuture = new SucceededChannelFuture(channel, null);
+    voidPromise =  new VoidChannelPromise(channel, true);
+
+    tail = new TailContext(this);
+    head = new HeadContext(this);
+
+    head.next = tail;
+    tail.prev = head;
+}
+```
+
+说明:
+
+* 将 channel 赋值给 channel 字段，用于 pipeline 操作 channel。
+* 创建一个 future 和 promise，用于异步回调使用。
+* 创建一个 inbound 的 tailContext，创建一个既是 inbound 类型又是 outbound 类型的 headContext。
+* 最后，将两个 Context 互相连接，形成双向链表。
+* tailContext 和 HeadContext 非常的重要，所有 pipeline 中的事件都会流经他们。
+
+
+
+2. 在 add 添加处理器的时候创建 Context
+
+看下 DefaultChannelPipeline 的 addLast 方法如何创建的 Context，代码如下
+
+```java
+public final ChannelPipeline addLast(EventExecutorGroup executor, ChannelHandler... handlers) {
+    if (handlers == null) {
+        throw new NullPointerException("handlers");
+    }
+
+    for (ChannelHandler h: handlers) {
+        if (h == null) {
+            break;
+        }
+        addLast(executor, null, h);
+    }
+
+    return this;
+}
+```
+
+继续 Debug
+
+```java
+public final ChannelPipeline addLast(EventExecutorGroup group, String name, ChannelHandler handler) {
+    final AbstractChannelHandlerContext newCtx;
+    synchronized (this) {
+        checkMultiplicity(handler);
+
+        newCtx = newContext(group, filterName(name, handler), handler);
+
+        addLast0(newCtx);
+
+        // If the registered is false it means that the channel was not registered on an eventloop yet.
+        // In this case we add the context to the pipeline and add a task that will call
+        // ChannelHandler.handlerAdded(...) once the channel is registered.
+        if (!registered) {
+            newCtx.setAddPending();
+            callHandlerCallbackLater(newCtx, true);
+            return this;
+        }
+
+        EventExecutor executor = newCtx.executor();
+        if (!executor.inEventLoop()) {
+            newCtx.setAddPending();
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    callHandlerAdded0(newCtx);
+                }
+            });
+            return this;
+        }
+    }
+    callHandlerAdded0(newCtx);
+    return this;
+}
+```
+
+说明:
+
+* pipeline 添加 handler，参数是线程池，name 是 null， handler 是我们或者系统传入的 handler。Netty 为了防止多个线程导致安全问题，同步了这段代码，步骤如下:
+* 检查这个 handler 实例是否是共享的，如果不是，并且已经被别的 pipeline 使用了，则抛出异常。
+* 调用 **newContext(group, filterName(name, handler), handler)** 方法，创建一个 **Context**。从这里可以看出来了每次添加一个 **handler** 都会创建一个关联 **Context**。
+*  调用 **addLast0** 方法，将 **Context** 追加到链表中。
+* 如果这个通道还没有注册到 selecor 上，就将这个 Context 添加到这个 pipeline 的待办任务中。当注册好了以 后，就会调用 callHandlerAdded0 方法(默认是什么都不做，用户可以实现这个方法)。
+* 到这里，针对三对象创建过程，了解的差不多了，和最初说的一样，每当创建 ChannelSocket 的时候都会创建 一个绑定的 pipeline，一对一的关系，创建 pipeline 的时候也会创建 tail 节点和 head 节点，形成最初的链表。tail 是入站 inbound 类型的 handler， head 既是 inbound 也是 outbound 类型的 handler。在调用 pipeline 的 addLast 方法的时候，会根据给定的 handler 创建一个 Context，然后，将这个 Context 插入到链表的尾端(tail 前面)。 到此就OK了。
+
+
+
+## 10.4.4 创建过程梳理
+
+
+
+1. 每当创建 ChannelSocket 的时候都会创建一个绑定的 pipeline，一对一的关系，创建 pipeline 的时候也会创建 tail 节点和 head 节点，形成最初的链表。
+2. 在调用 pipeline 的 addLast 方法的时候，会根据给定的 handler 创建一个 Context，然后，将这个 Context 插 入到链表的尾端(tail 前面)。
+3. Context 包装 handler，多个 Context 在 pipeline 中形成了双向链表。
+4. 入站方向叫 inbound，由 head 节点开始，出站方法叫 outbound ，由 tail 节点开始。
+
+
+
+# 10.5 ChannelPipeline 调度 handler 的源码剖析
