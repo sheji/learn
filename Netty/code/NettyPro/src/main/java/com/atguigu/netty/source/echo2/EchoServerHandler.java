@@ -114,7 +114,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
                 return null;
 
             }
-        });
+        });*/
 
 
         //将任务提交到 group线程池
@@ -134,21 +134,21 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
                 return null;
 
             }
-        });*/
+        });
 
 
-        //普通方式
-        //接收客户端信息
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] bytes = new byte[buf.readableBytes()];
-        buf.readBytes(bytes);
-        String body = new String(bytes, "UTF-8");
-        //休眠10秒
-        Thread.sleep(10 * 1000);
-        System.out.println("普通调用方式的 线程是=" + Thread.currentThread().getName());
-        ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
-
-        System.out.println("go on ");
+//        //普通方式
+//        //接收客户端信息
+//        ByteBuf buf = (ByteBuf) msg;
+//        byte[] bytes = new byte[buf.readableBytes()];
+//        buf.readBytes(bytes);
+//        String body = new String(bytes, "UTF-8");
+//        //休眠10秒
+//        Thread.sleep(10 * 1000);
+//        System.out.println("普通调用方式的 线程是=" + Thread.currentThread().getName());
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+//
+//        System.out.println("go on ");
 
     }
 
@@ -160,7 +160,6 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // Close the connection when an exception is raised.
-        //cause.printStackTrace();
         ctx.close();
     }
 }

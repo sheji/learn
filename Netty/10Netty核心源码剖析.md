@@ -18,18 +18,16 @@
 
 
 
-## 10.2.2 源码剖析
+## 10.2.2 源码剖析说明
 
 
-
-说明:
 
 1. 源码需要剖析到Netty调用doBind方法，追踪到NioServerSocketChannel的doBind。
 2. 并且要Debug程序到NioEventLoop类的run代码，无限循环，在服务器端运行。
 
 
 
-## 10.2.3 源码剖析过程
+## 10.2.3 源码剖析
 
 ### 1. demo 源码的基本理解
 
@@ -678,11 +676,9 @@ protected void run() {
 
 
 
-## 10.3.2 源码剖析
+## 10.3.2 源码剖析说明
 
 
-
-说明:
 
 1. 从之前服务器启动的源码中，我们得知，服务器最终注册了一个 Accept 事件等待客户端的连接。我们也知道，NioServerSocketChannel 将自己注册到了 boss 单例线程池(reactor 线程)上，也就是 EventLoop 。
 2. 先简单说下EventLoop的逻辑(后面我们详细讲解EventLoop)。
@@ -694,7 +690,7 @@ protected void run() {
 
 
 
-## 10.3.3 源码分析过程
+## 10.3.3 源码剖析
 
 
 
@@ -1276,3 +1272,1179 @@ public final ChannelPipeline addLast(EventExecutorGroup group, String name, Chan
 
 
 # 10.5 ChannelPipeline 调度 handler 的源码剖析
+
+## 10.5.1 源码剖析目的
+
+
+
+1. 当一个请求进来的时候，ChannelPipeline 是如何调用内部的这些 handler 的呢?
+2. 首先，当一个请求进来的时候，会第一个调用 pipeline 的相关方法，如果是入站事件，这些方法由 fire 开头，表示开始管道的流动。让后面的 handler 继续处理。
+
+
+
+## 10.5.2 源码剖析说明
+
+
+
+当浏览器输入 http://localhost:8007。可以看到会执行 handler。在 Debug 时，可以将断点下在 DefaultChannelPipeline 类的
+
+```java
+public final ChannelPipeline fireChannelActive() { 				
+    AbstractChannelHandlerContext.invokeChannelActive(head); //断点 
+	return this;
+}
+```
+
+
+
+## 10.5.3 源码分析
+
+### 1. DefaultChannelPipeline 是如何实现这些 fire 方法的
+
+
+
+1. DefaultChannelPipeline 源码
+
+```java
+public class DefaultChannelPipeline implements ChannelPipeline {
+    //...
+	@Override
+    public final ChannelPipeline fireChannelActive() {
+        AbstractChannelHandlerContext.invokeChannelActive(head);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireChannelInactive() {
+        AbstractChannelHandlerContext.invokeChannelInactive(head);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireExceptionCaught(Throwable cause) {
+        AbstractChannelHandlerContext.invokeExceptionCaught(head, cause);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireUserEventTriggered(Object event) {
+        AbstractChannelHandlerContext.invokeUserEventTriggered(head, event);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireChannelRead(Object msg) {
+        AbstractChannelHandlerContext.invokeChannelRead(head, msg);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireChannelReadComplete() {
+        AbstractChannelHandlerContext.invokeChannelReadComplete(head);
+        return this;
+    }
+
+    @Override
+    public final ChannelPipeline fireChannelWritabilityChanged() {
+        AbstractChannelHandlerContext.invokeChannelWritabilityChanged(head);
+        return this;
+    }
+ 	//...   
+}
+```
+
+说明：
+
+* 可以看出来，这些方法都是 inbound 的方法，也就是入站事件，调用静态方法传入的也是 inbound 的类型 head handler。这些静态方法则会调用 **head** 的 **ChannelInboundInvoker** 接口的方法，再然后调用 **handler** 的真正方法。
+
+
+
+2. 再看下 piepline 的 outbound 的 fire 方法实现
+
+```java
+public class DefaultChannelPipeline implements ChannelPipeline {
+    //...
+    @Override
+    public final ChannelFuture bind(SocketAddress localAddress) {
+        return tail.bind(localAddress);
+    }
+
+    @Override
+    public final ChannelFuture connect(SocketAddress remoteAddress) {
+        return tail.connect(remoteAddress);
+    }
+
+    @Override
+    public final ChannelFuture connect(SocketAddress remoteAddress, SocketAddress localAddress) {
+        return tail.connect(remoteAddress, localAddress);
+    }
+
+    @Override
+    public final ChannelFuture disconnect() {
+        return tail.disconnect();
+    }
+
+    @Override
+    public final ChannelFuture close() {
+        return tail.close();
+    }
+
+    @Override
+    public final ChannelFuture deregister() {
+        return tail.deregister();
+    }
+
+    @Override
+    public final ChannelPipeline flush() {
+        tail.flush();
+        return this;
+    }
+
+    @Override
+    public final ChannelFuture bind(SocketAddress localAddress, ChannelPromise promise) {
+        return tail.bind(localAddress, promise);
+    }
+
+    @Override
+    public final ChannelFuture connect(SocketAddress remoteAddress, ChannelPromise promise) {
+        return tail.connect(remoteAddress, promise);
+    }
+
+    @Override
+    public final ChannelFuture connect(
+            SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise) {
+        return tail.connect(remoteAddress, localAddress, promise);
+    }
+
+    @Override
+    public final ChannelFuture disconnect(ChannelPromise promise) {
+        return tail.disconnect(promise);
+    }
+ 	//...   
+}
+```
+
+说明:
+
+* 这些都是出站的实现，但是调用的是 outbound 类型的 tail handler 来进行处理，因为这些都是 outbound 事件。
+* 出站是 tail 开始，入站从 head 开始。因为出站是从内部向外面写，从 tail 开始，能够让前面的 handler 进行处理，防止 handler 被遗漏，比如编码。反之，入站当然是从 head 往内部输入，让后面的 handler 能够处理这些输入的数据。比如解码。因此虽然 head 也实现了 outbound 接口，但不是从 head 开始执行出站任务。
+
+
+
+### 2. 关于如何调度，用一张图来表示
+
+![image-20200103212823987](images/image-20200103212823987.png)
+
+说明:
+
+* pipeline 首先会调用 Context 的静态方法 fireXXX，并传入 Context。
+* 然后，静态方法调用 Context 的 invoker 方法，而 invoker 方法内部会调用该 Context 所包含的 Handler 的真正的 XXX 方法，调用结束后，如果还需要继续向后传递，就调用 Context 的 fireXXX2 方法，循环往复。
+
+
+
+## 10.5.4 调度 handler 梳理
+
+
+
+1. Context 包装 handler，多个 Context 在 pipeline 中形成了双向链表，入站方向叫 inbound，由 head 节点开始，出站方法叫 outbound ，由 tail 节点开始。
+2. 而节点中间的传递通过 AbstractChannelHandlerContext 类内部的 fire 系列方法，找到当前节点的下一个节点不断的循环传播。是一个过滤器形式完成对 handler 的调度。
+
+
+
+# 10.6 Netty 心跳(heartbeat)服务源码剖析
+
+## 10.6.1 源码剖析目的
+
+
+
+Netty 作为一个网络框架，提供了诸多功能，比如编码解码等，Netty 还提供了非常重要的一个服务-----心跳机制 heartbeat。通过心跳检查对方是否有效，这是 RPC 框架中是必不可少的功能。下面我们分析一下 Netty 内部心 跳服务源码实现。
+
+
+
+## 10.6.2 源码剖析说明
+
+
+
+Netty 提供了 IdleStateHandler ，ReadTimeoutHandler，WriteTimeoutHandler 三个 Handler 检测连接的有效性，重点分析 IdleStateHandler。
+
+| 名称                | 作用                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| IdleStateHandler    | 当连接的空闲时间(读或者写)太长时，将会触发一个 IdelStateEvent 事件。然后，你可以通过你的ChannelInboungHandler 中重写 userEventTrigged 方法来处理事件。 |
+| ReadTimeoutHandler  | 如果在指定的时间没有发生读事件，就抛出这个异常，并自动关闭这个连接。你可以exceptionCaught 方法中处理这个异常。 |
+| WriteTimeoutHandler | 如果在指定的时间没有发生写事件，就抛出这个异常，并自动关闭这个连接。你同样可以exceptionCaught 方法中处理这个异常。 |
+
+ReadTimeout 事件和 WriteTimeout 事件都会自动关闭连接，而且，属于异常处理，所以，这里只是介绍以下，我们重点看 IdleStateHandler。
+
+
+
+## 10.6.3 源码剖析
+
+### 1. IdleStateHandler分析
+
+
+
+1.1 4 个属性
+
+```java
+private final boolean observeOutput; //是否考虑出站时较慢的情况。默认值是 false 
+private final long readerIdleTimeNanos;//读事件空闲时间，0 则禁用事件(纳秒为单位)
+private final long writerIdleTimeNanos;//写事件空闲时间，0 则禁用事件
+private final long allIdleTimeNanos;//读或写空闲时间，0 则禁用事件
+```
+
+
+
+1.2 handlerAdded 方法
+
+当该 handler 被添加到 pipeline 中时，则调用 initialize 方法
+
+```java
+private void initialize(ChannelHandlerContext ctx) {
+    // Avoid the case where destroy() is called before scheduling timeouts.
+    // See: https://github.com/netty/netty/issues/143
+    switch (state) {
+        case 1:
+        case 2:
+            return;
+    }
+
+    state = 1;
+    initOutputChanged(ctx);
+
+    lastReadTime = lastWriteTime = ticksInNanos();
+    if (readerIdleTimeNanos > 0) {
+        readerIdleTimeout = schedule(ctx, new ReaderIdleTimeoutTask(ctx),
+                                     readerIdleTimeNanos, TimeUnit.NANOSECONDS);
+    }
+    if (writerIdleTimeNanos > 0) {
+        writerIdleTimeout = schedule(ctx, new WriterIdleTimeoutTask(ctx),
+                                     writerIdleTimeNanos, TimeUnit.NANOSECONDS);
+    }
+    if (allIdleTimeNanos > 0) {
+        allIdleTimeout = schedule(ctx, new AllIdleTimeoutTask(ctx),
+                                  allIdleTimeNanos, TimeUnit.NANOSECONDS);
+    }
+}
+```
+
+说明：
+
+* 只要给定的参数大于 0，就创建一个定时任务，每个事件都创建。同时，将 state 状态设置为 1，防止重复初始化。 调用 initOutputChanged 方法，初始化 "监控出站数据属性"。
+
+
+
+1.3 该类内部的 3 个定时任务类
+
+![image-20200103214638300](images/image-20200103214638300.png)
+
+​	这 3 个定时任务分别对应 读，写，读或者写 事件。共有一个父类(AbstractIdleTask)。这个父类提供了一 个模板方法
+
+```java
+private abstract static class AbstractIdleTask implements Runnable {
+
+    private final ChannelHandlerContext ctx;
+
+    AbstractIdleTask(ChannelHandlerContext ctx) {
+        this.ctx = ctx;
+    }
+
+    @Override
+    public void run() {
+        if (!ctx.channel().isOpen()) {
+            return;
+        }
+
+        run(ctx);
+    }
+
+    protected abstract void run(ChannelHandlerContext ctx);
+}
+```
+
+说明: 
+
+* 当通道关闭了，就不执行任务了。反之，执行子类的 run 方法
+
+
+
+### 2. 读事件的 run 方法分析
+
+即 **ReaderIdleTimeoutTask** 的 **run** 方法
+
+
+
+代码及其说明
+
+```java
+private final class ReaderIdleTimeoutTask extends AbstractIdleTask {
+
+    ReaderIdleTimeoutTask(ChannelHandlerContext ctx) {
+        super(ctx);
+    }
+
+    @Override
+    protected void run(ChannelHandlerContext ctx) {
+        long nextDelay = readerIdleTimeNanos;
+        if (!reading) {
+            nextDelay -= ticksInNanos() - lastReadTime;
+        }
+
+        if (nextDelay <= 0) {
+            // Reader is idle - set a new timeout and notify the callback.
+            readerIdleTimeout = schedule(ctx, this, readerIdleTimeNanos, TimeUnit.NANOSECONDS);
+
+            boolean first = firstReaderIdleEvent;
+            firstReaderIdleEvent = false;
+
+            try {
+                IdleStateEvent event = newIdleStateEvent(IdleState.READER_IDLE, first);
+                channelIdle(ctx, event);
+            } catch (Throwable t) {
+                ctx.fireExceptionCaught(t);
+            }
+        } else {
+            // Read occurred before the timeout - set a new timeout with shorter delay.
+            readerIdleTimeout = schedule(ctx, this, nextDelay, TimeUnit.NANOSECONDS);
+        }
+    }
+}
+```
+
+说明:
+
+* 得到用户设置的超时时间。
+* 如果读取操作结束了(执行了 channelReadComplete 方法设置) ，就用当前时间减去给定时间和最后一次读(执操作的时间行了 channelReadComplete 方法设置)，如果小于 0，就触发事件。反之，继续放入队列。间隔时间是新的计算时间。
+* 触发的逻辑是:首先将任务再次放到队列，时间是刚开始设置的时间，返回一个 promise 对象，用于做取消操作。然后，设置 first 属性为 false ，表示，下一次读取不再是第一次了，这个属性在 channelRead 方法会被改成 true。
+* 创建一个 IdleStateEvent 类型的读事件对象，将此对象传递给用户的 UserEventTriggered 方法。完成触发事件的操作。
+* 总的来说，每次读取操作都会记录一个时间，定时任务时间到了，会计算当前时间和最后一次读的时间的间隔，如果间隔超过了设置的时间，就触发 UserEventTriggered 方法。//前面介绍 IdleStateHandler 说过, 可以看一下。
+
+
+
+### 3.  写事件的 **run** 方法分析
+
+即 **WriterIdleTimeoutTask** 的 **run** 方法
+
+
+
+代码及其说明
+
+```java
+private final class WriterIdleTimeoutTask extends AbstractIdleTask {
+
+    WriterIdleTimeoutTask(ChannelHandlerContext ctx) {
+        super(ctx);
+    }
+
+    @Override
+    protected void run(ChannelHandlerContext ctx) {
+
+        long lastWriteTime = IdleStateHandler.this.lastWriteTime;
+        long nextDelay = writerIdleTimeNanos - (ticksInNanos() - lastWriteTime);
+        if (nextDelay <= 0) {
+            // Writer is idle - set a new timeout and notify the callback.
+            writerIdleTimeout = schedule(ctx, this, writerIdleTimeNanos, TimeUnit.NANOSECONDS);
+
+            boolean first = firstWriterIdleEvent;
+            firstWriterIdleEvent = false;
+
+            try {
+                if (hasOutputChanged(ctx, first)) {
+                    return;
+                }
+
+                IdleStateEvent event = newIdleStateEvent(IdleState.WRITER_IDLE, first);
+                channelIdle(ctx, event);
+            } catch (Throwable t) {
+                ctx.fireExceptionCaught(t);
+            }
+        } else {
+            // Write occurred before the timeout - set a new timeout with shorter delay.
+            writerIdleTimeout = schedule(ctx, this, nextDelay, TimeUnit.NANOSECONDS);
+        }
+    }
+}
+```
+
+说明：
+
+* 写任务的 run 代码逻辑基本和读任务的逻辑一样，唯一不同的就是有一个针对 出站较慢数据的判断 hasOutputChanged
+
+
+
+### 4. 所有事件的 run 方法分析
+
+即 **AllIdleTimeoutTask** 的 **run** 方法
+
+
+
+代码及其说明
+
+```java
+private final class AllIdleTimeoutTask extends AbstractIdleTask {
+
+    AllIdleTimeoutTask(ChannelHandlerContext ctx) {
+        super(ctx);
+    }
+
+    @Override
+    protected void run(ChannelHandlerContext ctx) {
+
+        long nextDelay = allIdleTimeNanos;
+        if (!reading) {
+            nextDelay -= ticksInNanos() - Math.max(lastReadTime, lastWriteTime);
+        }
+        if (nextDelay <= 0) {
+            // Both reader and writer are idle - set a new timeout and
+            // notify the callback.
+            allIdleTimeout = schedule(ctx, this, allIdleTimeNanos, TimeUnit.NANOSECONDS);
+
+            boolean first = firstAllIdleEvent;
+            firstAllIdleEvent = false;
+
+            try {
+                if (hasOutputChanged(ctx, first)) {
+                    return;
+                }
+
+                IdleStateEvent event = newIdleStateEvent(IdleState.ALL_IDLE, first);
+                channelIdle(ctx, event);
+            } catch (Throwable t) {
+                ctx.fireExceptionCaught(t);
+            }
+        } else {
+            // Either read or write occurred before the timeout - set a new
+            // timeout with shorter delay.
+            allIdleTimeout = schedule(ctx, this, nextDelay, TimeUnit.NANOSECONDS);
+        }
+    }
+}
+```
+
+说明：
+
+* 表示这个监控着所有的事件。当读写事件发生时，都会记录。代码逻辑和写事件的的基本一致。
+
+* 需要大家注意的地方是
+
+  ```java
+          long nextDelay = allIdleTimeNanos;
+          if (!reading) {
+              // 当前时间减去 最后一次 写或读 的时间 ，若大于 0，说明超时了
+              nextDelay -= ticksInNanos() - Math.max(lastReadTime, lastWriteTime);
+          }
+  ```
+
+* 这里的时间计算是取读写事件中的最大值来的。然后像写事件一样，判断是否发生了写的慢的情况。
+
+
+
+## 10.6.4 心跳机制梳理
+
+
+
+1. IdleStateHandler 可以实现心跳功能，当服务器和客户端没有任何读写交互时，并超过了给定的时间，则会触发用户 handler 的 userEventTriggered 方法。用户可以在这个方法中尝试向对方发送信息，如果发送失败，则关闭连接。
+2. IdleStateHandler 的实现基于 EventLoop 的定时任务，每次读写都会记录一个值，在定时任务运行的时候， 通过计算当前时间和设置时间和上次事件发生时间的结果，来判断是否空闲。
+3. 内部有 3 个定时任务，分别对应读事件，写事件，读写事件。通常用户监听读写事件就足够了。
+4. 同时，IdleStateHandler 内部也考虑了一些极端情况:客户端接收缓慢，一次接收数据的速度超过了设置的空闲时间。Netty 通过构造方法中的 observeOutput 属性来决定是否对出站缓冲区的情况进行判断。
+5. 如果出站缓慢，Netty 不认为这是空闲，也就不触发空闲事件。但第一次无论如何也是要触发的。因为第一次无法判断是出站缓慢还是空闲。当然，出站缓慢的话，可能造成 OOM，OOM 比空闲的问题更大。
+6. 所以，当你的应用出现了内存溢出，OOM 之类，并且写空闲极少发生(使用了 observeOutput 为 true)， 那么就需要注意是不是数据出站速度过慢。
+7. 还有一个注意的地方:就是 ReadTimeoutHandler ，它继承自 IdleStateHandler，当触发读空闲事件的时候， 就触发 `ctx.fireExceptionCaught` 方法，并传入一个 ReadTimeoutException，然后关闭 Socket。
+8. 而 WriteTimeoutHandler 的实现不是基于 IdleStateHandler 的，他的原理是，当调用 write 方法的时候，会 创建一个定时任务，任务内容是根据传入的 promise 的完成情况来判断是否超出了写的时间。当定时任务根据指 定时间开始运行，发现 promise 的 isDone 方法返回 false，表明还没有写完，说明超时了，则抛出异常。当 write 方法完成后，会打断定时任务。
+
+
+
+# 10.7 Netty 核心组件 EventLoop 源码剖析
+
+## 10.7.1 源码剖析目的
+
+
+
+Echo 第一行代码就是 :`EventLoopGroup bossGroup = new NioEventLoopGroup(1);`下面分析其最核心的组件 EventLoop。
+
+
+
+## 10.7.2 源码剖析
+
+### 1. EventLoop 介绍
+
+
+
+![image-20200103220702926](images/image-20200103220702926.png)
+
+说明：
+
+* ScheduledExecutorService 接口表示是一个定时任务接口，EventLoop 可以接受定时任务。
+* EventLoop 接口:Netty 接口文档说明该接口作用:一旦 Channel 注册了，就处理该 Channel 对应的所有I/O 操作。
+*  SingleThreadEventExecutor 表示这是一个单个线程的线程池。
+* EventLoop 是一个单例的线程池，里面含有一个死循环的线程不断的做着 3 件事情:监听端口，处理端口事件，处理队列事件。每个 EventLoop 都可以绑定多个 Channel，而每个 Channel 始终只能由一个 EventLoop 来处理。
+
+
+
+### 2. NioEventLoop 的使用 - execute 方法
+
+2.1 **Executor** 源码剖析
+
+![image-20200103222543134](images/image-20200103222543134.png)
+
+
+
+2.2 在 EventLoop 的使用，一般就是 **eventloop.execute(task)**; 看下 execute 方法的实现 ( 在 **SingleThreadEventExecutor** 类中)
+
+```java
+@Override
+public void execute(Runnable task) {
+    if (task == null) {
+        throw new NullPointerException("task");
+    }
+
+    boolean inEventLoop = inEventLoop();
+    if (inEventLoop) {
+        addTask(task);
+    } else {
+        startThread();
+        addTask(task);
+        if (isShutdown() && removeTask(task)) {
+            reject();
+        }
+    }
+
+    if (!addTaskWakesUp && wakesUpForTask(task)) {
+        wakeup(inEventLoop);
+    }
+}
+```
+
+说明：
+
+* 首先判断该 EventLoop 的线程是否是当前线程，如果是，直接添加到任务队列中去，如果不是，则尝试启动线程(但由于线程是单个的，因此只能启动一次)，随后再将任务添加到队列中去。
+
+* 如果线程已经停止，并且删除任务失败，则执行拒绝策略，默认是抛出异常。
+
+* 如果 addTaskWakesUp 是 false，并且任务不是 NonWakeupRunnable 类型的，就尝试唤醒 selector。这个时候，阻塞在 selecor 的线程就会立即返回。
+
+* 可以下断点来追踪。
+
+  
+
+2.3 我们 debug **addTask** 和 **offerTask** 方法源码
+
+```java
+protected void addTask(Runnable task) {
+    if (task == null) {
+        throw new NullPointerException("task");
+    }
+    if (!offerTask(task)) {
+        reject(task);
+    }
+}
+
+final boolean offerTask(Runnable task) {
+    if (isShutdown()) {
+        reject();
+    }
+    return taskQueue.offer(task);
+}
+```
+
+
+
+### 3. SingleThreadEventExecutor的startThread方法
+
+3.1 当执行 execute 方法的时候，如果当前线程不是 EventLoop 所属线程，则尝试启动线程，也就是 startThread 方 法，dubug 代码如下
+
+```java
+private void startThread() {
+    if (state == ST_NOT_STARTED) {
+        if (STATE_UPDATER.compareAndSet(this, ST_NOT_STARTED, ST_STARTED)) {
+            try {
+                doStartThread();
+            } catch (Throwable cause) {
+                STATE_UPDATER.set(this, ST_NOT_STARTED);
+                PlatformDependent.throwException(cause);
+            }
+        }
+    }
+}
+```
+
+说明：
+
+* 该方法首先判断是否启动过了，保证 EventLoop 只有一个线程，如果没有启动过，则尝试使用 Cas 将 state 状 态改为 ST_STARTED，也就是已启动。然后调用 doStartThread 方法。如果失败，则进行回滚
+
+
+
+3.2 看下 doStartThread 方法
+
+```java
+private void doStartThread() {
+    assert thread == null;
+    executor.execute(new Runnable() {
+        @Override
+        public void run() {
+            thread = Thread.currentThread();
+            if (interrupted) {
+                thread.interrupt();
+            }
+
+            boolean success = false;
+            updateLastExecutionTime();
+            try {
+                SingleThreadEventExecutor.this.run();
+                success = true;
+            } catch (Throwable t) {
+                logger.warn("Unexpected exception from an event executor: ", t);
+            } finally {
+                for (;;) {
+                    int oldState = state;
+                    if (oldState >= ST_SHUTTING_DOWN || STATE_UPDATER.compareAndSet(
+                        SingleThreadEventExecutor.this, oldState, ST_SHUTTING_DOWN)) {
+                        break;
+                    }
+                }
+
+                // Check if confirmShutdown() was called at the end of the loop.
+                if (success && gracefulShutdownStartTime == 0) {
+                    logger.error("Buggy " + EventExecutor.class.getSimpleName() + " implementation; " +
+                                 SingleThreadEventExecutor.class.getSimpleName() + ".confirmShutdown() must be called " +
+                                 "before run() implementation terminates.");
+                }
+
+                try {
+                    // Run all remaining tasks and shutdown hooks.
+                    for (;;) {
+                        if (confirmShutdown()) {
+                            break;
+                        }
+                    }
+                } finally {
+                    try {
+                        cleanup();
+                    } finally {
+                        STATE_UPDATER.set(SingleThreadEventExecutor.this, ST_TERMINATED);
+                        threadLock.release();
+                        if (!taskQueue.isEmpty()) {
+                            logger.warn(
+                                "An event executor terminated with " +
+                                "non-empty task queue (" + taskQueue.size() + ')');
+                        }
+
+                        terminationFuture.setSuccess(null);
+                    }
+                }
+            }
+        }
+    });
+}
+```
+
+说明：
+
+* 首先调用 executor 的 execute 方法，这个 executor 就是在创建 Event LoopGroup 的时候创建的 ThreadPerTaskExecutor 类。该 execute 方法会将 Runnable 包装成 Netty 的 FastThreadLocalThread。
+* 任务中，首先判断线程中断状态，然后设置最后一次的执行时间。
+* 执行当前 NioEventLoop 的 run 方法，注意:这个方法是个死循环，是整个 EventLoop 的核心。
+* 在 finally 块中，使用 CAS 不断修改 state 状态，改成 ST_SHUTTING_DOWN。也就是当线程 Loop 结 束的时候。关闭线程。最后还要死循环确认是否关闭，否则不会 break。然后，执行 cleanup 操作，更新状态为ST_TERMINATED，并释放当前线程锁。如果任务队列不是空，则打印队列中还有多少个未完成的任务。 并回调 terminationFuture 方法。
+* 其实最核心的就是 Event Loop 自身的 run 方法。再继续深入 run 方法
+
+
+
+### 4. 分析下 run 方法(该方法在NioEventLoop)
+
+4.1 **EventLoop** 中的 **Loop** 是靠 **run** 实现的
+
+
+
+```java
+@Override
+protected void run() {
+    for (;;) {
+        try {
+            switch (selectStrategy.calculateStrategy(selectNowSupplier, hasTasks())) {
+                case SelectStrategy.CONTINUE:
+                    continue;
+                case SelectStrategy.SELECT:
+                    select(wakenUp.getAndSet(false));
+
+                    // 'wakenUp.compareAndSet(false, true)' is always evaluated
+                    // before calling 'selector.wakeup()' to reduce the wake-up
+                    // overhead. (Selector.wakeup() is an expensive operation.)
+                    //
+                    // However, there is a race condition in this approach.
+                    // The race condition is triggered when 'wakenUp' is set to
+                    // true too early.
+                    //
+                    // 'wakenUp' is set to true too early if:
+                    // 1) Selector is waken up between 'wakenUp.set(false)' and
+                    //    'selector.select(...)'. (BAD)
+                    // 2) Selector is waken up between 'selector.select(...)' and
+                    //    'if (wakenUp.get()) { ... }'. (OK)
+                    //
+                    // In the first case, 'wakenUp' is set to true and the
+                    // following 'selector.select(...)' will wake up immediately.
+                    // Until 'wakenUp' is set to false again in the next round,
+                    // 'wakenUp.compareAndSet(false, true)' will fail, and therefore
+                    // any attempt to wake up the Selector will fail, too, causing
+                    // the following 'selector.select(...)' call to block
+                    // unnecessarily.
+                    //
+                    // To fix this problem, we wake up the selector again if wakenUp
+                    // is true immediately after selector.select(...).
+                    // It is inefficient in that it wakes up the selector for both
+                    // the first case (BAD - wake-up required) and the second case
+                    // (OK - no wake-up required).
+
+                    if (wakenUp.get()) {
+                        selector.wakeup();
+                    }
+                    // fall through
+                default:
+            }
+
+            cancelledKeys = 0;
+            needsToSelectAgain = false;
+            final int ioRatio = this.ioRatio;
+            if (ioRatio == 100) {
+                try {
+                    processSelectedKeys();
+                } finally {
+                    // Ensure we always run tasks.
+                    runAllTasks();
+                }
+            } else {
+                final long ioStartTime = System.nanoTime();
+                try {
+                    processSelectedKeys();
+                } finally {
+                    // Ensure we always run tasks.
+                    final long ioTime = System.nanoTime() - ioStartTime;
+                    runAllTasks(ioTime * (100 - ioRatio) / ioRatio);
+                }
+            }
+        } catch (Throwable t) {
+            handleLoopException(t);
+        }
+        // Always handle shutdown even if the loop processing threw an exception.
+        try {
+            if (isShuttingDown()) {
+                closeAll();
+                if (confirmShutdown()) {
+                    return;
+                }
+            }
+        } catch (Throwable t) {
+            handleLoopException(t);
+        }
+    }
+}
+```
+
+说明：
+
+* 从上面的步骤可以看出，整个 run 方法做了 3 件事情:
+  * select 获取感兴趣的事件。
+  * processSelectedKeys 处理事件。
+  * runAllTasks 执行队列中的任务。
+
+
+
+4.2 上面的三个方法，我们就追一下 select 方法(体现非阻塞)
+
+```java
+private void select(boolean oldWakenUp) throws IOException {
+    Selector selector = this.selector;
+    try {
+        int selectCnt = 0;
+        long currentTimeNanos = System.nanoTime();
+        long selectDeadLineNanos = currentTimeNanos + delayNanos(currentTimeNanos);
+        for (;;) {
+            long timeoutMillis = (selectDeadLineNanos - currentTimeNanos + 500000L) / 1000000L;
+            if (timeoutMillis <= 0) {
+                if (selectCnt == 0) {
+                    selector.selectNow();
+                    selectCnt = 1;
+                }
+                break;
+            }
+
+            // If a task was submitted when wakenUp value was true, the task didn't get a chance to call
+            // Selector#wakeup. So we need to check task queue again before executing select operation.
+            // If we don't, the task might be pended until select operation was timed out.
+            // It might be pended until idle timeout if IdleStateHandler existed in pipeline.
+            if (hasTasks() && wakenUp.compareAndSet(false, true)) {
+                selector.selectNow();
+                selectCnt = 1;
+                break;
+            }
+
+            int selectedKeys = selector.select(timeoutMillis);
+            selectCnt ++;
+// 如果 1 秒后返回，有返回值 || select 被用户唤醒 || 任务队列有任务 || 有定时任务即将被 执行; 则跳出循环
+            if (selectedKeys != 0 || oldWakenUp || wakenUp.get() || hasTasks() || hasScheduledTasks()) {
+                // - Selected something,
+                // - waken up by user, or
+                // - the task queue has a pending task.
+                // - a scheduled task is ready for processing
+                break;
+            }
+            if (Thread.interrupted()) {
+                // Thread was interrupted so reset selected keys and break so we not run into a busy loop.
+                // As this is most likely a bug in the handler of the user or it's client library we will
+                // also log it.
+                //
+                // See https://github.com/netty/netty/issues/2426
+                if (logger.isDebugEnabled()) {
+                    logger.debug("Selector.select() returned prematurely because " +
+                                 "Thread.currentThread().interrupt() was called. Use " +
+                                 "NioEventLoop.shutdownGracefully() to shutdown the NioEventLoop.");
+                }
+                selectCnt = 1;
+                break;
+            }
+
+            long time = System.nanoTime();
+            if (time - TimeUnit.MILLISECONDS.toNanos(timeoutMillis) >= currentTimeNanos) {
+                // timeoutMillis elapsed without anything selected.
+                selectCnt = 1;
+            } else if (SELECTOR_AUTO_REBUILD_THRESHOLD > 0 &&
+                       selectCnt >= SELECTOR_AUTO_REBUILD_THRESHOLD) {
+                // The selector returned prematurely many times in a row.
+                // Rebuild the selector to work around the problem.
+                logger.warn(
+                    "Selector.select() returned prematurely {} times in a row; rebuilding Selector {}.",
+                    selectCnt, selector);
+
+                rebuildSelector();
+                selector = this.selector;
+
+                // Select again to populate selectedKeys.
+                selector.selectNow();
+                selectCnt = 1;
+                break;
+            }
+
+            currentTimeNanos = time;
+        }
+
+        if (selectCnt > MIN_PREMATURE_SELECTOR_RETURNS) {
+            if (logger.isDebugEnabled()) {
+                logger.debug("Selector.select() returned prematurely {} times in a row for Selector {}.",
+                             selectCnt - 1, selector);
+            }
+        }
+    } catch (CancelledKeyException e) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(CancelledKeyException.class.getSimpleName() + " raised by a Selector {} - JDK bug?",
+                         selector, e);
+        }
+        // Harmless exception - log anyway
+    }
+}
+```
+
+说明:
+
+* 调用 selector 的 select 方法，默认阻塞一秒钟，如果有定时任务，则在定时任务剩余时间的基础上在加上 0.5 秒进行阻塞。当执行 execute 方法的时候，也就是添加任务的时候，唤醒 selecor，防止 selecotr 阻塞时间过长。
+
+  
+
+## 10.7.3 EventLoop 梳理
+
+
+
+1. 每次执行 ececute 方法都是向队列中添加任务。当第一次添加时就启动线程，执行 run 方法，而 run 方法是整个 EventLoop 的核心，就像 EventLoop 的名字一样，Loop Loop ，不停的 Loop ，Loop 做什么呢?做 3 件 事情。
+
+   * 调用 selector 的 select 方法，默认阻塞一秒钟，如果有定时任务，则在定时任务剩余时间的基础上在加上 0.5秒进行阻塞。当执行 execute 方法的时候，也就是添加任务的时候，唤醒 selecor，防止 selecotr 阻塞时间过长。
+
+   * 当 selector 返回的时候，回调用 processSelectedKeys 方法对 selectKey 进行处理。
+   * 当 processSelectedKeys 方法执行结束后，则按照 ioRatio 的比例执行 runAllTasks 方法，默认是 IO 任务时间和非 IO 任务时间是相同的，你也可以根据你的应用特点进行调优 。比如 非 IO 任务比较多，那么你就将ioRatio 调小一点，这样非 IO 任务就能执行的长一点。防止队列积攒过多的任务。
+
+
+
+# 10.8 handler 中加入线程池和 Context 中添加线程池的源码剖析
+
+## 10.8.1 源码剖析目的
+
+
+
+1. 在 Netty 中做耗时的，不可预料的操作，比如数据库，网络请求，会严重影响 Netty 对 Socket 的处理速度。
+2. 而解决方法就是将耗时任务添加到异步线程池中。但就添加线程池这步操作来讲，可以有2种方式区别也蛮大的。
+3. 处理耗时业务的第一种方式---handler 中加入线程池
+4. 处理耗时业务的第二种方式---Context 中添加线程池。
+
+
+
+## 10.8.2 源码剖析
+
+###   1. handler 中加入线程池
+
+
+
+1.1 对前面的 **Netty demo** 源码进行修改，在 **EchoServerHandler** 的 **channelRead** 方法进行异步
+
+```java
+/*
+ * Copyright 2012 The Netty Project
+ *
+ * The Netty Project licenses this file to you under the Apache License,
+ * version 2.0 (the "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at:
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+package com.atguigu.netty.source.echo2;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.CharsetUtil;
+import io.netty.util.concurrent.DefaultEventExecutorGroup;
+import io.netty.util.concurrent.EventExecutorGroup;
+
+import java.util.concurrent.Callable;
+
+/**
+ * Handler implementation for the echo server.
+ */
+@Sharable
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+
+    // group 就是充当业务线程池，可以将任务提交到该线程池
+    // 这里我们创建了16个线程
+    static final EventExecutorGroup group = new DefaultEventExecutorGroup(16);
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+        System.out.println("EchoServer Handler 的线程是=" + Thread.currentThread().getName());
+
+        //按照原来的方法处理耗时任务
+        /*
+        //解决方案1 用户程序自定义的普通任务
+        ctx.channel().eventLoop().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    Thread.sleep(5 * 1000);
+                    //输出线程名
+                    System.out.println("EchoServerHandler execute 线程是=" + Thread.currentThread().getName());
+                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+
+                } catch (Exception ex) {
+                    System.out.println("发生异常" + ex.getMessage());
+                }
+            }
+        });
+
+        ctx.channel().eventLoop().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    Thread.sleep(5 * 1000);
+                    //输出线程名
+                    System.out.println("EchoServerHandler execute 线程2是=" + Thread.currentThread().getName());
+                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+
+                } catch (Exception ex) {
+                    System.out.println("发生异常" + ex.getMessage());
+                }
+            }
+        });*/
+
+        /*
+        //将任务提交到 group线程池
+        group.submit(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+
+                //接收客户端信息
+                ByteBuf buf = (ByteBuf) msg;
+                byte[] bytes = new byte[buf.readableBytes()];
+                buf.readBytes(bytes);
+                String body = new String(bytes, "UTF-8");
+                //休眠10秒
+                Thread.sleep(10 * 1000);
+                System.out.println("group.submit 的  call 线程是=" + Thread.currentThread().getName());
+                ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+                return null;
+
+            }
+        });*/
+
+
+        //将任务提交到 group线程池
+        group.submit(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+
+                //接收客户端信息
+                ByteBuf buf = (ByteBuf) msg;
+                byte[] bytes = new byte[buf.readableBytes()];
+                buf.readBytes(bytes);
+                String body = new String(bytes, "UTF-8");
+                //休眠10秒
+                Thread.sleep(10 * 1000);
+                System.out.println("group.submit 的  call 线程是=" + Thread.currentThread().getName());
+                ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+                return null;
+
+            }
+        });
+
+
+//        //普通方式
+//        //接收客户端信息
+//        ByteBuf buf = (ByteBuf) msg;
+//        byte[] bytes = new byte[buf.readableBytes()];
+//        buf.readBytes(bytes);
+//        String body = new String(bytes, "UTF-8");
+//        //休眠10秒
+//        Thread.sleep(10 * 1000);
+//        System.out.println("普通调用方式的 线程是=" + Thread.currentThread().getName());
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端~(>^ω^<)喵2", CharsetUtil.UTF_8));
+//
+//        System.out.println("go on ");
+
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) {
+        ctx.flush();
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        // Close the connection when an exception is raised.
+        ctx.close();
+    }
+}
+```
+
+![image-20200103225523383](images/image-20200103225523383.png)
+
+说明：
+
+* 在 channelRead 方法，模拟了一个耗时 10 秒的操作，这里，我们将这个任务提交到了一个自定义的业务线程池中，这样，就不会阻塞 Netty 的 IO 线程。
+
+
+
+1.2 这样处理之后，整个程序的逻辑如图
+
+| ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd | d    |
+| ------------------------------------------------------------ | ---- |
+| ![image-20200103230131952](images/image-20200103230131952.png) |      |
+
+说明：
+
+* 解释一下上图，当 IO 线程轮询到一个 socket 事件，然后，IO 线程开始处理，当走到耗时 handler 的时候，将耗时任务交给业务线程池。
+* ==当耗时任务执行完毕再执行 pipeline write 方法的时候== ，(代码中使用的是 context 的 write 方法，上图画的是执行 pipeline 方法, 是一个意思)会将任务这个任务交给 IO 线程。
+
+
+
+1.3 **write** 方法的源码**(**在 **AbstractChannelHandlerContext** 类**)**
+
+```java
+private void write(Object msg, boolean flush, ChannelPromise promise) {
+    AbstractChannelHandlerContext next = findContextOutbound();
+    final Object m = pipeline.touch(msg, next);
+    EventExecutor executor = next.executor();
+    if (executor.inEventLoop()) {
+        if (flush) {
+            next.invokeWriteAndFlush(m, promise);
+        } else {
+            next.invokeWrite(m, promise);
+        }
+    } else {
+        AbstractWriteTask task;
+        if (flush) {
+            task = WriteAndFlushTask.newInstance(next, m, promise);
+        }  else {
+            task = WriteTask.newInstance(next, m, promise);
+        }
+        safeExecute(executor, task, promise, m);
+    }
+}
+```
+
+说明：
+
+* 当判定下个 outbound 的 executor 线程不是当前线程的时候，会将当前的工作封装成 task ，然后放入mpsc 队列中，等待 IO 任务执行完毕后执行队列中的任务。
+* 这里可以 Debug 来验证(提醒:**Debug** 时，服务器端 **Debug ,**客户端 **Run** 的方式)，当我们使用了`group.submit(new Callable<Object>(){}`在 handler 中加入线程池，就会进入到 `safeExecute(executor, task, promise, m);` 如果去掉这段代码，而使用普通方式来执行耗时的业务，那么就不会进入到 `safeExecute(executor, task, promise, m);` (说明:普通方式执行耗时代码，看我准备好的案例即可)
+
+
+
+### 2. Context 中添加线程池
+
+
+
+2.1 在添加 pipeline 中的 handler 时候，添加一个线程池
+
+```java
+ServerBootstrap b = new ServerBootstrap();
+b.group(bossGroup, workerGroup)
+    .channel(NioServerSocketChannel.class)
+    .option(ChannelOption.SO_BACKLOG, 100)
+    .handler(new LoggingHandler(LogLevel.INFO))
+    .childHandler(new ChannelInitializer<SocketChannel>() {
+        @Override
+        public void initChannel(SocketChannel ch) throws Exception {
+            ChannelPipeline p = ch.pipeline();
+            if (sslCtx != null) {
+                p.addLast(sslCtx.newHandler(ch.alloc()));
+            }
+            //p.addLast(new LoggingHandler(LogLevel.INFO));
+            //                     p.addLast(new EchoServerHandler());
+            //说明: 如果我们在addLast 添加handler ，前面有指定
+            //EventExecutorGroup, 那么该handler 会优先加入到该线程池中
+            p.addLast(group, new EchoServerHandler());
+        }
+    });
+```
+
+说明：
+
+* handler 中的代码就使用普通的方式来处理耗时业务。
+
+* 当我们在调用 addLast 方法添加线程池后，handler 将优先使用这个线程池，如果不添加，将使用 IO 线程。
+
+* 当走到 AbstractChannelHandlerContext 的 `invokeChannelRead` 方法的时候，`executor.inEventLoop()` 是不会通过的，因为当前线程是 IO 线程 Contex(t 也就是 Handler)的 executor 是业务线程，所以会异步执行**, debug** 下源码
+
+  ```java
+  static void invokeChannelRead(final AbstractChannelHandlerContext next, Object msg) {
+      final Object m = next.pipeline.touch(ObjectUtil.checkNotNull(msg, "msg"), next);
+      EventExecutor executor = next.executor();
+      if (executor.inEventLoop()) {
+          next.invokeChannelRead(m);
+      } else {
+          executor.execute(new Runnable() { //执行 run
+              @Override
+              public void run() { 
+                  next.invokeChannelRead(m);
+              }
+          });
+      }
+  }
+  ```
+
+* 验证时，我们如果去掉 `p.addLast(group,new EchoServerHandler() );` 改成 `p.addLast(new EchoServerHandler());` 你会发现代码不会进行异步执行
+
+* 后面的整个流程就变成和第一个方式一样了
+
+
+
+## 10.8.3 两种方式的比较
+
+
+
+1. 第一种方式在 handler 中添加异步，可能更加的自由，比如如果需要访问数据库，那我就异步，如果不需要，就不异步，异步会拖长接口响应时间。因为需要将任务放进 mpscTask 中。如果 IO 时间很短，task 很多，可能一个循环下来，都没时间执行整个 task，导致响应时间达不到指标。
+2. 第二种方式是 Netty 标准方式(即加入到队列)，但是，这么做会将整个 handler 都交给业务线程池。不论耗时不耗时，都加入到队列里，不够灵活。
+3. 各有优劣，从灵活性考虑，第一种较好。
+

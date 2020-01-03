@@ -67,11 +67,10 @@ public final class EchoServer {
                          p.addLast(sslCtx.newHandler(ch.alloc()));
                      }
                      //p.addLast(new LoggingHandler(LogLevel.INFO));
-                     p.addLast(new EchoServerHandler());
+//                     p.addLast(new EchoServerHandler());
                      //说明: 如果我们在addLast 添加handler ，前面有指定
                      //EventExecutorGroup, 那么该handler 会优先加入到该线程池中
-
-                     //p.addLast(group, new EchoServerHandler());
+                     p.addLast(group, new EchoServerHandler());
                  }
              });
 
