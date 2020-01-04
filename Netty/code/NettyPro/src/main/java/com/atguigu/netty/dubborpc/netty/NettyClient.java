@@ -12,7 +12,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 import java.lang.reflect.Proxy;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,6 +26,7 @@ public class NettyClient {
     //编写方法使用代理模式，获取一个代理对象
 
     public Object getBean(final Class<?> serivceClass, final String providerName) {
+
 
         return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
                 new Class<?>[]{serivceClass}, (proxy, method, args) -> {
@@ -45,6 +45,8 @@ public class NettyClient {
                     return executor.submit(client).get();
 
                 });
+
+
     }
 
     //初始化客户端
