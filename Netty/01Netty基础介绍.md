@@ -7,7 +7,7 @@
 
 ![image-20191224221229081](images/image-20191224221229081.png)
 
-3. Netty 主要针对在 TCP 协议下，面向 Clients 端的高并发应用，或者 Peer-to-Peer 场景下的大量数据持续传输的 应用。
+3. Netty 主要针对在 TCP 协议下，面向 Clients 端的高并发应用，或者 Peer-to-Peer 场景下的大量数据持续传输的应用。
 
 4. Netty 本质是一个 NIO 框架，适用于服务器通讯相关的多种应用场景
 
@@ -69,7 +69,7 @@
 
 《Netty IN ACTION》：作者本身是Netty框架的内核开发，有大量的实例可以参考。注重实战
 
-《Netty 权威指南》：基于Netty 5写的，Netty 5 和 Netty 4 的api有些还是有很大差别。理论和原理的东西很好，注重原理。(Netty 5已经废弃，没人维护了)
+《Netty 权威指南》：基于Netty 5写的，Netty 5 和 Netty 4 的api有些还是有很大差别。理论和原理的东西很好，注重原理。(Netty 5出现重大bug，已经废弃，没人维护了)
 
 
 
