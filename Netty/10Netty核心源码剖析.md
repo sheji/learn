@@ -8,7 +8,7 @@
 
 
 
-# 10.2 Netty 启动过程源码剖析
+# 10.2 Netty启动过程源码剖析
 
 ## 10.2.1 源码剖析目的
 
@@ -29,7 +29,7 @@
 
 ## 10.2.3 源码剖析
 
-### 1. demo 源码的基本理解
+### 1. demo源码的基本理解
 
 ```java
 /*
@@ -222,7 +222,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
 
 
-### 2. 分析 EventLoopGroup 的过程
+### 2. 分析EventLoopGroup的过程
 
 1. 构造器方法
 
@@ -352,7 +352,7 @@ protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
 
 
 
-### 3. ServerBootstrap 创建和构造过程
+### 3. ServerBootstrap创建和构造过程
 
 1. ServerBootstrap 是个空构造，但是有默认的成员变量
 
@@ -638,7 +638,7 @@ protected void doBind(SocketAddress localAddress) throws Exception {
 
 7.  回到 bind 方法(一步一步向下执行)，最后一步:safeSetSuccess(promise)，告诉 promise 任务成功了。其可以执行监听器的 方法了。到此整个启动过程已经结束了 ，**ok** 了。
 
-### 5. 继续 Debug 服务器就回进入到**(NioEventLoop** 类**)**一个循环代码，进行监听
+### 5. 继续Debug服务器就回进入到**(NioEventLoop** 类**)**一个循环代码，进行监听
 
 ![image-20200102202419494](images/image-20200102202419494.png)
 
@@ -652,7 +652,7 @@ protected void run() {
 
 
 
-## 10.2.4 Netty 启动过程梳理
+## 10.2.4 Netty启动过程梳理
 
 
 
@@ -664,7 +664,7 @@ protected void run() {
 
 
 
-# 10.3 Netty 接受请求过程源码剖析
+# 10.3 Netty接受请求过程源码剖析
 
 ## 10.3.1 源码剖析目的
 
@@ -940,7 +940,7 @@ protected void doBeginRead() throws Exception {
 
 
 
-## 10.3.4 Netty 接受请求过程梳理
+## 10.3.4 Netty接受请求过程梳理
 
 
 
@@ -1271,7 +1271,7 @@ public final ChannelPipeline addLast(EventExecutorGroup group, String name, Chan
 
 
 
-# 10.5 ChannelPipeline 调度 handler 的源码剖析
+# 10.5 ChannelPipeline调度handler的源码剖析
 
 ## 10.5.1 源码剖析目的
 
@@ -1299,7 +1299,7 @@ public final ChannelPipeline fireChannelActive() {
 
 ## 10.5.3 源码分析
 
-### 1. DefaultChannelPipeline 是如何实现这些 fire 方法的
+### 1. DefaultChannelPipeline是如何实现这些fire方法的
 
 
 
@@ -1442,7 +1442,7 @@ public class DefaultChannelPipeline implements ChannelPipeline {
 
 
 
-## 10.5.4 调度 handler 梳理
+## 10.5.4 调度handler梳理
 
 
 
@@ -1451,7 +1451,7 @@ public class DefaultChannelPipeline implements ChannelPipeline {
 
 
 
-# 10.6 Netty 心跳(heartbeat)服务源码剖析
+# 10.6 Netty心跳(heartbeat)服务源码剖析
 
 ## 10.6.1 源码剖析目的
 
@@ -1567,7 +1567,7 @@ private abstract static class AbstractIdleTask implements Runnable {
 
 
 
-### 2. 读事件的 run 方法分析
+### 2. 读事件的run方法分析
 
 即 **ReaderIdleTimeoutTask** 的 **run** 方法
 
@@ -1620,7 +1620,7 @@ private final class ReaderIdleTimeoutTask extends AbstractIdleTask {
 
 
 
-### 3.  写事件的 **run** 方法分析
+### 3.  写事件的run方法分析
 
 即 **WriterIdleTimeoutTask** 的 **run** 方法
 
@@ -1671,7 +1671,7 @@ private final class WriterIdleTimeoutTask extends AbstractIdleTask {
 
 
 
-### 4. 所有事件的 run 方法分析
+### 4. 所有事件的run方法分析
 
 即 **AllIdleTimeoutTask** 的 **run** 方法
 
@@ -1753,7 +1753,7 @@ private final class AllIdleTimeoutTask extends AbstractIdleTask {
 
 
 
-# 10.7 Netty 核心组件 EventLoop 源码剖析
+# 10.7 Netty核心组件EventLoop源码剖析
 
 ## 10.7.1 源码剖析目的
 
@@ -1765,7 +1765,7 @@ Echo 第一行代码就是 :`EventLoopGroup bossGroup = new NioEventLoopGroup(1)
 
 ## 10.7.2 源码剖析
 
-### 1. EventLoop 介绍
+### 1. EventLoop介绍
 
 
 
@@ -1780,7 +1780,7 @@ Echo 第一行代码就是 :`EventLoopGroup bossGroup = new NioEventLoopGroup(1)
 
 
 
-### 2. NioEventLoop 的使用 - execute 方法
+### 2. NioEventLoop的使用execute方法
 
 2.1 **Executor** 源码剖析
 
@@ -1947,7 +1947,7 @@ private void doStartThread() {
 
 
 
-### 4. 分析下 run 方法(该方法在NioEventLoop)
+### 4. 分析下run方法(该方法在NioEventLoop)
 
 4.1 **EventLoop** 中的 **Loop** 是靠 **run** 实现的
 
@@ -2159,7 +2159,7 @@ private void select(boolean oldWakenUp) throws IOException {
 
 
 
-# 10.8 handler 中加入线程池和 Context 中添加线程池的源码剖析
+# 10.8 handler中加入线程池和Context中添加线程池的源码剖析
 
 ## 10.8.1 源码剖析目的
 
@@ -2174,7 +2174,7 @@ private void select(boolean oldWakenUp) throws IOException {
 
 ## 10.8.2 源码剖析
 
-###   1. handler 中加入线程池
+###   1. handler中加入线程池
 
 
 
@@ -2381,7 +2381,7 @@ private void write(Object msg, boolean flush, ChannelPromise promise) {
 
 
 
-### 2. Context 中添加线程池
+### 2. Context中添加线程池
 
 
 

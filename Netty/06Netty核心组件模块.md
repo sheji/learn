@@ -37,8 +37,8 @@ ChannelFuture sync();//等待异步操作执行完毕
 
 
 1. Netty 网络通信的组件，能够用于执行网络 I/O 操作。
-2. 通过Channel可获得当前网络连接的通道的状态。
-3. 通过Channel可获得网络连接的配置参数(例如接收缓冲区大小)。
+2. 通过 Channel 可获得当前网络连接的通道的状态。
+3. 通过 Channel 可获得网络连接的配置参数(例如接收缓冲区大小)。
 4. Channel 提供异步的网络 I/O 操作(如建立连接，读写，绑定端口)，异步调用意味着任何 I/O 调用都将立即返 回，并且不保证在调用结束时所请求的 I/O 操作已完成。
 5. 调用立即返回一个 ChannelFuture 实例，通过注册监听器到 ChannelFuture 上，可以 I/O 操作成功、失败或取消时回调通知调用方。
 6. 支持关联 I/O 操作与对应的处理程序。
@@ -63,7 +63,7 @@ NioSctpServerChannel//异步的 Sctp 服务器端连接，这些通道涵盖了 
 
 
 
-# 6.5 ChannelHandler 及其实现类
+# 6.5 ChannelHandler及其实现类
 
 
 
@@ -74,13 +74,13 @@ NioSctpServerChannel//异步的 Sctp 服务器端连接，这些通道涵盖了 
 ![bhdakjkadc](images/bhdakjkadc.png)
 
 ```java
-ChannelInboundHandler 用于处理入站 I/O 事件。
-ChannelOutboundHandler 用于处理出站 I/O 操作。
+ChannelInboundHandler//用于处理入站 I/O 事件。
+ChannelOutboundHandler//用于处理出站 I/O 操作。
 
 //适配器
-ChannelInboundHandlerAdapter 用于处理入站 I/O 事件。
-ChannelOutboundHandlerAdapter 用于处理出站 I/O 操作。
-ChannelDuplexHandler 用于处理入站和出站事件。
+ChannelInboundHandlerAdapter//用于处理入站 I/O 事件。
+ChannelOutboundHandlerAdapter//用于处理出站 I/O 操作。
+ChannelDuplexHandler//用于处理入站和出站事件。
 ```
 
 4. 我们经常需要自定义一个 Handler 类去继承 ChannelInboundHandlerAdapter，然后通过重写相应方法实现业务 逻辑，我们接下来看看一般都需要重写哪些方法
@@ -126,7 +126,7 @@ public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implemen
 
 
 
-# 6.6 Pipeline 和 ChannelPipeline
+# 6.6 Pipeline和ChannelPipeline
 
 
 
@@ -181,7 +181,7 @@ ChannelOption.SO_KEEPALIVE//一直保持连接活动状态
 
 
 
-# 6.9 EventLoopGroup 和其实现类 NioEventLoopGroup
+# 6.9 EventLoopGroup和其实现类 NioEventLoopGroup
 
 
 
@@ -204,7 +204,7 @@ public Future<?> shutdownGracefully();//断开连接，关闭线程
 
 
 
-# 6.10 Unpooled 类
+# 6.10 Unpooled类
 
 
 
@@ -594,7 +594,7 @@ public class GroupChatClientHandler extends SimpleChannelInboundHandler<String> 
 
 
 
-# 6.12 Netty 心跳检测机制案例
+# 6.12 Netty心跳检测机制案例
 
 
 
@@ -721,7 +721,7 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
 
 
 
-# 6.13 Netty 通过 WebSocket 编程实现服务器和客户端长连接
+# 6.13 Netty通过WebSocket编程实现服务器和客户端长连接
 
 
 

@@ -1,4 +1,4 @@
-# 9.1 TCP 粘包和拆包基本介绍
+# 9.1 TCP粘包和拆包基本介绍
 
 
 
@@ -19,7 +19,7 @@
 
 
 
-# 9.2 TCP 粘包和拆包现象实例
+# 9.2 TCP粘包和拆包现象实例
 
 
 
@@ -209,7 +209,7 @@ public class MyClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
 
 
-# 9.3 TCP 粘包和拆包解决方案
+# 9.3 TCP粘包和拆包解决方案
 
 
 

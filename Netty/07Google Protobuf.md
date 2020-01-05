@@ -10,7 +10,7 @@
 
 
 
-# 7.2 Netty 本身的编码解码的机制和问题分析
+# 7.2 Netty本身的编码解码的机制和问题分析
 
 
 
@@ -54,7 +54,7 @@ Protobuf 基本介绍和使用示意图
 
 
 
-# 7.4 Protobuf 快速入门实例
+# 7.4 Protobuf快速入门实例
 
 
 
@@ -306,7 +306,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
 
 
-# 7.5 Protobuf 快速入门实例 2
+# 7.5 Protobuf快速入门实例 2
 
 
 

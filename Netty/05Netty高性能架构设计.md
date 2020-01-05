@@ -60,9 +60,9 @@
 
 对上图说明:
 
-1. Reactor 模式，通过一个或多个输入同时传递给服务处理器的模式(基于事件驱动)
-2. 服务器端程序处理传入的多个请求,并将它们同步分派到相应的处理线程，因此Reactor模式也叫Dispatcher 模式。
-3. Reactor 模式使用 IO 复用监听事件, 收到事件后，分发给某个线程(进程), 这点就是网络服务器高并发处理关键。
+1. Reactor 模式，通过一个或多个输入同时传递给服务处理器的模式(基于事件驱动)。
+2. 服务器端程序处理传入的多个请求，并将它们同步分派到相应的处理线程，因此 Reactor 模式也叫 Dispatcher 模式。
+3. Reactor 模式使用 IO 复用监听事件，收到事件后，分发给某个线程(进程)，这点就是网络服务器高并发处理关键。
 
 
 
@@ -245,8 +245,8 @@ Netty 主要基于主从 Reactors 多线程模型(如图)做了一定的改进�
 
 
 1. BossGroup 线程维护 Selector , 只关注 Accecpt。
-2. 当接收到Accept事件，获取到对应的SocketChannel,封装成NIOScoketChannel并注册到Worker线程(事件循环), 并进行维护。
-3. 当Worker线程监听到selector中通道发生自己感兴趣的事件后，就进行处理(就由handler)，注意handler已经加入到通道。
+2. 当接收到 Accept 事件，获取到对应的 SocketChannel，封装成 NIOScoketChannel 并注册到 Worker 线程(事件循环)，并进行维护。
+3. 当 Worker 线程监听到 selector 中通道发生自己感兴趣的事件后，就进行处理(就由 handler )，注意 handler已经加入到通道。
 
 
 
@@ -293,7 +293,7 @@ Netty 主要基于主从 Reactors 多线程模型(如图)做了一定的改进�
 
 1. Netty 服务器在 6668 端口监听，客户端能发送消息给服务器 "hello, 服务器~"
 2. 服务器可以回复消息给客户端 "hello, 客户端~"
-3. 目的:对Netty线程模型有一个初步认识,便于理解Netty模型理论
+3. 目的:对Netty线程模型有一个初步认识，便于理解Netty模型理论
 
 
 

@@ -15,7 +15,7 @@
 | ------------------------------------------------------------ | ---- |
 | ![image-20191225001042182](images/image-20191225001042182.png) |      |
 
-4. **NIO 是 面向缓冲区 ，或者面向 块 编程的**。数据读取到一个它稍后处理的缓冲区，需要时可在缓冲区中前后 移动，这就增加了处理过程中的灵活性，使用它可以提供==非阻塞式==的高伸缩性网络
+4. **NIO 是 面向缓冲区 ，或者面向 块 编程的**。数据读取到一个它稍后处理的缓冲区，需要时可在缓冲区中前后 移动，这就增加了处理过程中的灵活性，使用它可以提供==非阻塞式==的高伸缩性网络。
 
 5. Java NIO 的非阻塞模式，使一个线程从某通道发送请求或者读取数据，但是它仅能得到目前可用的数据，如果目前没有数据可用时，就什么都不会获取，而==不是保持线程阻塞==，所以直至数据变的可以读取之前，该线程可以继续做其他的事情。 非阻塞写也是如此，一个线程请求写入一些数据到某通道，但不需要等待它完全写入， 这个线程同时可以去做别的事情。【后面有案例说明】
 
@@ -92,13 +92,13 @@ public class BasicBuffer {
 
 ![image-20191224234237804](images/image-20191224234237804.png)
 
-1. 每个channel都会对应一个Buffer。
+1. 每个 channel 都会对应一个 Buffer。
 2. Selector 对应一个线程， 一个线程对应多个 channel(连接)。
-3. 该图反应了有三个channel注册到该selector//程序。
-4. 程序切换到哪个channel是有事件决定的,Event就是一个重要的概念。
+3. 该图反应了有三个 channel 注册到该 selector 程序。
+4. 程序切换到哪个 channel 是有事件决定的，Event 就是一个重要的概念。
 5. Selector 会根据不同的事件，在各个通道上切换。
 6. Buffer 就是一个内存块 ， 底层是有一个数组。
-7. 数据的读取写入是通过Buffer,这个和BIO,BIO中要么是输入流，或者是输出流, 不能双向，但是 NIO 的 Buffer 是可以读也可以写, 需要 flip 方法切换 channel 是双向的, 可以返回底层操作系统的情况, 比如 Linux，底层的操作系统通道就是双向的。
+7. 数据的读取写入是通过 Buffer，BIO中要么是输入流，或者是输出流，不能双向，但是 NIO 的 Buffer 是可以读也可以写，需要 flip 方法切换 channel 是双向的, 可以返回底层操作系统的情况，比如 Linux，底层的操作系统通道就是双向的。
 
 
 
@@ -195,7 +195,7 @@ public abstract class ByteBuffer {
    * 通道可以从缓冲读数据，也可以写数据到缓冲
 2. BIO 中的 stream 是单向的，例如 FileInputStream 对象只能进行读取数据的操作，而 NIO 中的通道(Channel) 是双向的，可以读操作，也可以写操作。
 3. Channel 在 NIO 中是一个接口 `public interface Channel extends Closeable{}`
-4. 常 用 的 Channel 类 有 : **FileChannel** 、 DatagramChannel 、 **ServerSocketChannel** 和 **SocketChannel** 。 【ServerSocketChanne 类似 ServerSocket , SocketChannel 类似 Socket】
+4. 常 用 的 Channel 类 有 : **FileChannel** 、 DatagramChannel 、 **ServerSocketChannel** 和 **SocketChannel** 。 【ServerSocketChannel 类似 ServerSocket , SocketChannel 类似 Socket】
 5. FileChannel 用于文件的数据读写，DatagramChannel 用于 UDP 的数据读写，ServerSocketChannel 和SocketChannel 用于 TCP 的数据读写。
 
 ![image-20191225212406243](images/image-20191225212406243.png)
@@ -416,7 +416,7 @@ public class NIOFileChannel04 {
 
 
 
-1. ByteBuffer 支持类型化的 put 和 get, put 放入的是什么数据类型，get 就应该使用相应的数据类型来取出，否则可能有 `BufferUnderflowException` 异常。[举例说明]
+1. ByteBuffer 支持类型化的 put 和 get，put 放入的是什么数据类型，get 就应该使用相应的数据类型来取出，否则可能有 `BufferUnderflowException` 异常。[举例说明]
 
 ```java
 package com.atguigu.nio;
@@ -534,7 +534,7 @@ public class MappedByteBufferTest {
 
 
 
-4. 面我们讲的读写操作，都是通过一个 Buffer 完成的，NIO 还支持 通过多个 Buffer (即 Buffer 数组) 完成读写操作，即 Scattering 和 Gathering 【举例说明】
+4. 面我们讲的读写操作，都是通过一个 Buffer 完成的，NIO 还支持通过多个 Buffer (即 Buffer 数组) 完成读写操作，即 Scattering 和 Gathering 【举例说明】
 
 ```java
 package com.atguigu.nio;
@@ -624,7 +624,7 @@ socketChannel 让 byteBuffers 数组自动整合了元素(Gathering)。
 
 
 
-# 3.6 Selector(选择器)
+# 3.6 选择器(Selector)
 
 ## 3.6.1 基本介绍
 
@@ -633,7 +633,7 @@ socketChannel 让 byteBuffers 数组自动整合了元素(Gathering)。
 1. Java 的 NIO，用非阻塞的 IO 方式。可以用一个线程，处理多个的客户端连接，就会使用到 Selector(选择器)
 2. Selector 能够检测多个注册的通道上是否有事件发生(注意:多个 Channel 以事件的方式可以注册到同一个 Selector)，如果有事件发生，便获取事件然后针对每个事件进行相应的处理。这样就可以只用一个单线程去管 理多个通道，也就是管理多个连接和请求。
 3. 只有在连接/通道真正有读写事件发生时，才会进行读写，就大大地减少了系统开销，并且不必为每个连接都 创建一个线程，不用去维护多个线程。
-4. 避免了多线程之间的上下文切换导致的开销。
+4. ==避免了多线程之间的上下文切换导致的开销==。
 
 
 
@@ -698,11 +698,11 @@ NIO 非阻塞网络编程相关的(Selector、SelectionKey、ServerScoketChannel
 对上图的说明:
 
 1. 当客户端连接时，会通过 ServerSocketChannel 得到 SocketChannel。
-2. Selector 进行监听 select 方法, 返回有事件发生的通道的个数。
-3. 将socketChannel注册到Selector上，`register(Selectorsel,intops)`,一个selector上可以注册多个SocketChannel。
+2. Selector 进行监听 select 方法，返回有事件发生的通道的个数。
+3. 将 socketChannel 注册到 Selector 上，`register(Selector sel,int ops)`，一个 selector 上可以注册多个SocketChannel。
 4. 注册后返回一个 SelectionKey，会和该 Selector 关联(集合)。
 5. 进一步得到各个 SelectionKey (有事件发生)。
-6. 在通过 SelectionKey 反向获取 SocketChannel , 方法 `channel()`。
+6. 在通过 SelectionKey 反向获取 SocketChannel，方法 `channel()`。
 7. 通过得到的 channel , 完成业务处理。
 
 
