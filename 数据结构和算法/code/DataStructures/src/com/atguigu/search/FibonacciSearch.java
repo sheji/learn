@@ -7,7 +7,7 @@ public class FibonacciSearch {
 	public static int maxSize = 20;
 	public static void main(String[] args) {
 		int [] arr = {1,8, 10, 89, 1000, 1234};
-		System.out.println("index=" + fibSearch(arr, 1000));
+		System.out.println("index=" + fibSearch(arr, 1234));
 	}
 
 	//因为后面我们mid=low+F(k-1)-1，需要使用到斐波那契数列，因此我们需要先获取到一个斐波那契数列
