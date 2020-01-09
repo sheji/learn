@@ -7,8 +7,6 @@ import com.gupaoedu.vip.pattern.singleton.register.ContainerSingleton;
  */
 public class ContainerSingletonTest {
     public static void main(String[] args) {
-
-
         try {
             long start = System.currentTimeMillis();
             ConcurrentExecutor.execute(new ConcurrentExecutor.RunHandler() {
@@ -22,6 +20,5 @@ public class ContainerSingletonTest {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

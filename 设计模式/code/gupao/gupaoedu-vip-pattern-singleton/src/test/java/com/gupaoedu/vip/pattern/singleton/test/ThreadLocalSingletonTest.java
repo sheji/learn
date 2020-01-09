@@ -19,6 +19,5 @@ public class ThreadLocalSingletonTest {
         t1.start();
         t2.start();
         System.out.println("End");
-
     }
 }
